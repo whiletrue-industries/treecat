@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .catalog {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+
+        .hero {
+            padding: 35px 45px;
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: stretch;
+            gap: 58px;
+
+            .top-controls {
+                display: flex;
+                flex-flow: row;
+                align-items: flex-start;
+                width: 100%;
+
+                .main-filters {
+                    h1 {
+                        font-size: 39px;
+                        line-height: 50px;
+                        font-weight: 700;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
