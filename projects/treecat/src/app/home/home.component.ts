@@ -3,6 +3,7 @@ import { HeaderComponent } from "../header/header.component";
 import { StateService } from '../state.service';
 import { SidewalkWidth } from '../data.service';
 import { RouterModule } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
 export class HomeComponent {
 
   SidewalkWidth = SidewalkWidth;
+  environment = environment;
 
   constructor(public state: StateService) {
 

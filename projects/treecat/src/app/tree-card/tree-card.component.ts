@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tree } from '../data.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-tree-card',
@@ -11,7 +12,8 @@ export class TreeCardComponent {
   @Input() tree: Tree;
   @Output() loaded = new EventEmitter<void>();
 
-  DEFAULT_URL = '/treecat/no-tree-image.jpg';
+  // TODO
+  DEFAULT_URL = `${environment.base}no-tree-image.jpg`;
 
   markAsLoaded() {
     this.loaded.emit();
