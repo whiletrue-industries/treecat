@@ -116,6 +116,9 @@ export class DataService {
   trees = new ReplaySubject<Tree[]>(1);
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  fetchTrees() {
     this.httpClient.get<Tree[]>(this.URL).subscribe(trees => {
       this.trees.next(trees);
     });

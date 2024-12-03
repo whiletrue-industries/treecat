@@ -151,7 +151,7 @@ def main():
 
     resources = DF.Flow(
         DFA.load_from_airtable(AIRTABLE_APP, 'Resources', view='Grid view', apikey=AIRTABLE_API_KEY),
-        DF.checkpoint('resources'),        
+        # DF.checkpoint('resources'),        
     ).results()[0][0]
     resources = dict(
         (r[DFA.AIRTABLE_ID_FIELD], dict(
@@ -166,7 +166,7 @@ def main():
 
     DF.Flow(
         DFA.load_from_airtable(AIRTABLE_APP, 'Trees Species', view='Grid view', apikey=AIRTABLE_API_KEY),
-        DF.checkpoint('trees-species'),
+        # DF.checkpoint('trees-species'),
         DF.rename_fields({
             'שם קטלוגי (עברי)': 'name',
             'שם קטלוגי (מדעי)': 'botanicalName',

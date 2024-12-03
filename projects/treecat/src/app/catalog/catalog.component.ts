@@ -15,9 +15,12 @@ import { CardGridComponent } from "../card-grid/card-grid.component";
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.less'
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit {
 
   constructor(public state: StateService, public data: DataService) {
+  }
 
+  ngOnInit() {
+    this.data.fetchTrees();
   }
 }
