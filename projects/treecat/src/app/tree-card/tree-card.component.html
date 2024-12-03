@@ -1,0 +1,30 @@
+<div class='card'>
+    <img [src]='tree.mainPhoto?.url || DEFAULT_URL'>
+    <div class='overlay'>
+        <div class='content'>
+            <div class='header'>
+                <div class='name'>
+                    <h2>{{tree.name}}</h2>
+                    <h3>{{tree.botanicalName}}</h3>        
+                </div>
+                @if (tree.recommended) {
+                    <div class='recommended'></div>
+                }
+            </div>
+            <div class='info'>
+                <div [class]='"sidewalk " + tree.sidewalkWidth'></div>
+                <div class='text'>
+                    מדרכה {{tree.sidewalkWidthHe}}
+                </div>
+            </div>
+            <div class='info'>
+                <div class='climate-map'></div>
+                <div class='text'>
+                    @for (climate of tree.climateAreaHe ; track climate) {
+                        <span>{{climate}}</span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

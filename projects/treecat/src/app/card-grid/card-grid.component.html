@@ -1,0 +1,5 @@
+<div class='card-grid' #treeCards>
+    @for (tree of trees; track tree.id) {
+        <app-tree-card [tree]='tree'></app-tree-card>
+    }
+</div>

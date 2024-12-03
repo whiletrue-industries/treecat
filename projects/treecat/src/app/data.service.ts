@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
 
 export enum ClimateArea {
   Mountain = 'Mountain',
@@ -13,7 +15,7 @@ export enum SidewalkWidth {
   Wide = 'Wide',
 }
 
-export enum BlossomColor {
+export enum BloomColor {
   Lilac = 'Lilac',
   Purple = 'Purple',
   LightPink = 'Light Pink',
@@ -49,38 +51,60 @@ export class Photo {
 
   url: string;
   kind: string;
+  height: number;
+  width: number;
   photographer: string;
   license: string;
+  link: string;
 }
 
-class Tree {
+export class Source {
+  constructor(others: Partial<Source> = {}) {
+    Object.assign(this, others);
+  }
+
+  name: string;
+  organizations: string;
+  authors: string;
+  url: string;
+  year: string;
+}
+
+export class Tree {
   constructor(others: Partial<Tree> = {}) {
     Object.assign(this, others);
   }
 
   id: string;
   name: string;
-  description: string;
+  catalogs: string[];
+  recommended: boolean;
   botanicalName: string;
   treeType: string[];
-  climateArea: ClimateArea[];
   sidewalkWidth: SidewalkWidth;
-  catalogs: string[];
-  blossomColor: BlossomColor[];
-  canopyShape: CanopyShape;
+  sidewalkWidthHe: string;
+  climateArea: ClimateArea[];
+  climateAreaHe: string[];
   soilType: string[];
-  canopyHeight: string;
   canopyWidth: string;
-  blossomSeason: string;
-  wateringScale: number;
-  cleaningRequirement: boolean;
-  extraWatering: number;
+  canopyHeight: string;
   deciduous: string;
+  canopyShape: CanopyShape;
+  canopyShapeHe: string;
+  bloomColor: BloomColor[];
+  bloomColorHe: string[];
+  bloomSeason: string[];
+  wateringScale: number;
+  extraWatering: string;
   growthRate: string;
+  cleaningRequired: boolean;
   brittlenessCoefficient: number;
-  sources: string[];
-
+  
+  sources: Source[];
   photos: Photo[] = [];
+  mainPhoto: Photo;
+
+  description: string;
 }
 
 @Injectable({
@@ -88,5 +112,12 @@ class Tree {
 })
 export class DataService {
 
-  constructor() { }
+  URL = 'https://storage.googleapis.com/treecat-assets/trees.json';
+  trees = new ReplaySubject<Tree[]>(1);
+
+  constructor(private httpClient: HttpClient) {
+    this.httpClient.get<Tree[]>(this.URL).subscribe(trees => {
+      this.trees.next(trees);
+    });
+  }
 }

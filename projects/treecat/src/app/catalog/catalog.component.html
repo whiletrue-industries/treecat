@@ -5,7 +5,10 @@
             <div class='main-filters'>
                 <h1>קטלוג העצים המלא</h1>
             </div>
-        </div>            
+        </div>
+        <div class='results'>
+            <app-card-grid [trees]='state.trees'></app-card-grid>
+        </div>
     </div>
 </div>
 @if (!!state.selectedTreeId) {

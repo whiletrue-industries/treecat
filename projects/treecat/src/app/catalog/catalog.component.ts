@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
 import { StateService } from '../state.service';
 import { HeaderComponent } from '../header/header.component';
+import { DataService } from '../data.service';
+import { CommonModule } from '@angular/common';
+import { CardGridComponent } from "../card-grid/card-grid.component";
 
 @Component({
   selector: 'app-catalog',
   imports: [
-    HeaderComponent
-  ],
+    CommonModule,
+    HeaderComponent,
+    CardGridComponent
+],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.less'
 })
 export class CatalogComponent {
 
-  constructor(public state: StateService) {
+  constructor(public state: StateService, public data: DataService) {
 
   }
 }

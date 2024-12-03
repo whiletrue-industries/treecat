@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DataService, Tree } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,11 @@ import { Injectable } from '@angular/core';
 export class StateService {
 
   selectedTreeId: string | null = null;
+  trees: Tree[] = [];
 
-  constructor() { }
+  constructor(private data: DataService) {
+    data.trees.subscribe(trees => {
+      this.trees = trees;
+    });
+  }
 }
