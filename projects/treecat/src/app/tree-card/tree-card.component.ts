@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tree } from '../data.service';
 
 @Component({
@@ -9,6 +9,11 @@ import { Tree } from '../data.service';
 })
 export class TreeCardComponent {
   @Input() tree: Tree;
+  @Output() loaded = new EventEmitter<void>();
 
   DEFAULT_URL = '/no-tree-image.jpg';
+
+  markAsLoaded() {
+    this.loaded.emit();
+  }
 }

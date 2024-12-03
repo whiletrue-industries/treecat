@@ -102,7 +102,7 @@ export class Tree {
   
   sources: Source[];
   photos: Photo[] = [];
-  mainPhoto: Photo;
+  mainPhoto: Photo | null;
 
   description: string;
 }

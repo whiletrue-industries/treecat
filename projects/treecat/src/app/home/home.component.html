@@ -1,1 +1,21 @@
-<p>home works!</p>
+<app-header></app-header>
+<div class='hero'>
+    <div class='title'>
+        <h1>קטלוג עצי הרחוב והצל של ישראל</h1>
+        <h2>
+            הקטלוג הדיגיטלי מציג לראשונה באופן מיטבי מידע ממגוון מקורות מידע ציבוריים אודות מיני עצים,
+            הכל כדי שתוכלו לבחור בקלות את העץ הנכון למקום הנכון.
+        </h2>
+    </div>
+    
+    <div class='sidewalks'>
+        <span class='select'>בחרו רוחב מדרכה</span>
+        <img class='sidewalk narrow' src='/img/illus-hp-narrow-normal.svg' (click)='state.selectedSidewalkWidth = SidewalkWidth.Narrow'/>
+        <img class='sidewalk medium' src='/img/illus-hp-medium-normal.svg' (click)='state.selectedSidewalkWidth = SidewalkWidth.Medium'/>
+        <img class='sidewalk wide' src='/img/illus-hp-wide-normal.svg' (click)='state.selectedSidewalkWidth = SidewalkWidth.Wide'/>
+    </div>
+
+    <div class='cta'>
+        <button class='select-sidewalk' [routerLink]="'/catalog'" [disabled]='!state.selectedSidewalkWidth'>לבחירת עץ לפי רוחב מדרכה</button>
+        <a class='skip' [routerLink]="'/catalog'">אולי פעם אחרת, קחו אותי לקטלוג המלא</a>
+    </div>

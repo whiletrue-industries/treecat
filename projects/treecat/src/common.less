@@ -42,7 +42,7 @@
 }
 
 
-@mobile-threshold: 720px;
+@mobile-threshold: 982px;
 
 .mobile(@rules) {
     @media only screen and (max-width: (@mobile-threshold - 1px)) {
@@ -72,4 +72,29 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+}
+
+
+.regular-button {
+    appearance: none;
+    background-color: @color-primary;
+    color: @color-white;
+    font-weight: 700;
+    font-size: 20px;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 5px;
+    border: 1px solid @color-primary;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken(@color-primary, 10%);
+    }
+
+    &:disabled {
+        background-color: @color-gray-3;
+        color: @color-gray-1;
+        border-color: @color-gray-3;
+        cursor: inherit;
+    }
 }
