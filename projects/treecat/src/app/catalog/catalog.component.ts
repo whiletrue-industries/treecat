@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StateService } from '../state.service';
 import { HeaderComponent } from '../header/header.component';
 import { DataService } from '../data.service';
