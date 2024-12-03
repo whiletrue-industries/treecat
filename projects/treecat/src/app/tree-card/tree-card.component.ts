@@ -11,7 +11,7 @@ export class TreeCardComponent {
   @Input() tree: Tree;
   @Output() loaded = new EventEmitter<void>();
 
-  DEFAULT_URL = '/no-tree-image.jpg';
+  DEFAULT_URL = '/treecat/no-tree-image.jpg';
 
   markAsLoaded() {
     this.loaded.emit();
