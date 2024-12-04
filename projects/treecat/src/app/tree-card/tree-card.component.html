@@ -1,6 +1,6 @@
 <div class='card'>
     <img [src]='tree.mainPhoto?.url || DEFAULT_URL' (load)='markAsLoaded()'>
-    <div class='overlay'>
+    <a class='overlay' [routerLink]="['/tree', tree.id]">
         <div class='content'>
             <div class='header'>
                 <div class='name'>
@@ -26,5 +26,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 </div>

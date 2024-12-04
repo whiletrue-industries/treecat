@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tree } from '../data.service';
 import { environment } from '../../environments/environment';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tree-card',
-  imports: [],
+  imports: [
+    RouterModule
+  ],
   templateUrl: './tree-card.component.html',
   styleUrl: './tree-card.component.less'
 })

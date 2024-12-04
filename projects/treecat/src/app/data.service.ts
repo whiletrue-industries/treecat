@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { map, ReplaySubject, take } from 'rxjs';
 
 export enum ClimateArea {
   Mountain = 'Mountain',
@@ -114,13 +114,24 @@ export class DataService {
 
   URL = 'https://storage.googleapis.com/treecat-assets/trees.json';
   trees = new ReplaySubject<Tree[]>(1);
+  fetched = false;
 
   constructor(private httpClient: HttpClient) {
   }
 
   fetchTrees() {
+    if (this.fetched) {
+      return;
+    }
     this.httpClient.get<Tree[]>(this.URL).subscribe(trees => {
       this.trees.next(trees);
     });
+  }
+
+  fetchTree(id: string) {
+    return this.trees.pipe(
+      take(1),
+      map(trees => trees.find(tree => tree.id === id))
+    );
   }
 }

@@ -45,7 +45,6 @@ export class CardGridComponent {
   resizeGroupItems() {
     this.platform.browser(() => {
       timer(0).subscribe(() => {
-        console.log('resize');
         const el = this.treeCards.nativeElement as HTMLElement;
         const items = el.querySelectorAll('app-tree-card') as NodeListOf<HTMLElement>;
         items.forEach((item: HTMLElement) => {

@@ -1,0 +1,99 @@
+@import '../../common.less';
+
+:host {
+    padding: 30px;
+    background-color: @color-white;
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    width: 450px;
+    gap: 5px;
+
+    h1, h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        color: @color-black;
+    }
+
+    .section {
+        display: flex;
+        flex-flow: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 5px;
+        
+        h3 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 30px;
+            color: @color-gray-0;
+        }
+
+        .row {
+            display: flex;
+            flex-flow: row;
+            align-items: stretch;
+            gap: 30px;
+
+            & > div {
+                flex: 0 0 50%;
+                display: flex;
+                flex-flow: column;
+                justify-content: space-between;
+                gap: 5px;
+
+                .param {
+                    display: flex;
+                    flex-flow: column;
+                    gap: 6px;
+
+                    span {
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        color: @color-black;
+
+                        &.canopy-shape {
+                            width: fit-content;
+                            display: flex;
+                            flex-flow: column;
+                            align-items: center;
+                            gap: 5px;
+
+                            img {                                
+                                height: 56px;
+                            }
+                        }
+                    }
+
+                    span:first-child {
+                        font-size: 14px;
+                    }
+
+                    .bloom-colors {
+                        display: flex;
+                        flex-flow: row;
+                        align-items: center;
+                        gap: 12px;
+                        img {
+                            height: 24px;
+                        }
+                    }
+
+                    .watering-scale {
+                        display: flex;
+                        flex-flow: row;
+                        align-items: center;
+                        gap: 10px;
+                        img {
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

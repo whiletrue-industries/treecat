@@ -1,1 +1,14 @@
-<p>tree works!</p>
+<app-header></app-header>
+<div class='controls'>
+
+</div>
+@if (!!tree) {
+    <div class='main-info'>
+        <app-tree-info [tree]='tree'></app-tree-info>
+        <app-tree-gallery [tree]='tree'></app-tree-gallery>
+    </div>
+    <div class='related'>
+        <app-treebase-info [tree]='tree'></app-treebase-info>
+        <app-similar-trees [tree]='tree'></app-similar-trees>
+    </div>
+}

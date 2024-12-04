@@ -1,0 +1,141 @@
+<h1>{{tree.name}}</h1>
+<h2>{{tree.botanicalName}}</h2>
+<div class='section'>
+    <h3>התאמה תכנונית</h3>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>אזור אקלים</span>
+                <span>{{tree.climateAreaHe}}</span>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>רוחב מדרכה</span>
+                <span>{{tree.sidewalkWidthHe}}</span>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>שייך לרשימת עצים</span>
+                <span></span>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>התאמה לקרקע</span>
+                <span>{{tree.soilType}}</span>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>מקומי</span>
+                <span></span>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>ערך המין</span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='section'>
+    <h3>נוף</h3>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>קוטר צמרת</span>
+                <span>{{tree.canopyWidth}}</span>
+            </div>
+            <div class='param'>
+                <span>גובה העץ</span>
+                <span>{{tree.canopyHeight}}</span>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>מבנה צמרת</span>
+                <span class='canopy-shape'>
+                    <img [src]='canopyShapeImg()'/>
+                    <span>{{tree.canopyShapeHe}}</span>    
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>צבע פריחה</span>
+                <div class='bloom-colors'>
+                    @for (color of tree.bloomColor; track color) {
+                        <img [src]='bloomColorImg(color)'/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>מועד פריחה</span>
+                <span>{{tree.bloomSeason}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='section'>
+    <h3>אחזקה</h3>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>דירוג השקייה</span>
+                <div class='watering-scale'>
+                    @for (_ of wateringScaleImg(); track _) {
+                        <img [src]='DROP_ICON'>
+                    }
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>קצב צימוח</span>
+                <span>{{tree.growthRate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>חסכוני במים</span>
+                <span>{{tree.extraWatering}}</span>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>נשיר</span>
+                <span>{{tree.deciduous}}</span>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span>מקדם שבירות</span>
+                <span>{{tree.brittlenessCoefficient}}</span>
+            </div>
+        </div>
+        <div>
+            <div class='param'>
+                <span>צופני</span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='section'>
+    <h3>מקורות</h3>
+</div>
