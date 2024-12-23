@@ -19,8 +19,10 @@
     <div class='row'>
         <div>
             <div class='param'>
-                <span>שייך לרשימת עצים</span>
-                <span></span>
+                <span>עץ מומלץ</span>
+                @for (catalogName of tree.catalogs; track catalogName) {
+                    <span>{{catalogName}}</span>
+                }
             </div>
         </div>
         <div>
@@ -34,13 +36,13 @@
         <div>
             <div class='param'>
                 <span>מקומי</span>
-                <span></span>
+                <span>{{tree.isNative ? "כן" : "לא"}}</span>
             </div>
         </div>
         <div>
             <div class='param'>
                 <span>ערך המין</span>
-                <span></span>
+                <span>{{tree.speciesValue}}</span>
             </div>
         </div>
     </div>
@@ -111,7 +113,12 @@
         <div>
             <div class='param'>
                 <span>חסכוני במים</span>
-                <span>{{tree.extraWatering}}</span>
+                <div class='line'>
+                    @if (tree.isWaterEconomical) {
+                        <span class='economical'></span>
+                    }                
+                    <span>{{tree.extraWatering}}</span>    
+                </div>
             </div>
         </div>
         <div>
@@ -131,11 +138,25 @@
         <div>
             <div class='param'>
                 <span>צופני</span>
-                <span></span>
+                <span>{{tree.hasNectar ? "כן" : "לא"}}</span>
             </div>
         </div>
     </div>
 </div>
 <div class='section'>
     <h3>מקורות</h3>
+    <div class='row'>
+        <div>
+            <div class='param'>
+                <span class='line sources'>
+                    @for (source of tree.sources; track source.id) {
+                        @if (source.url) {
+                            <a [href]='source.url' [title]='source.name' target='_blank'>{{source.id}}</a>
+                        } @else {
+                            <span [title]='source.name'>{{source.id}}</span>
+                        }
+                    }
+                </span>
+            </div>
+        </div>
 </div>

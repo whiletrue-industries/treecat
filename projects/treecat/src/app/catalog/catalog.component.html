@@ -7,11 +7,11 @@
             </div>
         </div>
         <div class='results'>
-            <app-card-grid [trees]='state.trees'></app-card-grid>
+            <app-card-grid [trees]='state.trees()'></app-card-grid>
         </div>
     </div>
 </div>
-@if (!!state.selectedTreeId) {
+@if (!!state.selectedTreeId()) {
     <div class='sidebar'>
     </div>
 }

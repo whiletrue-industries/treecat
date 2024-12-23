@@ -18,8 +18,15 @@ export class HomeComponent {
 
   SidewalkWidth = SidewalkWidth;
   environment = environment;
+  hovering: SidewalkWidth | null = null;
 
   constructor(public state: StateService) {
 
+  }
+
+  sidewalkImage(width: SidewalkWidth): string {
+    const state = this.state.selectedSidewalkWidth === width ? 'selected' : 
+      (this.hovering === width ? 'hover' : 'normal');
+    return `${environment.base}img/illus-hp-${width}-${state}.svg`;
   }
 }

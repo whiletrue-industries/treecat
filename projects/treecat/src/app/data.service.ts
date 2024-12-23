@@ -10,9 +10,9 @@ export enum ClimateArea {
 }
 
 export enum SidewalkWidth {
-  Narrow = 'Narrow',
-  Medium = 'Medium',
-  Wide = 'Wide',
+  Narrow = 'narrow',
+  Medium = 'medium',
+  Wide = 'wide',
 }
 
 export enum BloomColor {
@@ -56,6 +56,9 @@ export class Photo {
   photographer: string;
   license: string;
   link: string;
+  ratio: number;
+
+  base: string;
 }
 
 export class Source {
@@ -63,6 +66,7 @@ export class Source {
     Object.assign(this, others);
   }
 
+  id: number;
   name: string;
   organizations: string;
   authors: string;
@@ -95,16 +99,22 @@ export class Tree {
   bloomColorHe: string[];
   bloomSeason: string[];
   wateringScale: number;
+  isWaterEconomical: boolean;
   extraWatering: string;
   growthRate: string;
   cleaningRequired: boolean;
   brittlenessCoefficient: number;
+  isNative: boolean;
+  speciesValue: number;
+  hasNectar: boolean;
+  notesGeneral: string;
+  notesMaintenance: string;
   
   sources: Source[];
   photos: Photo[] = [];
   mainPhoto: Photo | null;
 
-  description: string;
+  
 }
 
 @Injectable({

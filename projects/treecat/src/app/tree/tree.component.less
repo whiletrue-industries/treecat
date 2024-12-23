@@ -1,5 +1,8 @@
+@import '../../common.less';
+
 :host {
     width: 100%;
+    overflow-x: hidden;
     display: flex;
     flex-flow: column;
     align-items: stretch;
@@ -14,12 +17,35 @@
         height: fit-content;
 
         > * {
-            flex: 1 1 100%;
+            flex: 1 1 auto;
+            display: flex;
+            flex-flow: column;
             &:first-child {
                 flex: 0 0 auto;
+            }
+
+            .description {
+                padding: 0 40px;
+
+                color: @color-black;
+                text-align: right;
+                .font-primary;
+                font-size: 18px;
+                font-weight: 400;
+                strong {
+                    font-weight: 700;
+                }
+                line-height: 32px;
             }
         }
     }
 
+    .related {
+        border-top: 1px solid @color-gray-1;
+
+        > *:first-child {
+            border-left: 1px solid @color-gray-1;
+        }
+    }
 
 }

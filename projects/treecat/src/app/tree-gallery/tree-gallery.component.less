@@ -1,0 +1,66 @@
+@import '../../common.less';
+
+:host {
+    width: 100%;
+    // overflow: hidden;
+    padding: 40px;
+    
+    .gallery {
+        width: 100%;
+        // overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 14px;
+        height: 640px;
+        
+        .row {
+            flex: 1 1 auto;
+            display: flex;
+            flex-flow: row;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 14px;
+            // overflow: hidden;
+            
+
+            .photo {
+                flex: 1 0 auto;
+                position: relative;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .copyright-logo {
+                    .background-image;
+                    background-image: url(../../../public/img/icon-copyright.svg);
+                    position: absolute;
+                    left: 8px;
+                    bottom: 8px;
+                    z-index: 1;
+                    width: 15px;
+                    height: 15px;
+                }
+
+                .copyright {
+                    position: absolute;
+                    bottom: 22px;
+                    left: 16px;
+                    white-space: nowrap;
+                    display: none;
+                    &:hover {
+                        display: block;
+                    }
+                    a {
+                        text-decoration: underline;
+                    }
+                }
+                .copyright-logo:hover + .copyright {
+                    display: block;
+                }
+            }
+        }
+    }
+}

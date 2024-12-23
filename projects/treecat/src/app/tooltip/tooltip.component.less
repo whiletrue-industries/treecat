@@ -1,0 +1,26 @@
+@import '../../common.less';
+
+.tooltip {
+    border-radius: 5px;
+    background: @color-primary;
+    padding: 5px 5px;
+    position: relative;
+    transform: translateY(-8px)translateX(-40px);
+    z-index: 10;
+    white-space: inherit;
+
+    ::ng-deep {
+        color: white;
+        .font-primary;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;    
+    }
+
+    .tip {
+        position: absolute;
+        left: 32px;
+        bottom: 0;
+        transform: translateY(100%);
+    }
+}

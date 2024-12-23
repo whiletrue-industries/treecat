@@ -50,7 +50,7 @@
                     flex-flow: column;
                     gap: 6px;
 
-                    span {
+                    span, a {
                         font-size: 18px;
                         font-weight: 400;
                         line-height: 24px;
@@ -67,9 +67,17 @@
                                 height: 56px;
                             }
                         }
+                        &.economical {
+                            .background-image;
+                            background-image: url(../../../public/img/icon-check.svg);
+                            background-size: 20px;
+                            width: 20px;
+                            height: 20px;
+                            display: flex;
+                        }
                     }
 
-                    span:first-child {
+                    & > span:first-child {
                         font-size: 14px;
                     }
 
@@ -90,6 +98,22 @@
                         gap: 10px;
                         img {
                             height: 20px;
+                        }
+                    }
+
+                    .line {
+                        display: flex;
+                        flex-flow: row;
+                        align-items: center;
+
+                        &.sources {
+                            gap: 4px;
+                            a {
+                                text-decoration: underline;
+                            }
+                            a, span {
+                                color: @color-primary;
+                            }
                         }
                     }
                 }

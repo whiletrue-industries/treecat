@@ -5,7 +5,19 @@
 @if (!!tree) {
     <div class='main-info'>
         <app-tree-info [tree]='tree'></app-tree-info>
-        <app-tree-gallery [tree]='tree'></app-tree-gallery>
+        <div>
+            <app-tree-gallery [tree]='tree'></app-tree-gallery>
+            @if (tree.notesGeneral) {
+                <div class='description'>
+                    <strong>כללי:&nbsp;</strong><span>{{tree.notesGeneral}}</span>
+                </div>    
+            }
+            @if (tree.notesMaintenance) {
+                <div class='description'>
+                    <strong>אחזקה:&nbsp;</strong><span>{{tree.notesMaintenance}}</span>
+                </div>    
+            }    
+        </div>
     </div>
     <div class='related'>
         <app-treebase-info [tree]='tree'></app-treebase-info>

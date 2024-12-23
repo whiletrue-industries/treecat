@@ -106,6 +106,9 @@ def process_photo(s3, record, tree_id, photo, new_width, suffix=''):
         image = PIL.Image.open(PIL.Image.io.BytesIO(response.content))
         # Resize image to be a constant width (600)
         image = image.resize((new_width, new_height))
+        # Convert to RGB if necessary
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
         # Save image to a BytesIO object
         image_bytes = BytesIO()
         image.save(image_bytes, format='JPEG')
@@ -121,7 +124,8 @@ def process_photo(s3, record, tree_id, photo, new_width, suffix=''):
         link=url,
         url=new_url,
         width=new_width,
-        height=new_height
+        height=new_height,
+        ratio=int(new_width / new_height * 100),
     )
     return photo
 
@@ -138,7 +142,10 @@ def main():
     photos = dict()
     main_photos = dict()
     for r in photos_:
-        if not r['publish']:
+        # TODO: remove this once we have a publish field
+        # if not r['publish']:
+        #     continue
+        if not r.get('שם קטלוגי עברי'):
             continue
         tree_id = r['שם קטלוגי עברי'][0]
         tree_part = r['tree_part']
@@ -159,13 +166,14 @@ def main():
             organizations=concat(r['organization']),
             authors=concat(r['writers']),
             year=r['year'],
-            url=r.get('url'),
+            url=r.get('resource_link'),
+            id=r['id']
         ))
         for r in resources
     )
 
     DF.Flow(
-        DFA.load_from_airtable(AIRTABLE_APP, 'Trees Species', view='Grid view', apikey=AIRTABLE_API_KEY),
+        DFA.load_from_airtable(AIRTABLE_APP, 'Trees Species', view='PUBLISH', apikey=AIRTABLE_API_KEY),
         # DF.checkpoint('trees-species'),
         DF.rename_fields({
             'שם קטלוגי (עברי)': 'name',
@@ -182,11 +190,17 @@ def main():
             'פריחה': 'bloomColorHe',
             'מועדי פריחה': 'bloomSeason',
             'דירוג השקייה': 'wateringScale',
+            'חסכוני במים': 'isWaterEconomical',
             'תוספת מים נדרשת לצמח חסכוני': 'extraWatering',
             'קצב צימוח': 'growthRate',
             'פרי מצריך ניקוי': 'cleaningRequired',
             'מקדם שבירות': 'brittlenessCoefficient',
             'מקורות': 'sources',
+            'מקומי': 'isNative',
+            'ערך מין': 'speciesValue',
+            'צופני': 'hasNectar',
+            'הערות - כללי': 'notesGeneral',
+            'הערות - אחזקה': 'notesMaintenance',
         }, regex=False),
         DF.select_fields([
             DFA.AIRTABLE_ID_FIELD,
@@ -204,11 +218,17 @@ def main():
             'bloomColorHe',
             'bloomSeason',
             'wateringScale',
+            'isWaterEconomical',
             'extraWatering',
             'growthRate',
             'cleaningRequired',
             'brittlenessCoefficient',
             'sources',
+            'isNative',
+            'speciesValue',
+            'hasNectar',
+            'notesGeneral',
+            'notesMaintenance',    
         ]),
         DF.add_field('recommended', 'boolean', lambda r: 'מומלץ אתר קטלוג עצי רחוב וצל' in (r['catalogs'] or [])),
         DF.add_field('sidewalkWidth', 'string', lambda r: get_warn(SIDEWALK_WIDTH_MAP, r['sidewalkWidthHe'], 'SIDEWALK_WIDTH_MAP')),
