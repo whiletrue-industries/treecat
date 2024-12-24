@@ -1,6 +1,6 @@
 <div class='card'>
     <img [src]='tree.mainPhoto?.url || DEFAULT_URL' (load)='markAsLoaded()'>
-    <a class='overlay' [routerLink]="['/tree', tree.id]">
+    <a class='overlay' (activated)='open()' clickOnReturn>
         <div class='content'>
             <div class='header'>
                 <div class='name'>
@@ -8,7 +8,7 @@
                     <h3>{{tree.botanicalName}}</h3>        
                 </div>
                 @if (tree.recommended) {
-                    <div class='recommended'></div>
+                    <div class='recommended' title='מומלצי אתר קטלוג עצי רחוב וצל'></div>
                 }
             </div>
             <div class='info'>
@@ -27,4 +27,11 @@
             </div>
         </div>
     </a>
+    @if (state.isInCart(tree)) {
+        <a class='remove-from-cart' (activated)='state.removeFromCart(tree)' clickOnReturn aria-label="הסר מהמריצה">
+        </a>
+    } @else {
+        <a class='add-to-cart' (activated)='state.addToCart(tree)' clickOnReturn aria-label="הוסף למריצה">
+        </a>
+    }
 </div>

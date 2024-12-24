@@ -1,9 +1,18 @@
 <app-header></app-header>
 <div class='controls'>
-
+    <a class='contract' (activated)='close(true)' clickOnReturn>צמצם תעודת זהות</a>
+    <a class='catalog' (activated)='close(false)' clickOnReturn>חזרה לקטלוג העצים המלא</a>
+    <a class='share' clickOnReturn>שתף</a>
+    <a class='img-download' (activated)='saveAsImg()' clickOnReturn>הורד כתמונה</a>
+    @if (state.isInCart(tree)) {
+        <a class='remove-from-cart' (activated)='state.removeFromCart(tree)' clickOnReturn>הסר</a>        
+    } @else {
+        <a class='add-to-cart' (activated)='state.addToCart(tree)' clickOnReturn>הוסף</a>
+    }
+    <a class='my-cart' routerLink='/compare' clickOnReturn>מריצת העצים שלי</a>
 </div>
 @if (!!tree) {
-    <div class='main-info'>
+    <div class='main-info' #mainInfo>
         <app-tree-info [tree]='tree'></app-tree-info>
         <div>
             <app-tree-gallery [tree]='tree'></app-tree-gallery>

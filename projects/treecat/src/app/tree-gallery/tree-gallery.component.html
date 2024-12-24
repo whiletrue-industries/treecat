@@ -4,17 +4,21 @@
             @for (photo of row.photos; track photo.url) {
                 <div class='photo' [style.width]='photo.base'>
                     <img [src]='photo.url'/>
-                    <div class='copyright-logo'></div>
-                    <app-tooltip class='copyright'>
-                        @if (photo.photographer.indexOf('http') === 0) {
-                            <a href='{{photo.photographer}}' target='_blank'>קישור למקור התמונה</a><br/>
-                        } @else {
-                            <span>תמונה: {{photo.photographer}}</span><br/>
-                        }
-                        @if (photo.license) {
-                            <span>רשיון שימוש: {{photo.license}}</span>
-                        }
-                    </app-tooltip>
+                    @if (photo.photographer || photo.license) {
+                        <div class='copyright-logo'></div>
+                        <app-tooltip class='copyright'>
+                            @if (photo.photographer) {
+                                @if (photo.photographer.indexOf('http') === 0) {
+                                    <a href='{{photo.photographer}}' target='_blank'>קישור למקור התמונה</a><br/>
+                                } @else {
+                                    <span>תמונה: {{photo.photographer}}</span><br/>
+                                }    
+                            }
+                            @if (photo.license) {
+                                <span>רשיון שימוש: {{photo.license}}</span>
+                            }
+                        </app-tooltip>
+                    }
                 </div>
             }
         </div>

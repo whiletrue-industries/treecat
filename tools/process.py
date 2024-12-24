@@ -230,7 +230,7 @@ def main():
             'notesGeneral',
             'notesMaintenance',    
         ]),
-        DF.add_field('recommended', 'boolean', lambda r: 'מומלץ אתר קטלוג עצי רחוב וצל' in (r['catalogs'] or [])),
+        DF.add_field('recommended', 'boolean', lambda r: 'מומלצי אתר קטלוג עצי רחוב וצל' in (r['catalogs'] or [])),
         DF.add_field('sidewalkWidth', 'string', lambda r: get_warn(SIDEWALK_WIDTH_MAP, r['sidewalkWidthHe'], 'SIDEWALK_WIDTH_MAP')),
         DF.add_field('climateArea', 'array', lambda r: get_warn_l(CLIMATE_AREA_MAP, r['climateAreaHe'], 'CLIMATE_AREA_MAP')),
         DF.add_field('canopyShape', 'string', lambda r: get_warn(CANOPY_SHAPE_MAP, r.get('canopyShapeHe'), 'CANOPY_SHAPE_MAP')),

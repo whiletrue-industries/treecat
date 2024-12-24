@@ -102,6 +102,23 @@
             }
         }
 
+        .add-to-cart, .remove-from-cart {
+            .background-image;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        .add-to-cart {
+            background-image: url(../../../public/img/icon-star-empty-black.svg);
+            display: none;
+        }
+        .remove-from-cart {
+            background-image: url(../../../public/img/icon-star-full-purple.svg);
+        }
+
         &:hover {
             .overlay {
                 .content {
@@ -110,6 +127,9 @@
                         display: flex;
                     }
                 }
+            }
+            .add-to-cart {
+                display: block;
             }
         }
     }
