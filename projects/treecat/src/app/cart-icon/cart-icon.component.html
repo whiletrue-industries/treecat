@@ -1,0 +1,8 @@
+<a routerLink='/compare' clickOnReturn>
+    <div class='my-cart' aria-label='מריצת העצים שלי' role='presentation'>
+        @if (state.cart().length > 0) {
+            <span class='cart-items'>{{state.cart().length}}</span>
+        }
+    </div>
+    <span>מריצת העצים שלי</span>
+</a>

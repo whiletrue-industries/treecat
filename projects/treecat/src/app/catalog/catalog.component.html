@@ -2,16 +2,41 @@
     <app-header></app-header>
     <div class='hero'>
         <div class='top-controls'>
-            <div class='main-filters'>
+            <div class='title-line'>
                 <h1>קטלוג העצים המלא</h1>
+                <div class='search'>
+
+                </div>
+                @if (!state.selectedTree()) {
+                    <app-cart-icon></app-cart-icon>
+                }
             </div>
         </div>
+        <div class='main-filters'>
+            
+        </div>
         <div class='results'>
-            <app-card-grid [trees]='state.trees()'></app-card-grid>
+            <app-card-grid [trees]='state.trees()' [catalog]='true'></app-card-grid>
         </div>
     </div>
 </div>
-@if (!!state.selectedTree()) {
-    <div class='sidebar'>
+@let selectedTree = state.selectedTree();
+@if (selectedTree !== null) {
+    <div class='sidebar-el'>
+        <div class='sidebar-content'>
+            <div class='close'>
+                <a (activated)='state.selectedTree.set(null)' clickOnReturn></a>
+            </div>
+            <div class='controls'>
+                <a class='expand' (activated)='open(selectedTree)' clickOnReturn>הרחב תעודת זהות</a>
+                @if (state.isInCart(selectedTree)) {
+                    <a class='remove-from-cart' (activated)='state.removeFromCart(selectedTree)' clickOnReturn>הסר</a>        
+                } @else {
+                    <a class='add-to-cart' (activated)='state.addToCart(selectedTree)' clickOnReturn>הוסף</a>
+                }
+                <app-cart-icon></app-cart-icon>
+            </div>
+            <app-tree-info [tree]='selectedTree'></app-tree-info>
+        </div>
     </div>
 }

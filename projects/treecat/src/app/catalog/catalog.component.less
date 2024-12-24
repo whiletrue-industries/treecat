@@ -1,3 +1,5 @@
+@import '../../common.less';
+
 :host {
     display: flex;
     flex-flow: row nowrap;
@@ -17,19 +19,96 @@
 
             .top-controls {
                 display: flex;
-                flex-flow: row;
-                align-items: flex-start;
+                flex-flow: column;
+                align-items: stretch;
                 width: 100%;
 
-                .main-filters {
+                .title-line {
+                    display: flex;
+                    flex-flow: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 20px;
+    
                     h1 {
                         font-size: 39px;
                         line-height: 50px;
                         font-weight: 700;
                         margin: 0;
                     }
+
+                    .search {
+                        margin-right: auto;
+                    }
                 }
             }
+        }
+    }
+
+    .sidebar-el {
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        background-color: @color-white;
+
+        .sidebar-content {
+            position: sticky;
+            top: 0;
+            overflow-y: scroll;
+            height: 100vh;
+            .no-scrollbars;
+
+            .close {
+                display: flex;
+                flex-flow: row;
+                justify-content: flex-end;
+                align-items: center;
+                height: 90px;
+                padding: 0 30px;
+
+                a {
+                    .background-image;
+                    background-image: url(../../../public/img/icon-close.svg);
+                    background-size: 48px;
+                    width: 48px;
+                    height: 48px;
+                    cursor: pointer;
+                }
+            }
+            .controls {
+                display: flex;
+                flex-flow: row;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0 40px;
+                height: 55px;
+                gap: 20px;
+        
+                a {
+                    .background-image;
+                    padding-right: 28px;
+                    background-size: 20px;
+                    background-position: right center;
+                    cursor: pointer;
+                    .font-primary;
+                    font-size: 14px;
+                    font-weight: 400;
+        
+                    &.expand {
+                        background-image: url(../../../public/img/icon-tray-right.svg);
+                    }
+    
+                    &.add-to-cart {
+                        background-image: url(../../../public/img/icon-star-empty-black.svg);
+                    }
+        
+                    &.remove-from-cart {
+                        background-image: url(../../../public/img/icon-star-full-purple.svg);
+                    }
+        
+                    &.my-cart {
+                        background-image: url(../../../public/img/icon-cart-black.svg);
+                    }
+                }
+            }        
         }
     }
 }

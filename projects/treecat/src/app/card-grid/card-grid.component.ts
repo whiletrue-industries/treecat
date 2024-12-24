@@ -1,9 +1,11 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Tree } from '../data.service';
 import { PlatformService } from '../platform.service';
-import { delay, fromEvent, Subject, throttleTime, timer } from 'rxjs';
+import { delay, fromEvent, Subject, throttleTime, timer, distinctUntilChanged } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TreeCardComponent } from '../tree-card/tree-card.component';
+import { StateService } from '../state.service';
 
 @UntilDestroy()
 @Component({
@@ -17,11 +19,18 @@ import { TreeCardComponent } from '../tree-card/tree-card.component';
 export class CardGridComponent {
 
   @Input() trees: Tree[] = [];
+  @Input() catalog = false;
   @ViewChild('treeCards') treeCards: ElementRef;
 
   resizeRequests = new Subject<void>();
 
-  constructor(private platform: PlatformService) {
+  constructor(private platform: PlatformService, private state: StateService) {
+    toObservable(this.state.selectedTree).pipe(
+      untilDestroyed(this),
+      distinctUntilChanged(),
+    ).subscribe(() => {
+      this.resizeRequests.next();
+    });
   }
 
   ngAfterViewInit(): void {

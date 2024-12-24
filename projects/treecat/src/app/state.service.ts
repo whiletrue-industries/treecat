@@ -23,6 +23,7 @@ export class StateService {
   filterTrees(tree: Tree) {
     return this.trees().filter((t: Tree) => {
       return (
+        (t.id !== tree.id) &&
         (t.sidewalkWidth === tree.sidewalkWidth) &&
         (t.climateArea.some(area => tree.climateArea.includes(area)))
       );

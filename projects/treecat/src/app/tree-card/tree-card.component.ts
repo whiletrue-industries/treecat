@@ -16,6 +16,7 @@ import { ClickOnReturnDirective } from '../click-on-return.directive';
 })
 export class TreeCardComponent {
   @Input() tree: Tree;
+  @Input() catalog = false;
   @Output() loaded = new EventEmitter<void>();
 
   // TODO
@@ -28,7 +29,7 @@ export class TreeCardComponent {
   }
 
   open() {
-    if (this.state.selectedTree()) {
+    if (this.catalog && this.state.selectedTree()) {
       this.state.selectedTree.set(this.tree);
     } else {
       this.router.navigate(['/tree', this.tree.id]);

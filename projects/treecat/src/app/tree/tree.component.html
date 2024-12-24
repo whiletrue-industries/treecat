@@ -9,7 +9,7 @@
     } @else {
         <a class='add-to-cart' (activated)='state.addToCart(tree)' clickOnReturn>הוסף</a>
     }
-    <a class='my-cart' routerLink='/compare' clickOnReturn>מריצת העצים שלי</a>
+    <app-cart-icon></app-cart-icon>
 </div>
 @if (!!tree) {
     <div class='main-info' #mainInfo>

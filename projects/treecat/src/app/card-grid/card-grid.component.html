@@ -1,5 +1,5 @@
 <div class='card-grid' #treeCards>
     @for (tree of trees; track tree.id) {
-        <app-tree-card [tree]='tree' (loaded)='resizeRequests.next()'></app-tree-card>
+        <app-tree-card [tree]='tree' [catalog]='catalog' (loaded)='resizeRequests.next()'></app-tree-card>
     }
 </div>

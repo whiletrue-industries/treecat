@@ -9,6 +9,7 @@ import { SimilarTreesComponent } from '../similar-trees/similar-trees.component'
 import { ClickOnReturnDirective } from '../click-on-return.directive';
 import domtoimage from 'dom-to-image';
 import { StateService } from '../state.service';
+import { CartIconComponent } from "../cart-icon/cart-icon.component";
 
 @Component({
   selector: 'app-tree',
@@ -18,8 +19,9 @@ import { StateService } from '../state.service';
     TreeGalleryComponent,
     TreebaseInfoComponent,
     SimilarTreesComponent,
-    ClickOnReturnDirective
-  ],
+    ClickOnReturnDirective,
+    CartIconComponent
+],
   templateUrl: './tree.component.html',
   styleUrl: './tree.component.less'
 })
