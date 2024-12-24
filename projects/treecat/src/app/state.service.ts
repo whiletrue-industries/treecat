@@ -1,5 +1,7 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, effect, Injectable, signal } from '@angular/core';
 import { ClimateArea, DataService, SidewalkWidth, Tree } from './data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,33 @@ export class StateService {
   selectedSidewalkWidth: SidewalkWidth | null = null;
   selectedClimateArea: ClimateArea | null = null;
 
-  cart = signal<string[]>([]);
+  cart = signal<Tree[]>([]);
+  cartIds = computed(() => this.cart().map(t => t.id));
+  cartSize = computed(() => this.cart().length);
 
-  constructor(private data: DataService) {
+  routeProcessed = false;
+
+  constructor(private data: DataService, private router: Router, private route: ActivatedRoute) {
     data.trees.subscribe(trees => {
       this.trees.set(trees);
+      route.queryParams.pipe(
+        first()
+      ).subscribe(params => {
+        if (params['cart']) {
+          const ids: string[] = params['cart'].split(',');
+          const cart: Tree[] = ids.map(id => trees.find(t => t.id === id)).filter(t => !!t);
+          this.cart.set(cart);
+        }
+        this.routeProcessed = true;
+      });
+    });
+    effect(() => {
+      const qp = {
+        cart: this.cartIds().join(',')
+      };
+      if (this.routeProcessed) {
+        this.router.navigate([], { queryParams: qp, replaceUrl: true });
+      }    
     });
   }
 
@@ -31,18 +55,18 @@ export class StateService {
   }
 
   isInCart(tree: Tree) {
-    return tree && this.cart().includes(tree.id);
+    return tree && this.cartIds().includes(tree.id);
   }
 
   addToCart(tree: Tree) {
     if (!this.isInCart(tree)) {
-      this.cart.set([...this.cart(), tree.id]);
+      this.cart.set([...this.cart(), tree]);
     }
   }
 
   removeFromCart(tree: Tree) {
     if (this.isInCart(tree)) {
-      this.cart.set(this.cart().filter(id => id !== tree.id));
+      this.cart.set(this.cart().filter(t => t.id !== tree.id));
     }
   }
 }

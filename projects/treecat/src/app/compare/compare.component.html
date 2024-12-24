@@ -1,1 +1,318 @@
-<p>compare works!</p>
+<app-header></app-header>
+<div class='header'>
+    <div class='title-line'>
+        <h1>מריצת העצים שלי</h1>
+        <div class='controls'>
+            <a class='catalog' (activated)='close()' clickOnReturn>חזרה לקטלוג העצים המלא</a>
+            <a class='share' clickOnReturn>שתף</a>
+            <a class='pdf-download' (activated)='saveAsPdf()' clickOnReturn>הורד כ-PDF</a>
+            <app-cart-icon></app-cart-icon>
+        </div>    
+    </div>
+    <div class='tips'>
+        <h2>בחירת עצים היא תהליך מתמשך הקשור בבעלי עניין רבים. מומלץ להעזר בתוצרי הקטלוג לצורך קידום דיון מקצועי אודות יתרונות וחסרונות מיני העצים. ניתן לשתף בקלות את המידע שהפקתם או להוריד אותו ל-PDF.</h2>
+        <p class='extra-tips'>
+            <span>כדאי לראות עצים אמיתיים במקומות דומים לאזור הנטיעה המבוקש ולרכוש תובנות תכנוניות - אגרונומיות ואחזקתיות.</span>
+            <span>לשם כך תוכלו להעזר בפיצ'ר "יער עירוני דיגיטלי" ולמצוא מיקומי עצים לפי רשות מקומית.</span>
+            <span>ניתן לשקול לחפש עצים דומים לאלו שמצאתם דרך הקטלוג באמצעות ההצעה בכרטיסיית המין.</span>
+            <span>צריך לזכור שבחירת העץ מסתיימת בחיפושו במלאי המשתלות ובחירת הפרטים הספציפיים, וכלל הנראה יהיו עוד שינויים בדרך עד הנטיעה.</span>
+            <span>קביעת העקרונות וסדרי העדיפות לבחירת מיני העצים יסייעו לכם להתמודד עם אי הוודאות בתהליך זה.</span>
+        </p>
+    </div>
+</div>
+<div class='comparison-container'>
+    <div class='comparison'>
+        <table #comparison>
+            <tbody>
+                <tr class='images'>
+                    <td class='add-new'>
+
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <img [src]='t.mainPhoto?.url || data.DEFAULT_IMAGE_URL'>
+                        </td>
+                    }
+                </tr>
+                <tr class='titles'>
+                    <td></td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <h3>{{t.name}}</h3>
+                            <h4>{{t.botanicalName}}</h4>
+                        </td>
+                    }
+                </tr>
+                <tr class='title'>
+                    <td>
+                        התאמה תכנונית
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+                <tr class='sepline'>
+                    <td></td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>רוחב מדרכה</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.sidewalkWidthHe}}</span>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>אזור אקלים</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.climateAreaHe}}</span>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>רשימת עצים</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <div class='col'>
+                                @for (catalogName of t.catalogs; track catalogName) {
+                                    <span>{{catalogName}}</span>
+                                }    
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>התאמה לקרקע</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.soilType}}</span>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>מקומי</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.isNative ? "כן" : "לא"}}</span>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>ערך המין</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.speciesValue}}</span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='title'>
+                    <td>
+                        נוף
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+                <tr class='sepline'>
+                    <td></td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>                
+
+                <tr class='param'>
+                    <td>
+                        <span>קוטר צמרת</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.canopyWidth}}</span>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>מבנה צמרת</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span class='canopy-shape'>
+                                <img [src]='canopyShapeImg(t.canopyShape)'/>
+                                <span>{{t.canopyShapeHe}}</span>    
+                            </span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='param'>
+                    <td>
+                        <span>גובה העץ</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.canopyHeight}}</span>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>צבע פריחה</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <div class='bloom-colors'>
+                                @for (color of t.bloomColor; track color) {
+                                    <img [src]='bloomColorImg(color)'/>
+                                }
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>מועד פריחה</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.bloomSeason}}</span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='title'>
+                    <td>
+                        אחזקה
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+                <tr class='sepline'>
+                    <td></td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+
+                <tr class='param'>
+                    <td>
+                        <span>דירוג השקיה</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <div class='watering-scale'>
+                                @for (_ of wateringScaleImg(t.wateringScale); track _) {
+                                    <img [src]='DROP_ICON'>
+                                }
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr class='param'>
+                    <td>
+                        <span>חסכוני במים</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <div class='line'>
+                                @if (t.isWaterEconomical) {
+                                    <span class='economical'></span>
+                                }                
+                                <span>{{t.extraWatering}}</span>    
+                            </div>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='param'>
+                    <td>
+                        <span>מקדם שבירות</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.brittlenessCoefficient}}</span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='param'>
+                    <td>
+                        <span>קצב צימוח</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.growthRate}}</span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='param'>
+                    <td>
+                        <span>נשיר</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.deciduous}}</span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='param'>
+                    <td>
+                        <span>צופני</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            <span>{{t.hasNectar ? "כן" : "לא"}}</span>
+                        </td>
+                    }
+                </tr>
+
+                <tr class='title'>
+                    <td>
+                        מידע יע״ד
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+                <tr class='sepline'>
+                    <td></td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>&nbsp;</td>
+                    }
+                </tr>
+                
+                <tr class='param'>
+                    <td>
+                        <span>עצי רחוב מוכרים ממין זה</span>
+                    </td>
+                    @for (t of state.cart(); track t.id) {
+                        <td>
+                            ...
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>

@@ -65,7 +65,7 @@ export class TreeComponent implements OnInit {
     } else {
       this.state.selectedTree.set(null);
     }
-    this.router.navigateByUrl('/catalog');
+    this.router.navigate(['/catalog'], { queryParamsHandling: 'preserve'});
   }
 
 

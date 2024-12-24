@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Tree } from '../data.service';
+import { DataService, Tree } from '../data.service';
 import { environment } from '../../environments/environment';
 import { Router, RouterModule } from '@angular/router';
 import { StateService } from '../state.service';
@@ -19,10 +19,7 @@ export class TreeCardComponent {
   @Input() catalog = false;
   @Output() loaded = new EventEmitter<void>();
 
-  // TODO
-  DEFAULT_URL = `${environment.base}no-tree-image.jpg`;
-
-  constructor(public state: StateService, private router: Router) {}
+  constructor(public state: StateService, public data: DataService, private router: Router) {}
 
   markAsLoaded() {
     this.loaded.emit();
@@ -32,7 +29,7 @@ export class TreeCardComponent {
     if (this.catalog && this.state.selectedTree()) {
       this.state.selectedTree.set(this.tree);
     } else {
-      this.router.navigate(['/tree', this.tree.id]);
+      this.router.navigate(['/tree', this.tree.id], { queryParamsHandling: 'preserve'});
     }
   }
 }

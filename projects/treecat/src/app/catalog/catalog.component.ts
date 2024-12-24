@@ -33,6 +33,6 @@ export class CatalogComponent implements OnInit {
 
   open(tree: Tree) {
     // this.state.selectedTree.set(tree);
-    this.router.navigate(['/tree', tree.id]);
+    this.router.navigate(['/tree', tree.id], { queryParamsHandling: 'preserve'});
   }
 }

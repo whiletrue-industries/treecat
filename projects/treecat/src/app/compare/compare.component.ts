@@ -1,11 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { ClickOnReturnDirective } from '../click-on-return.directive';
+import { HeaderComponent } from '../header/header.component';
+import { CartIconComponent } from '../cart-icon/cart-icon.component';
+import { StateService } from '../state.service';
+
+import { jsPDF } from 'jspdf';
+import domtoimage from 'dom-to-image';
+import { DataService } from '../data.service';
+import { canopyShapeImg, bloomColorImg, wateringScaleImg, DROP_ICON } from '../tree-info/tree-info.component';
 
 @Component({
   selector: 'app-compare',
-  imports: [],
+  imports: [
+    RouterModule,
+    ClickOnReturnDirective,
+    HeaderComponent,
+    CartIconComponent
+  ],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.less'
 })
-export class CompareComponent {
+export class CompareComponent implements OnInit {
 
+  @ViewChild('comparison') comparisonEl: ElementRef;
+
+  constructor(private router: Router, public state: StateService, public data: DataService) {}
+
+  canopyShapeImg = canopyShapeImg;
+  bloomColorImg = bloomColorImg;
+  wateringScaleImg = wateringScaleImg;
+  DROP_ICON = DROP_ICON;
+
+  ngOnInit() {
+    this.data.fetchTrees();
+  }
+
+  close() {
+    this.router.navigate(['/catalog'], { queryParamsHandling: 'preserve'});
+  }
+
+  saveAsPdf() {
+    const el = this.comparisonEl.nativeElement;
+    if (!el) {
+      return;
+    }
+    domtoimage.toPng(el)
+      .then((dataUrl) => {
+        const width = el.offsetWidth;
+        const height = el.offsetHeight;
+        const padding = 20;
+        var pdf = new jsPDF('l', 'pt', [width + 2*padding, height + 2*padding]);
+        pdf.addImage(dataUrl, 'PNG', padding, padding, width, height);
+        pdf.save('comparison.pdf');
+      });
+  }
 }

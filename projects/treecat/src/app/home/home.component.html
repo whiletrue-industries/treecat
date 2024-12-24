@@ -31,6 +31,6 @@
     </div>
 
     <div class='cta'>
-        <button class='select-sidewalk' [routerLink]="'/catalog'" [disabled]='!state.selectedSidewalkWidth'>לבחירת עץ לפי רוחב מדרכה</button>
-        <a class='skip' [routerLink]="'/catalog'">אולי פעם אחרת, קחו אותי לקטלוג המלא</a>
+        <button class='select-sidewalk' [routerLink]="'/catalog'" queryParamsHandling='preserve' [disabled]='!state.selectedSidewalkWidth'>לבחירת עץ לפי רוחב מדרכה</button>
+        <a class='skip' [routerLink]="'/catalog'" queryParamsHandling='preserve'>אולי פעם אחרת, קחו אותי לקטלוג המלא</a>
     </div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, ReplaySubject, take } from 'rxjs';
+import { environment } from '../environments/environment';
 
 export enum ClimateArea {
   Mountain = 'Mountain',
@@ -125,6 +126,7 @@ export class DataService {
   URL = 'https://storage.googleapis.com/treecat-assets/trees.json';
   trees = new ReplaySubject<Tree[]>(1);
   fetched = false;
+  DEFAULT_IMAGE_URL = `${environment.base}no-tree-image.jpg`;
 
   constructor(private httpClient: HttpClient) {
   }

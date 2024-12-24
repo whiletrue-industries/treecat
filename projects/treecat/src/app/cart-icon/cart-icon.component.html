@@ -1,7 +1,7 @@
-<a routerLink='/compare' clickOnReturn>
+<a routerLink='/compare' clickOnReturn queryParamsHandling='preserve'>
     <div class='my-cart' aria-label='מריצת העצים שלי' role='presentation'>
         @if (state.cart().length > 0) {
-            <span class='cart-items'>{{state.cart().length}}</span>
+            <span class='cart-items'>{{state.cartSize()}}</span>
         }
     </div>
     <span>מריצת העצים שלי</span>

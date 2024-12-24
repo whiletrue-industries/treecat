@@ -1,5 +1,5 @@
 <div class='card'>
-    <img [src]='tree.mainPhoto?.url || DEFAULT_URL' (load)='markAsLoaded()'>
+    <img [src]='tree.mainPhoto?.url || data.DEFAULT_IMAGE_URL' (load)='markAsLoaded()'>
     <a class='overlay' (activated)='open()' clickOnReturn>
         <div class='content'>
             <div class='header'>
