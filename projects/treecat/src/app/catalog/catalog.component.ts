@@ -8,6 +8,7 @@ import { TreeInfoComponent } from '../tree-info/tree-info.component';
 import { Router } from '@angular/router';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
 import { CartIconComponent } from "../cart-icon/cart-icon.component";
+import { FiltersComponent } from '../filters/filters.component';
 
 @Component({
   selector: 'app-catalog',
@@ -17,7 +18,8 @@ import { CartIconComponent } from "../cart-icon/cart-icon.component";
     CardGridComponent,
     TreeInfoComponent,
     ClickOnReturnDirective,
-    CartIconComponent
+    CartIconComponent,
+    FiltersComponent
 ],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.less'

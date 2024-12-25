@@ -1,0 +1,27 @@
+@import '../../common.less';
+
+:host {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    gap: 58px;
+    margin-top: 15px;
+    margin-bottom: 58px;
+
+    .main-line {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 14px;
+
+        h2 {
+            margin: 0;
+            color: @color-black;
+            .font-primary;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 29px;
+            white-space: nowrap;
+        }
+    }
+}

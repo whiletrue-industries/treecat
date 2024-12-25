@@ -33,9 +33,9 @@ CANOPY_SHAPE_MAP = {
 }
 
 SIDEWALK_WIDTH_MAP = {
-    'צרה': 'Narrow',
-    'בינונית': 'Medium',
-    'רחבה': 'Wide',
+    'צרה': 'narrow',
+    'בינונית': 'medium',
+    'רחבה': 'wide',
 }
 
 CLIMATE_AREA_MAP = {

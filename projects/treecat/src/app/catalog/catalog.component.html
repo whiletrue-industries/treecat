@@ -13,10 +13,10 @@
             </div>
         </div>
         <div class='main-filters'>
-            
+            <app-filters></app-filters>
         </div>
         <div class='results'>
-            <app-card-grid [trees]='state.trees()' [catalog]='true'></app-card-grid>
+            <app-card-grid [trees]='state.filteredTrees()' [catalog]='true'></app-card-grid>
         </div>
     </div>
 </div>

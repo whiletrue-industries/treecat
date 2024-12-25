@@ -1,0 +1,11 @@
+<label [for]='"select-" + config.slug'>
+    <span>{{config.title}}</span>
+    @if (config.mandatory) {
+        <span class='mandatory'>*</span>
+    }
+</label>
+<select [id]='"select-" + config.slug' [name]='config.slug' (change)='onChange($event)' [value]='getCurrentValue()'>
+    @for (option of config.options; track option.key) {
+        <option [value]='option.key'>{{option.label}}</option>
+    }
+</select>

@@ -1,0 +1,42 @@
+@import '../../common.less';
+
+:host {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    position: relative;
+    label {
+        position: absolute;
+        top: 0;
+        right: 30px;
+        color: @color-black;
+        .font-primary;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 30px;
+        pointer-events: none;
+        white-space: nowrap;
+
+        span.mandatory {
+            color: @color-red;
+        }
+    }
+
+    select {
+        appearance: none;
+        background: none;
+        border: none;
+        color: @color-gray-7;
+        .font-primary;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 30px;
+        padding-top: 30px;
+        padding-right: 30px;
+        .background-image;
+        background-image: url(../../../public/img/icon-chevron-down.svg);
+        background-size: 20px;
+        background-position: right 5px top 5px;
+        cursor: pointer;
+    }
+}
