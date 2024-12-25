@@ -1,5 +1,6 @@
 import os
 import json
+from pathlib import Path
 import dataflows as DF
 import dataflows_airtable as DFA
 import dotenv
@@ -7,6 +8,8 @@ import requests
 import boto3
 import PIL
 from io import BytesIO
+
+ROOT = Path(__file__).parent.parent
 
 dotenv.load_dotenv()
 AWS_ACCESS_KEY_ID=os.environ['AWS_ACCESS_KEY_ID']
@@ -58,6 +61,34 @@ BLOOM_COLOR_MAP = {
     'לבן-קרם': 'Cream',
     'צהבהב-ירקרק': 'Chartreuse',
     'ירוק': 'Green',
+}
+
+FIELD_RENAME_MAP = {
+    'שם קטלוגי (עברי)': 'name',
+    'שם קטלוגי (מדעי)': 'botanicalName',
+    'רשימת עצים': 'catalogs',
+    'סוג העץ': 'treeType',
+    'תיאור רוחב מדרכה': 'sidewalkWidthHe',
+    'אזור אקלים' :'climateAreaHe',
+    'התאמה לקרקע': 'soilType',
+    'קוטר צמרת': 'canopyWidth',
+    "גובה העץ": 'canopyHeight',
+    'נשיר': 'deciduous',
+    'מבנה צמרת': 'canopyShapeHe',
+    'פריחה': 'bloomColorHe',
+    'מועדי פריחה': 'bloomSeason',
+    'דירוג השקייה': 'wateringScale',
+    'חסכוני במים': 'isWaterEconomical',
+    'תוספת מים נדרשת לצמח חסכוני': 'extraWatering',
+    'קצב צימוח': 'growthRate',
+    'פרי מצריך ניקוי': 'cleaningRequired',
+    'מקדם שבירות': 'brittlenessCoefficient',
+    'מקורות': 'sources',
+    'מקומי': 'isNative',
+    'ערך מין': 'speciesValue',
+    'צופני': 'hasNectar',
+    'הערות - כללי': 'notesGeneral',
+    'הערות - אחזקה': 'notesMaintenance',
 }
 
 def get_warn(obj, field, context):
@@ -171,37 +202,16 @@ def main():
         ))
         for r in resources
     )
+    catalogs = DF.Flow(
+        DFA.load_from_airtable(AIRTABLE_APP, 'Trees Lists', view='Grid view', apikey=AIRTABLE_API_KEY),
+        DF.select_fields(['list_name']),
+    ).results()[0][0]
+    catalogs = [r['list_name'] for r in catalogs]
 
     DF.Flow(
         DFA.load_from_airtable(AIRTABLE_APP, 'Trees Species', view='PUBLISH', apikey=AIRTABLE_API_KEY),
         # DF.checkpoint('trees-species'),
-        DF.rename_fields({
-            'שם קטלוגי (עברי)': 'name',
-            'שם קטלוגי (מדעי)': 'botanicalName',
-            'רשימת עצים': 'catalogs',
-            'סוג העץ': 'treeType',
-            'תיאור רוחב מדרכה': 'sidewalkWidthHe',
-            'אזור אקלים' :'climateAreaHe',
-            'התאמה לקרקע': 'soilType',
-            'קוטר צמרת': 'canopyWidth',
-            "גובה העץ": 'canopyHeight',
-            'נשיר': 'deciduous',
-            'מבנה צמרת': 'canopyShapeHe',
-            'פריחה': 'bloomColorHe',
-            'מועדי פריחה': 'bloomSeason',
-            'דירוג השקייה': 'wateringScale',
-            'חסכוני במים': 'isWaterEconomical',
-            'תוספת מים נדרשת לצמח חסכוני': 'extraWatering',
-            'קצב צימוח': 'growthRate',
-            'פרי מצריך ניקוי': 'cleaningRequired',
-            'מקדם שבירות': 'brittlenessCoefficient',
-            'מקורות': 'sources',
-            'מקומי': 'isNative',
-            'ערך מין': 'speciesValue',
-            'צופני': 'hasNectar',
-            'הערות - כללי': 'notesGeneral',
-            'הערות - אחזקה': 'notesMaintenance',
-        }, regex=False),
+        DF.rename_fields(FIELD_RENAME_MAP, regex=False),
         DF.select_fields([
             DFA.AIRTABLE_ID_FIELD,
             'name',
@@ -230,7 +240,7 @@ def main():
             'notesGeneral',
             'notesMaintenance',    
         ]),
-        DF.add_field('recommended', 'boolean', lambda r: 'מומלצי אתר קטלוג עצי רחוב וצל' in (r['catalogs'] or [])),
+        DF.add_field('recommended', 'boolean', lambda r: catalogs[0] in (r['catalogs'] or [])),
         DF.add_field('sidewalkWidth', 'string', lambda r: get_warn(SIDEWALK_WIDTH_MAP, r['sidewalkWidthHe'], 'SIDEWALK_WIDTH_MAP')),
         DF.add_field('climateArea', 'array', lambda r: get_warn_l(CLIMATE_AREA_MAP, r['climateAreaHe'], 'CLIMATE_AREA_MAP')),
         DF.add_field('canopyShape', 'string', lambda r: get_warn(CANOPY_SHAPE_MAP, r.get('canopyShapeHe'), 'CANOPY_SHAPE_MAP')),
@@ -257,6 +267,39 @@ def main():
     trees_json.seek(0)
     s3.upload_fileobj(trees_json, AWS_BUCKET_NAME, target_key, ExtraArgs={'CacheControl': 'max-age=60'})
     
+    url = f'https://api.airtable.com/v0/meta/bases/{AIRTABLE_APP}/tables?include=visibleFieldIds'
+    headers = {
+        'Authorization': f'Bearer {AIRTABLE_API_KEY}'
+    }
+    response = requests.get(url, headers=headers)
+    schema = response.json()
+    field_choices = {
+        'catalogs': catalogs,
+    }
+
+    for table in schema['tables']:
+        table_name = table['name']
+        if table_name == 'Trees Species':
+            for view in table['views']:
+                view_name = view['name']
+                if view_name == 'PUBLISH':
+                    visibleFieldIds = set(view['visibleFieldIds'])
+                    break
+            for field in table['fields']:
+                if field['id'] in visibleFieldIds:
+                    field_name = field['name']
+                    field_name = FIELD_RENAME_MAP.get(field_name, field_name)
+                    field_type = field['type']
+                    if field_type in ('multipleSelects', 'singleSelect'):
+                        choices = field.get('options', {}).get('choices', [])
+                        choices = [c['name'] for c in choices]
+                        if len(choices) < 15:
+                            field_choices[field_name] = choices
+    with (ROOT / 'projects' / 'treecat' / 'src' / 'app' / 'filters' / 'list_consts.ts').open('w') as f:
+        for k, v in field_choices.items():
+            choices = ",\n  ".join([f'`{x}`' for x in v])
+            f.write(f'export const FIELD_CHOICES_{k} = [\n  {choices}\n];\n\n')
+
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,12 @@
+<label class='title'>{{config.title}}</label>
+<div class='shapes'>
+    @for (option of config.options; track option.key) {
+        <div class='shape'
+            (click)='onChange(option)'
+            [class.checked]='isChecked(option)'
+        >
+            <img [src]='canopyShapeImg(option.value)'>
+            <span>{{option.label}}</span>
+        </div>
+    }
+</div>

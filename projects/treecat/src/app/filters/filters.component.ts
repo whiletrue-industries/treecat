@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 
-import { FC_CLIMATE_AREAS, FC_SIDEWALK_WIDTHS, FC_TREE_CATALOGS, FC_TREE_TYPES } from './config';
+import { FC_CLIMATE_AREAS, FC_SIDEWALK_WIDTHS, FC_TREE_CATALOGS, FC_TREE_TYPES, FC_CANOPY_WIDTH, FC_CANOPY_HEIGHT, FC_WATERING_SCALE, FC_GROWTH_RATE, FC_DECIDUOUS, FC_CLEANING_REQUIRED, FC_BLOOM_COLOR, FC_CANOPY_SHAPE } from './config';
 import { FilterDropdownComponent } from '../filter-dropdown/filter-dropdown.component';
+import { FilterMultipleSelectComponent } from '../filter-multiple-select/filter-multiple-select.component';
+import { FilterMultipleSelectColorsComponent } from '../filter-multiple-select-colors/filter-multiple-select-colors.component';
+import { FilterMultipleSelectCanopyComponent } from '../filter-multiple-select-canopy/filter-multiple-select-canopy.component';
 
 @Component({
   selector: 'app-filters',
   imports: [
-    FilterDropdownComponent
+    FilterDropdownComponent,
+    FilterMultipleSelectComponent,
+    FilterMultipleSelectColorsComponent,
+    FilterMultipleSelectCanopyComponent
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less'
@@ -17,6 +23,14 @@ export class FiltersComponent {
   FC_CLIMATE_AREAS = FC_CLIMATE_AREAS;
   FC_TREE_TYPES = FC_TREE_TYPES;
   FC_TREE_CATALOGS = FC_TREE_CATALOGS;
+  FC_CANOPY_WIDTH = FC_CANOPY_WIDTH;
+  FC_CANOPY_SHAPE = FC_CANOPY_SHAPE;
+  FC_CANOPY_HEIGHT = FC_CANOPY_HEIGHT;
+  FC_BLOOM_COLOR = FC_BLOOM_COLOR;
+  FC_WATERING_SCALE = FC_WATERING_SCALE;
+  FC_GROWTH_RATE = FC_GROWTH_RATE;
+  FC_CLEANING_REQUIRED = FC_CLEANING_REQUIRED;
+  FC_DECIDUOUS = FC_DECIDUOUS;
 
   constructor() {}
 }

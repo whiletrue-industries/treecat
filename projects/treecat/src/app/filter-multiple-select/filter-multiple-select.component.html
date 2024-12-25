@@ -1,0 +1,11 @@
+<label class='title'>{{config.title}}</label>
+@for (option of config.options; track option.key) {
+    <label class='option' [for]='"multi-select-" + config.slug + "-" + option.key'>
+        <input type='checkbox' [id]='"multi-select-" + config.slug + "-" + option.key' 
+            [name]='config.slug' 
+            [value]='option.key' 
+            (change)='onChange($event, option)'
+            [checked]='isChecked(option)' />
+        <span>{{option.label}}</span>
+    </label>
+}

@@ -1,0 +1,27 @@
+@import '../../common.less';
+
+:host {
+    display: flex;
+    flex-flow: column;
+
+    label {
+        .font-primary;
+        font-weight: 400;
+        line-height: 30px;
+    }
+
+    label.title {
+        color: @color-gray-7;
+        font-size: 18px;
+    }
+
+    label.option {
+        color: @color-black;
+        font-size: 14px;
+
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 5px;
+        align-items: center;
+    }
+}

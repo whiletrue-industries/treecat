@@ -1,4 +1,5 @@
-import { ClimateArea, SidewalkWidth, Tree } from "../data.service";
+import { BloomColor, CANOPY_SHAPE_NAME_MAP, CanopyShape, ClimateArea, SidewalkWidth, Tree } from "../data.service";
+import { FIELD_CHOICES_bloomColorHe, FIELD_CHOICES_canopyHeight, FIELD_CHOICES_canopyWidth, FIELD_CHOICES_catalogs, FIELD_CHOICES_deciduous, FIELD_CHOICES_growthRate, FIELD_CHOICES_treeType } from "./list_consts";
 
 export type FilterOption<T> = {key: string, value: T, label: string, extra?: any};
 
@@ -43,10 +44,7 @@ export const FC_TREE_TYPES: FilterConfig<string> = {
     mandatory: false,
     options: [
         {key: 'all', value: 'all', label: 'כל סוגי העצים'},
-        {key: 'street', value: 'עצי רחוב (שדרה)', label: 'עצי רחוב (שדרה)'},
-        {key: 'park', value: 'עצי פארק', label: 'עצי פארק'},
-        {key: 'square', value: 'עצים המתאימים לכיכרות ובודדים', label: 'עצים המתאימים לכיכרות ובודדים'},
-        {key: 'private', value: 'עצים המתאימים לחצר פרטית', label: 'עצים המתאימים לחצר פרטית'},
+        ...FIELD_CHOICES_treeType.map(value => ({key: value, value, label: value})),
     ],
     filter: (tree: Tree, options: FilterOption<string>[]) => options.some(option => option.value === 'all' || tree.treeType?.includes(option.value)),
 };
@@ -57,11 +55,75 @@ export const FC_TREE_CATALOGS: FilterConfig<string> = {
     mandatory: false,
     options: [
         {key: 'all', value: 'all', label: 'כל קטלוגי העצים'},
-        {key: 'recommended', value: 'מומלצי אתר קטלוג עצי רחוב וצל', label: 'מומלצי אתר קטלוג עצי רחוב וצל'},
-        {key: 'recommended-mach', value: 'עצי רחוב מומלצים, משרד החקלאות (2024)', label: 'עצי רחוב מומלצים, משרד החקלאות (2024)'},
-        {key: 'recommended-tlv', value: 'רשימת עצים לנטיעה, עיריית ת"א (2022)', label: 'רשימת עצים לנטיעה, עיריית ת"א (2022)'},
-        {key: 'recommended-ks', value: 'עצים שניטעו בכפר סבא (2020)', label: 'עצים שניטעו בכפר סבא (2020)'},
-        {key: 'recommended-guide', value: 'מדריך עצי הרחוב בישראל (2013)', label: 'מדריך עצי הרחוב בישראל (2013)'},
+        ...FIELD_CHOICES_catalogs.map(value => ({key: value, value, label: value})),
     ],
     filter: (tree: Tree, options: FilterOption<string>[]) => options.some(option => option.value === 'all' || tree.catalogs?.includes(option.value)),
 };
+
+export const FC_CANOPY_WIDTH: FilterConfig<string> = {
+    slug: 'canopyWidth',
+    title: 'קוטר צמרת',
+    mandatory: false,
+    options: FIELD_CHOICES_canopyWidth.map(value => ({key: value, value, label: value})),
+    filter: (tree: Tree, options: FilterOption<string>[]) => options.length === 0 || options.some(option => tree.canopyWidth === option.value),
+};
+
+export const FC_CANOPY_SHAPE: FilterConfig<CanopyShape> = {
+    slug: 'canopyShape',
+    title: 'מבנה צמרת',
+    mandatory: false,
+    options: Object.values(CanopyShape).map(value => ({key: value.toString(), value, label: CANOPY_SHAPE_NAME_MAP[value]})),
+    filter: (tree: Tree, options: FilterOption<CanopyShape>[]) => options.length === 0 || options.some(option => tree.canopyShape === option.value),
+};
+
+export const FC_CANOPY_HEIGHT: FilterConfig<string> = {
+    slug: 'canopyHeight',
+    title: 'גובה העץ',
+    mandatory: false,
+    options: FIELD_CHOICES_canopyHeight.map(value => ({key: value, value, label: value})),
+    filter: (tree: Tree, options: FilterOption<string>[]) => options.length === 0 || options.some(option => tree.canopyWidth === option.value),
+};
+
+export const FC_BLOOM_COLOR: FilterConfig<BloomColor> = {
+    slug: 'bloomColor',
+    title: 'צבע פריחה',
+    mandatory: false,
+    options: (Object.values(BloomColor) as BloomColor[]).map(value => ({key: value.toString(), value, label: value.toString()})),
+    filter: (tree: Tree, options: FilterOption<BloomColor>[]) => options.length === 0 || options.some(option => tree.bloomColor?.includes(option.value)),
+};
+
+export const FC_WATERING_SCALE: FilterConfig<number> = {
+    slug: 'wateringScale',
+    title: 'דרוג השקייה',
+    mandatory: false,
+    options: [0,1,2,3,4,5].map(value => ({key: value.toString(), value, label: value.toString()})),
+    filter: (tree: Tree, options: FilterOption<number>[]) => options.length === 0 || options.some(option => Math.round(tree.wateringScale) === option.value),
+};
+
+export const FC_GROWTH_RATE: FilterConfig<string> = {
+    slug: 'growthRate',
+    title: 'קצב צימוח',
+    mandatory: false,
+    options: FIELD_CHOICES_growthRate.map(value => ({key: value.toString(), value, label: value.toString()})),
+    filter: (tree: Tree, options: FilterOption<string>[]) => options.length === 0 || options.some(option => tree.growthRate === option.value),
+};
+
+export const FC_CLEANING_REQUIRED: FilterConfig<boolean> = {
+    slug: 'cleaningRequired',
+    title: 'פרי מחייב ניקוי',
+    mandatory: false,
+    options: [
+        {key: 'true', value: true, label: 'כן'},
+        {key: 'false', value: false, label: 'לא'},
+    ],
+    filter: (tree: Tree, options: FilterOption<boolean>[]) => options.length === 0 || options.some(option => (!!tree.cleaningRequired) === option.value),
+};
+
+export const FC_DECIDUOUS: FilterConfig<string> = {
+    slug: 'deciduous',
+    title: 'נשיר',
+    mandatory: false,
+    options: FIELD_CHOICES_deciduous.map(value => ({key: value.toString(), value, label: value.toString()})),
+    filter: (tree: Tree, options: FilterOption<string>[]) => options.length === 0 || options.some(option => tree.deciduous === option.value),
+};
+

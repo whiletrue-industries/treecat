@@ -4,7 +4,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 
 import { FilterConfig, FilterOption,
-  FC_SIDEWALK_WIDTHS, FC_CLIMATE_AREAS, FC_TREE_TYPES, FC_TREE_CATALOGS
+  FC_SIDEWALK_WIDTHS, FC_CLIMATE_AREAS, FC_TREE_TYPES, FC_TREE_CATALOGS,
+  FC_CANOPY_WIDTH,
+  FC_CANOPY_HEIGHT,
+  FC_WATERING_SCALE,
+  FC_GROWTH_RATE,
+  FC_DECIDUOUS,
+  FC_CLEANING_REQUIRED,
+  FC_BLOOM_COLOR,
+  FC_CANOPY_SHAPE
  } from './filters/config';
 
 
@@ -45,6 +53,38 @@ export class StateService {
     },
     [FC_TREE_CATALOGS.slug]: {
       config: FC_TREE_CATALOGS,
+      value: signal([])
+    },
+    [FC_CANOPY_WIDTH.slug]: {
+      config: FC_CANOPY_WIDTH,
+      value: signal([])
+    },
+    [FC_CANOPY_SHAPE.slug]: {
+      config: FC_CANOPY_SHAPE,
+      value: signal([])
+    },
+    [FC_CANOPY_HEIGHT.slug]: {
+      config: FC_CANOPY_HEIGHT,
+      value: signal([])
+    },
+    [FC_BLOOM_COLOR.slug]: {
+      config: FC_BLOOM_COLOR,
+      value: signal([])
+    },
+    [FC_WATERING_SCALE.slug]: {
+      config: FC_WATERING_SCALE,
+      value: signal([])
+    },
+    [FC_GROWTH_RATE.slug]: {
+      config: FC_GROWTH_RATE,
+      value: signal([])
+    },
+    [FC_CLEANING_REQUIRED.slug]: {
+      config: FC_CLEANING_REQUIRED,
+      value: signal([])
+    },
+    [FC_DECIDUOUS.slug]: {
+      config: FC_DECIDUOUS,
       value: signal([])
     }
   };

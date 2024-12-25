@@ -32,18 +32,33 @@ export enum BloomColor {
 }
 
 export enum CanopyShape {
-  Pyramidal = 'Pyramidal', // פירמידלי
-  Columnar = 'Columnar', // זקוף
-  Umbrella = 'Umbrella', // סוככני
-  Weeping = 'Weeping', // בכותי
-  Rounded = 'Rounded', // מעוגל
   Oval = 'Oval', // סגלגל
-  Winged = 'Winged', // כנפי
-  Fan = 'Fan', // מניפה
-  Notched = 'Notched', // מנוצה
-  Conical = 'Conical', // צריפי
+  Rounded = 'Rounded', // מעוגל
+  Weeping = 'Weeping', // בכותי
+  Umbrella = 'Umbrella', // סוככני
+  Columnar = 'Columnar', // זקוף
+  Pyramidal = 'Pyramidal', // פירמידלי
   Elaborate = 'Elaborate', // מבודר
+  Conical = 'Conical', // צריפי
+  Notched = 'Notched', // מנוצה
+  Fan = 'Fan', // מניפה
+  Winged = 'Winged', // כנפי
 }
+
+export const CANOPY_SHAPE_NAME_MAP = {
+  [CanopyShape.Pyramidal]: 'פירמידלי',
+  [CanopyShape.Columnar]: 'זקוף',
+  [CanopyShape.Umbrella]: 'סוככני',
+  [CanopyShape.Weeping]: 'בכותי',
+  [CanopyShape.Rounded]: 'מעוגל',
+  [CanopyShape.Oval]: 'סגלגל',
+  [CanopyShape.Winged]: 'כנפי',
+  [CanopyShape.Fan]: 'מניפה',
+  [CanopyShape.Notched]: 'מנוצה',
+  [CanopyShape.Conical]: 'צריפי',
+  [CanopyShape.Elaborate]: 'מבודר',
+};
+
 
 export class Photo {
   constructor(others: Partial<Photo> = {}) {
