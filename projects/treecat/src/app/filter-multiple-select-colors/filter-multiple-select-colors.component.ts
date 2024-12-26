@@ -13,14 +13,12 @@ import { bloomColorImg } from '../tree-info/tree-info.component';
 export class FilterMultipleSelectColorsComponent {
   @Input() config: FilterConfig<any>;
 
-  checked: FilterOption<BloomColor>[] = [];
-
   bloomColorImg = bloomColorImg;
   
   constructor(private state: StateService) {}
 
-  ngOnChanges(): void {
-    this.checked = this.state.filters[this.config.slug].value();
+  get checked() {
+    return this.state.filters[this.config.slug].value();
   }
 
   isChecked(option: FilterOption<any>) {
@@ -29,11 +27,11 @@ export class FilterMultipleSelectColorsComponent {
 
   onChange(option: FilterOption<any>) {
     const value = !this.isChecked(option);
-    this.checked = this.checked.filter(v => v.key !== option.key);
+    const checked = this.checked.filter(v => v.key !== option.key);
     if (value) {
-      this.checked.push(option);
+      checked.push(option);
     }
-    this.state.filters[this.config.slug].value.set(this.checked);
+    this.state.filters[this.config.slug].value.set(checked);
   }
 
 }

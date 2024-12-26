@@ -88,6 +88,8 @@ export class StateService {
       value: signal([])
     }
   };
+  TOP_FILTER_SLUGS = [FC_SIDEWALK_WIDTHS.slug, FC_CLIMATE_AREAS.slug, FC_TREE_TYPES.slug, FC_TREE_CATALOGS.slug];
+
   filteredTrees = computed(() => {
     let filteredTrees = this.trees();
     for (const filter of Object.values(this.filters)) {
@@ -148,5 +150,18 @@ export class StateService {
     if (this.isInCart(tree)) {
       this.cart.set(this.cart().filter(t => t.id !== tree.id));
     }
+  }
+
+  clearAllFilters() {
+    for (const filter of Object.values(this.filters)) {
+      if (!this.TOP_FILTER_SLUGS.includes(filter.config.slug)) {
+        filter.value.set([]);
+      }
+    }
+  }
+
+  clearOneFilter(config: FilterConfig<any>, option: FilterOption<any>) {
+    console.log('Clearing', config.slug, option.key);
+    this.filters[config.slug].value.set(this.filters[config.slug].value().filter(v => v.key !== option.key));    
   }
 }

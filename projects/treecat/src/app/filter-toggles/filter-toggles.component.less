@@ -1,0 +1,40 @@
+@import '../../common.less';
+
+.options {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 10px;
+    color: @color-black;
+    .font-primary;
+    font-size: 14px;
+    font-weight: 400;
+
+    .clear {
+        cursor: pointer;
+    }
+
+    .option {
+        display: flex;
+        height: 30px;
+        flex-flow: row;
+        padding: 0 10px;
+        padding-right: 25px;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5px;
+        border: 1px solid @color-gray-3;
+        background: @color-bg-1;
+        .background-image;
+        background-image: url(../../../public/img/icon-close.svg);
+        background-size: 15px;
+        background-position: right 5px center;
+        cursor: pointer;
+
+        img {
+            height: 20px;
+            width: auto;
+            mix-blend-mode: multiply;
+        }
+    }
+}

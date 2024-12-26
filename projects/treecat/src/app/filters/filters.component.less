@@ -27,28 +27,34 @@
 
     .extra {
         display: flex;
-        flex-flow: row wrap;
-        align-items: flex-start;
-        gap: 30px;
-        .part {
+        flex-flow: column;
+        gap: 10px;
+        .parts {
             display: flex;
-            flex-flow: column;
+            flex-flow: row wrap;
             align-items: flex-start;
-            gap: 5px;
-            h3 {
-                color: @color-gray-0;
-                .font-primary;
-                font-size: 14px;
-                font-weight: 700;
-                line-height: 16px;
-                margin: 0;
-            }
-            .filters-list {
+            gap: 30px;
+            .part {
                 display: flex;
-                flex-flow: row wrap;
+                flex-flow: column;
                 align-items: flex-start;
-                gap: 30px;        
+                gap: 5px;
+                h3 {
+                    color: @color-gray-0;
+                    .font-primary;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 16px;
+                    margin: 0;
+                }
+                .filters-list {
+                    display: flex;
+                    flex-flow: row wrap;
+                    align-items: flex-start;
+                    gap: 30px;        
+                }
             }
         }
     }
+
 }

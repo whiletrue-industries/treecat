@@ -5,6 +5,7 @@ import { FilterDropdownComponent } from '../filter-dropdown/filter-dropdown.comp
 import { FilterMultipleSelectComponent } from '../filter-multiple-select/filter-multiple-select.component';
 import { FilterMultipleSelectColorsComponent } from '../filter-multiple-select-colors/filter-multiple-select-colors.component';
 import { FilterMultipleSelectCanopyComponent } from '../filter-multiple-select-canopy/filter-multiple-select-canopy.component';
+import { FilterTogglesComponent } from '../filter-toggles/filter-toggles.component';
 
 @Component({
   selector: 'app-filters',
@@ -12,7 +13,8 @@ import { FilterMultipleSelectCanopyComponent } from '../filter-multiple-select-c
     FilterDropdownComponent,
     FilterMultipleSelectComponent,
     FilterMultipleSelectColorsComponent,
-    FilterMultipleSelectCanopyComponent
+    FilterMultipleSelectCanopyComponent,
+    FilterTogglesComponent
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less'

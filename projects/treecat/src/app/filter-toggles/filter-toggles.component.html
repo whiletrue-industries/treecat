@@ -1,0 +1,14 @@
+@if (toggles.length > 0) {
+    <div class='options'>
+        <a class='clear' clickOnReturn (activated)='state.clearAllFilters()'>נקה הכל</a>
+        @for (toggle of toggles; track toggle.id) {
+            @if (toggle.config.slug !== COLOR_SLUG) {
+                <a class='option' clickOnReturn (activated)='state.clearOneFilter(toggle.config, toggle.option)' [attr.aria-label]='"ניקוי המסנן " + toggle.option.label'>{{toggle.config.title}} {{toggle.option.label}}</a>
+            } @else {
+                <a class='option' clickOnReturn (activated)='state.clearOneFilter(toggle.config, toggle.option)' [attr.aria-label]='"ניקוי המסנן " + toggle.option.label'>
+                    <img [src]='bloomColorImg(toggle.option.value)'>
+                </a>
+            }
+        }
+    </div>
+}

@@ -6,22 +6,25 @@
     <app-filter-dropdown [config]='FC_TREE_CATALOGS'></app-filter-dropdown>
 </div>
 <div class='extra'>
-    <div class='part'>
-        <h3>נוף</h3>
-        <div class='filters-list'>
-            <app-filter-multiple-select [config]='FC_CANOPY_WIDTH'></app-filter-multiple-select>
-            <app-filter-multiple-select-canopy [config]='FC_CANOPY_SHAPE'></app-filter-multiple-select-canopy>
-            <app-filter-multiple-select [config]='FC_CANOPY_HEIGHT'></app-filter-multiple-select>
-            <app-filter-multiple-select-colors [config]='FC_BLOOM_COLOR'></app-filter-multiple-select-colors>
+    <app-filter-toggles></app-filter-toggles>
+    <div class='parts'>
+        <div class='part'>
+            <h3>נוף</h3>
+            <div class='filters-list'>
+                <app-filter-multiple-select [config]='FC_CANOPY_WIDTH'></app-filter-multiple-select>
+                <app-filter-multiple-select-canopy [config]='FC_CANOPY_SHAPE'></app-filter-multiple-select-canopy>
+                <app-filter-multiple-select [config]='FC_CANOPY_HEIGHT'></app-filter-multiple-select>
+                <app-filter-multiple-select-colors [config]='FC_BLOOM_COLOR'></app-filter-multiple-select-colors>
+            </div>
         </div>
-    </div>
-    <div class='part'>
-        <h3>אחזקה</h3>
-        <div class='filters-list'>
-            <app-filter-multiple-select [config]='FC_WATERING_SCALE'></app-filter-multiple-select>
-            <app-filter-multiple-select [config]='FC_GROWTH_RATE'></app-filter-multiple-select>            
-            <app-filter-multiple-select [config]='FC_CLEANING_REQUIRED'></app-filter-multiple-select>            
-            <app-filter-multiple-select [config]='FC_DECIDUOUS'></app-filter-multiple-select>            
+        <div class='part'>
+            <h3>אחזקה</h3>
+            <div class='filters-list'>
+                <app-filter-multiple-select [config]='FC_WATERING_SCALE'></app-filter-multiple-select>
+                <app-filter-multiple-select [config]='FC_GROWTH_RATE'></app-filter-multiple-select>            
+                <app-filter-multiple-select [config]='FC_CLEANING_REQUIRED'></app-filter-multiple-select>            
+                <app-filter-multiple-select [config]='FC_DECIDUOUS'></app-filter-multiple-select>            
+            </div>
         </div>
     </div>
 </div>
