@@ -15,7 +15,7 @@
     <div class='main-info' #mainInfo>
         <app-tree-info [tree]='tree'></app-tree-info>
         <div>
-            <app-tree-gallery [tree]='tree'></app-tree-gallery>
+            <app-tree-gallery [tree]='tree' (lightbox)='openLightbox = $event'></app-tree-gallery>
             @if (tree.notesGeneral) {
                 <div class='description'>
                     <strong>כללי:&nbsp;</strong><span>{{tree.notesGeneral}}</span>
@@ -32,4 +32,7 @@
         <app-treebase-info [tree]='tree'></app-treebase-info>
         <app-similar-trees [tree]='tree'></app-similar-trees>
     </div>
+}
+@if (openLightbox !== null) {
+    <app-lightbox [photos]='tree.photos' [index]='openLightbox' (close)='openLightbox = null'></app-lightbox>
 }

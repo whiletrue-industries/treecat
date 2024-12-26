@@ -10,6 +10,7 @@ import { ClickOnReturnDirective } from '../click-on-return.directive';
 import domtoimage from 'dom-to-image';
 import { StateService } from '../state.service';
 import { CartIconComponent } from "../cart-icon/cart-icon.component";
+import { LightboxComponent } from '../lightbox/lightbox.component';
 
 @Component({
   selector: 'app-tree',
@@ -20,7 +21,8 @@ import { CartIconComponent } from "../cart-icon/cart-icon.component";
     TreebaseInfoComponent,
     SimilarTreesComponent,
     ClickOnReturnDirective,
-    CartIconComponent
+    CartIconComponent,
+    LightboxComponent
 ],
   templateUrl: './tree.component.html',
   styleUrl: './tree.component.less'
@@ -28,6 +30,7 @@ import { CartIconComponent } from "../cart-icon/cart-icon.component";
 export class TreeComponent implements OnInit {
 
   tree: Tree;
+  openLightbox: number | null = null;
 
   @ViewChild('mainInfo') mainInfoEl: ElementRef;
 

@@ -3,7 +3,7 @@
         <div class='row' [style.height.px]='rowHeight'>
             @for (photo of row.photos; track photo.url) {
                 <div class='photo' [style.width]='photo.base'>
-                    <img [src]='photo.url'/>
+                    <img [src]='photo.url' (activated)='openLightbox(photo)' clickOnReturn/>
                     @if (photo.photographer || photo.license) {
                         <div class='copyright-logo'></div>
                         <app-tooltip class='copyright'>

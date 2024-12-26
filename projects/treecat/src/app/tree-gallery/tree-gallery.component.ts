@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Photo, Tree } from '../data.service';
 import { concat, debounceTime, fromEvent, throttleTime, timer } from 'rxjs';
 import { PlatformService } from '../platform.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TooltipComponent } from '../tooltip/tooltip.component';
+import { ClickOnReturnDirective } from '../click-on-return.directive';
 
 type Row = {id: number, photos: Photo[]};
 
@@ -11,7 +12,8 @@ type Row = {id: number, photos: Photo[]};
 @Component({
   selector: 'app-tree-gallery',
   imports: [
-    TooltipComponent
+    TooltipComponent,
+    ClickOnReturnDirective
   ],
   templateUrl: './tree-gallery.component.html',
   styleUrl: './tree-gallery.component.less'
@@ -19,6 +21,7 @@ type Row = {id: number, photos: Photo[]};
 export class TreeGalleryComponent implements AfterViewInit, OnChanges {
 
   @Input() tree: Tree;
+  @Output() lightbox = new EventEmitter<number>();
 
   @ViewChild('gallery') gallery: ElementRef;
 
@@ -86,5 +89,10 @@ export class TreeGalleryComponent implements AfterViewInit, OnChanges {
     console.log('RRR', this.width, this.rowHeight, rows.length, this.tree.photos.length);
     // console.log('RRR', rows);
     this.rows = rows;
+  }
+
+  openLightbox(photo: Photo) {
+    const index = this.tree.photos.indexOf(photo);
+    this.lightbox.emit(index);
   }
 }
