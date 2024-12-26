@@ -14,6 +14,7 @@ import { FilterConfig, FilterOption,
   FC_BLOOM_COLOR,
   FC_CANOPY_SHAPE
  } from './filters/config';
+import { text } from 'stream/consumers';
 
 
 type Filter<T> = {
@@ -87,6 +88,7 @@ export class StateService {
       value: signal([])
     }
   };
+  textFilter = signal<string|null>(null);
   TOP_FILTER_SLUGS = [FC_SIDEWALK_WIDTHS.slug, FC_CLIMATE_AREAS.slug, FC_TREE_TYPES.slug, FC_TREE_CATALOGS.slug];
 
   filteredTrees = computed(() => {
@@ -96,6 +98,15 @@ export class StateService {
       if (value && value.length > 0) {
         filteredTrees = filteredTrees.filter(t => filter.config.filter(t, value));
       }
+    }
+    const textFilter = this.textFilter() || null;
+    if (textFilter) {
+      filteredTrees = filteredTrees.filter(t => {
+        return (
+          t.name.includes(textFilter) ||
+          t.botanicalName.toLowerCase().includes(textFilter.toLowerCase()) 
+        );
+      });
     }
     return filteredTrees;
   });
@@ -176,6 +187,7 @@ export class StateService {
         filter.value.set([]);
       }
     }
+    this.textFilter.set(null);
   }
 
   clearOneFilter(config: FilterConfig<any>, option: FilterOption<any>) {

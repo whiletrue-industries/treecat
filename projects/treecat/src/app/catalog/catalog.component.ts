@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
 import { CartIconComponent } from "../cart-icon/cart-icon.component";
 import { FiltersComponent } from '../filters/filters.component';
+import { SearchBoxComponent } from '../search-box/search-box.component';
 
 @Component({
   selector: 'app-catalog',
@@ -19,7 +20,8 @@ import { FiltersComponent } from '../filters/filters.component';
     TreeInfoComponent,
     ClickOnReturnDirective,
     CartIconComponent,
-    FiltersComponent
+    FiltersComponent,
+    SearchBoxComponent
 ],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.less'

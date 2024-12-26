@@ -1,0 +1,40 @@
+@import '../../common.less';
+
+input {
+    appearance: none;
+    width: 163px;
+    height: 42px;
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 40px;
+    border-radius: 5px;
+    border: 1px solid @color-primary;
+    background: @color-white;
+    .background-image;
+    background-image: url(../../../public/img/icon-magnifying-glass-black.svg);
+    background-size: 16px;
+    background-position: right 16px center;
+
+    color: @color-black;
+    .font-primary;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+
+    &::placeholder {
+        color: @color-gray-1;
+    }
+
+    &::placeholder-shown {
+        border-color: @color-gray-3;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: @color-primary;
+        width: 100%;
+        background-image: url(../../../public/img/icon-magnifying-glass-purple.svg);
+        background-size: 16px;
+        background-position: right 16px center;  
+    }
+}
