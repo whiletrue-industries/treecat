@@ -35,6 +35,8 @@ export class StateService {
 
   routeProcessed = false;
 
+  firstDialogShown = false;
+
   filters: {[key: string]: Filter<any>} = {
     [FC_SIDEWALK_WIDTHS.slug]: {
       config: FC_SIDEWALK_WIDTHS,
@@ -92,7 +94,6 @@ export class StateService {
     for (const filter of Object.values(this.filters)) {
       const value = filter.value();
       if (value && value.length > 0) {
-        console.log('Filtering by', value, filteredTrees.map(t => t.sidewalkWidth));
         filteredTrees = filteredTrees.filter(t => filter.config.filter(t, value));
       }
     }
@@ -158,7 +159,6 @@ export class StateService {
   }
 
   clearOneFilter(config: FilterConfig<any>, option: FilterOption<any>) {
-    console.log('Clearing', config.slug, option.key);
     this.filters[config.slug].value.set(this.filters[config.slug].value().filter(v => v.key !== option.key));    
   }
 

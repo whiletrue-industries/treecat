@@ -22,7 +22,12 @@
 
         .modal-content {
             .background-image;
-            background-image: url(../../../public/img/bg-dialog-empty.svg);
+            &.style-default {
+                background-image: url(../../../public/img/bg-dialog-empty.svg);
+            }
+            &.style-intro {
+                background-image: url(../../../public/img/bg-modal-intro.svg);
+            }
             background-size: 100% 99%;
             background-position: center;
             height: fit-content;

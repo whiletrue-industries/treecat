@@ -56,4 +56,23 @@
             </div>
         </app-modal>
     }
+    @if (showingInitialDialog) {
+        <app-modal kind='intro'>
+            <div class='intro'>
+                <div class='title'>
+                    <h1>ברוכים הבאים<br/>
+                        לקטלוג עצי הרחוב והצל    
+                    </h1>
+                    <h2>
+                        הקטלוג הדיגיטלי מציג לראשונה באופן מיטבי מידע ממגוון מקורות מידע ציבוריים אודות<br/>
+                        מיני עצים, הכל כדי שתוכלו לבחור בקלות את העץ הנכון למקום הנכון.
+                    </h2>    
+                </div>
+                <div class='terms'>
+                    <button (activated)='showingInitialDialog = false' clickOnReturn>קראתי את תנאי השימוש</button>
+                    <a class='terms-link' [routerLink]="'/terms'">תנאי השימוש</a>    
+                </div>
+            </div>
+        </app-modal>
+    }
 </div>

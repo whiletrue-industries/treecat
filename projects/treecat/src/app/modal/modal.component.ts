@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, fromEvent, take } from 'rxjs';
 
@@ -10,6 +10,8 @@ import { filter, fromEvent, take } from 'rxjs';
   styleUrl: './modal.component.less'
 })
 export class ModalComponent implements OnInit {
+
+  @Input() kind = 'default';
   @Output() close = new EventEmitter<void>();
 
   constructor(private el: ElementRef) {}

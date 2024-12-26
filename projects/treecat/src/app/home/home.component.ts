@@ -25,6 +25,7 @@ export class HomeComponent {
   environment = environment;
   hovering: SidewalkWidth | null = null;
   selectingClimateArea = false;
+  showingInitialDialog = false;
 
   FC_CLIMATE_AREAS = FC_CLIMATE_AREAS;
   CLIMATE_LABELS: {[key: string]: {top: number, right: number, lineLength: number}} = {
@@ -35,7 +36,7 @@ export class HomeComponent {
   };
 
   constructor(public state: StateService, private router: Router) {
-
+    this.showingInitialDialog = !state.firstDialogShown;
   }
 
   sidewalkImage(width: SidewalkWidth): string {
