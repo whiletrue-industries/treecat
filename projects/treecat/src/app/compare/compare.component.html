@@ -29,8 +29,18 @@
 
                     </td>
                     @for (t of state.cart(); track t.id) {
-                        <td>
+                        <td class='photo'>
                             <img [src]='t.mainPhoto?.url || data.DEFAULT_IMAGE_URL'>
+                            <div class='controls'>
+                                @if (!$first) {
+                                    <a class='move-right' (activated)='state.moveBeforeInCart(t)' clickOnReturn></a>
+                                }
+                                <a class='remove' (activated)='deleteCandidate = t' clickOnReturn></a>
+                                <a class='expand' [routerLink]='["/tree", t.id]' clickOnReturn></a>
+                                @if (!$last) {
+                                    <a class='move-left' (activated)='state.moveAfterInCart(t)' clickOnReturn></a>
+                                }
+                            </div>
                         </td>
                     }
                 </tr>
@@ -316,3 +326,12 @@
 
     </div>
 </div>
+@if (deleteCandidate !== null) {
+    <app-modal>
+        <div class='remove-modal'>
+            <h3>הסר עץ זה ממריצת העצים</h3>
+            <button (activated)='removeFromCart()' clickOnReturn>הסר מהמריצה</button>
+            <a (activated)='deleteCandidate = null' clickOnReturn>התחרטתי, השאר עץ במריצה</a>    
+        </div>
+    </app-modal>
+}

@@ -7,8 +7,9 @@ import { StateService } from '../state.service';
 
 import { jsPDF } from 'jspdf';
 import domtoimage from 'dom-to-image';
-import { DataService } from '../data.service';
+import { DataService, Tree } from '../data.service';
 import { canopyShapeImg, bloomColorImg, wateringScaleImg, DROP_ICON } from '../tree-info/tree-info.component';
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: 'app-compare',
@@ -16,8 +17,9 @@ import { canopyShapeImg, bloomColorImg, wateringScaleImg, DROP_ICON } from '../t
     RouterModule,
     ClickOnReturnDirective,
     HeaderComponent,
-    CartIconComponent
-  ],
+    CartIconComponent,
+    ModalComponent
+],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.less'
 })
@@ -31,6 +33,7 @@ export class CompareComponent implements OnInit {
   bloomColorImg = bloomColorImg;
   wateringScaleImg = wateringScaleImg;
   DROP_ICON = DROP_ICON;
+  deleteCandidate: Tree | null = null;
 
   ngOnInit() {
     this.data.fetchTrees();
@@ -54,5 +57,12 @@ export class CompareComponent implements OnInit {
         pdf.addImage(dataUrl, 'PNG', padding, padding, width, height);
         pdf.save('comparison.pdf');
       });
+  }
+
+  removeFromCart() {
+    if (this.deleteCandidate) {
+      this.state.removeFromCart(this.deleteCandidate);
+      this.deleteCandidate = null;
+    }
   }
 }

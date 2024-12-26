@@ -118,6 +118,45 @@
                             font-size: 14px;
                             color: @color-black;
                         }
+
+                        &.photo {
+                            .controls {
+                                transition: opacity 0.3s;
+                                opacity: 0;
+
+                                display: flex;
+                                flex-flow: row;
+                                justify-content: flex-end;
+                                align-items: center;
+                                gap: 10px;
+
+                                a {
+                                    width: 20px;
+                                    height: 20px;
+                                    cursor: pointer;
+                                    .background-image;
+
+                                    &.remove {
+                                        background-image: url(../../../public/img/icon-trash-can.svg);
+                                    }
+                                    &.expand {
+                                        background-image: url(../../../public/img/icon-external-link.svg);
+                                    }
+                                    &.move-right {
+                                        background-image: url(../../../public/img/icon-chevron-right.svg);
+                                    }
+                                    &.move-left {
+                                        background-image: url(../../../public/img/icon-chevron-left.svg);
+                                    }
+                                }
+                            }
+
+                            &:hover {
+                                .controls {
+                                    opacity: 1;
+                                }
+                            }
+                        }
                     }
                     &.images {
                         td {
@@ -220,6 +259,38 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    .remove-modal {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 20px;
+        padding: 25px 40px;
+
+        h3 {
+            color: @color-black;
+            .font-primary;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 32px;
+            margin: 0;
+            margin-bottom: 60px;
+        }
+        button {
+            .regular-button;
+        }
+        a {
+            color: @color-black;
+            .font-primary;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 32px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
             }
         }
     }

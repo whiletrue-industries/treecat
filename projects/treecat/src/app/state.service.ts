@@ -150,6 +150,26 @@ export class StateService {
     }
   }
 
+  moveBeforeInCart(tree: Tree) {
+    const index = this.cart().findIndex(t => t.id === tree.id);
+    if (index > 0) {
+      const cart = [...this.cart()];
+      cart.splice(index, 1);
+      cart.splice(index - 1, 0, tree);
+      this.cart.set(cart);
+    }
+  }
+
+  moveAfterInCart(tree: Tree) {
+    const index = this.cart().findIndex(t => t.id === tree.id);
+    if (index < this.cart().length - 1) {
+      const cart = [...this.cart()];
+      cart.splice(index, 1);
+      cart.splice(index + 1, 0, tree);
+      this.cart.set(cart);
+    }
+  }
+
   clearAllFilters() {
     for (const filter of Object.values(this.filters)) {
       if (!this.TOP_FILTER_SLUGS.includes(filter.config.slug)) {
