@@ -1,0 +1,34 @@
+@import '../../common.less';
+
+:host {
+    .modal {
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .modal-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: fade(@color-white, 80);
+        }
+
+        .modal-content {
+            .background-image;
+            background-image: url(../../../public/img/bg-dialog-empty.svg);
+            background-size: 100% 99%;
+            background-position: center;
+            height: fit-content;
+            width: fit-content;
+            padding: 20px 30px;
+            z-index: 1;
+        }
+    }   
+}

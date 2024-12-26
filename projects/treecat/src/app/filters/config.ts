@@ -16,7 +16,7 @@ export const FC_SIDEWALK_WIDTHS: FilterConfig<SidewalkWidth> = {
     title: 'רוחב מדרכה',
     mandatory: true,
     options: [
-        {key: 'all', value: SidewalkWidth.Narrow, label: 'כל רוחבי המדרכה'},
+        {key: 'all', value: SidewalkWidth.All, label: 'כל רוחבי המדרכה'},
         {key: 'narrow', value: SidewalkWidth.Narrow, label: 'צרה (1.5-2.5 מ׳)'},
         {key: 'medium', value: SidewalkWidth.Medium, label: 'בינונית (2.5-3.5 מ׳)'},
         {key: 'wide', value: SidewalkWidth.Wide, label: 'רחבה (3.5 מ׳ ומעלה)'},
@@ -29,7 +29,7 @@ export const FC_CLIMATE_AREAS: FilterConfig<ClimateArea> = {
     title: 'אזור אקלים',
     mandatory: true,
     options: [
-        {key: 'all', value: ClimateArea.Mountain, label: 'כל אזורי האקלים'},
+        {key: 'all', value: ClimateArea.All, label: 'כל אזורי האקלים'},
         {key: 'Mountain', value: ClimateArea.Mountain, label: 'הר'},
         {key: 'Desert', value: ClimateArea.Desert, label: 'נגב'},
         {key: 'Coastal', value: ClimateArea.Coastal, label: 'שפלה וחוף'},

@@ -29,9 +29,6 @@ export class StateService {
   selectedTree = signal<Tree | null>(null);
   trees = signal<Tree[]>([]);
 
-  selectedSidewalkWidth: SidewalkWidth | null = null;
-  selectedClimateArea: ClimateArea | null = null;
-
   cart = signal<Tree[]>([]);
   cartIds = computed(() => this.cart().map(t => t.id));
   cartSize = computed(() => this.cart().length);
@@ -163,5 +160,20 @@ export class StateService {
   clearOneFilter(config: FilterConfig<any>, option: FilterOption<any>) {
     console.log('Clearing', config.slug, option.key);
     this.filters[config.slug].value.set(this.filters[config.slug].value().filter(v => v.key !== option.key));    
+  }
+
+  // selectedSidewalkWidth: SidewalkWidth | null = null;
+  get selectedSidewalkWidth() {
+    return this.filters[FC_SIDEWALK_WIDTHS.slug].value()[0]?.value || null;
+  }
+
+  set selectedSidewalkWidth(value: SidewalkWidth | null) {
+    const option = FC_SIDEWALK_WIDTHS.options.find(o => o.value === value);
+    this.filters[FC_SIDEWALK_WIDTHS.slug].value.set(option ? [option] : []);
+  }
+
+  set selectedClimateArea(value: ClimateArea | null) {
+    const option = FC_CLIMATE_AREAS.options.find(o => o.value === value);
+    this.filters[FC_CLIMATE_AREAS.slug].value.set(option ? [option] : []);
   }
 }

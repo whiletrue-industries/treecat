@@ -31,6 +31,29 @@
     </div>
 
     <div class='cta'>
-        <button class='select-sidewalk' [routerLink]="'/catalog'" queryParamsHandling='preserve' [disabled]='!state.selectedSidewalkWidth'>לבחירת עץ לפי רוחב מדרכה</button>
+        <button class='select-sidewalk' (activated)='selectingClimateArea=true' queryParamsHandling='preserve' [disabled]='!state.selectedSidewalkWidth' clickOnReturn>לבחירת עץ לפי רוחב מדרכה</button>
         <a class='skip' [routerLink]="'/catalog'" queryParamsHandling='preserve'>אולי פעם אחרת, קחו אותי לקטלוג המלא</a>
     </div>
+
+    @if (selectingClimateArea) {
+        <app-modal (close)='modalClosed()'>
+            <div class='climate-modal'>
+                <h2>בחרו אזור אקלים</h2>
+                <h3>התאמה לרוחב מדרכה ולאזור אקלימי<br/>
+                    קריטית לצימוח ואחזקה נאותה</h3>
+                <div class='map'>
+                    @for (option of FC_CLIMATE_AREAS.options; track option.key) {
+                        @if (option.key !== 'all') {
+                            <a class='area' (activated)='selectClimateArea(option.value)' clickOnReturn
+                                [style.top.px]='CLIMATE_LABELS[option.value].top'
+                                [style.right.px]='CLIMATE_LABELS[option.value].right'
+                                [style.padding-right.px]='CLIMATE_LABELS[option.value].lineLength + 12'
+                                [style.background-size]='(CLIMATE_LABELS[option.value].lineLength + 12) + "px 2px"'
+                            >{{option.label}}</a>    
+                        }
+                    }
+                </div>
+            </div>
+        </app-modal>
+    }
+</div>

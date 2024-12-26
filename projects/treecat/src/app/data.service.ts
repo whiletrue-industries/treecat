@@ -8,12 +8,14 @@ export enum ClimateArea {
   Desert = 'Desert',
   Coastal = 'Coastal',
   Valley = 'Valley',
+  All = 'all',
 }
 
 export enum SidewalkWidth {
   Narrow = 'narrow',
   Medium = 'medium',
   Wide = 'wide',
+  All = 'all',
 }
 
 export enum BloomColor {

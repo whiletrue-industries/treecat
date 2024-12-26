@@ -4,7 +4,7 @@
         <span class='mandatory'>*</span>
     }
 </label>
-<select [id]='"select-" + config.slug' [name]='config.slug' (change)='onChange($event)' [value]='getCurrentValue()'>
+<select [id]='"select-" + config.slug' [name]='config.slug' [(ngModel)]='currentValue'>
     @for (option of config.options; track option.key) {
         <option [value]='option.key'>{{option.label}}</option>
     }
