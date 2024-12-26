@@ -18,6 +18,11 @@
         <div class='results'>
             <app-card-grid [trees]='state.filteredTrees()' [catalog]='true'></app-card-grid>
         </div>
+        @if (state.filteredTrees().length === 0) {
+            <div class='no-results'>
+                לא נמצאו עצים בסינון המבוקש
+            </div>
+        }
     </div>
 </div>
 @let selectedTree = state.selectedTree();

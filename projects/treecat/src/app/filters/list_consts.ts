@@ -112,8 +112,8 @@ export const FIELD_CHOICES_extraWatering = [
 ];
 
 export const FIELD_CHOICES_growthRate = [
-  `מהיר`,
+  `איטי`,
   `בינוני`,
-  `איטי`
+  `מהיר`
 ];
 

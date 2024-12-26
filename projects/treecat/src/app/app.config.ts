@@ -8,7 +8,7 @@ import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/c
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes, withInMemoryScrolling({scrollPositionRestoration: 'enabled'})), 
+    provideRouter(routes, withInMemoryScrolling({scrollPositionRestoration: 'disabled'})), 
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch())
   ]
