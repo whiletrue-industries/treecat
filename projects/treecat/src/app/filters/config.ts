@@ -51,10 +51,10 @@ export const FC_TREE_TYPES: FilterConfig<string> = {
 
 export const FC_TREE_CATALOGS: FilterConfig<string> = {
     slug: 'treeCatalog',
-    title: 'קטלוג עצים',
+    title: 'מופיע ברשימת עצים',
     mandatory: false,
     options: [
-        {key: 'all', value: 'all', label: 'כל קטלוגי העצים'},
+        {key: 'all', value: 'all', label: 'כל רשימות העצים'},
         ...FIELD_CHOICES_catalogs.map(value => ({key: value, value, label: value})),
     ],
     filter: (tree: Tree, options: FilterOption<string>[]) => options.some(option => option.value === 'all' || tree.catalogs?.includes(option.value)),

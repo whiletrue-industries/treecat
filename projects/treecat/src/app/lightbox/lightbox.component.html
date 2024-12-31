@@ -1,23 +1,34 @@
 <div class='bg' clickOnReturn (activated)='closeLightbox()' aria-label='סגירת הצפיה בתמונות'></div>
-<div class='handle prev' clickOnReturn (activated)='prev()'>
 
+<div class='header'>
+    <div class='controls'>
+        <a class='close' (activated)='closeLightbox()' clickOnReturn>סגירה</a>
+        <a class='share' clickOnReturn>שתף</a>
+        <a class='img-download' [href]='photos[index].full_url' target='_blank' clickOnReturn>הורד כתמונה</a>
+        <app-cart-icon></app-cart-icon>
+    </div>
 </div>
-<div class='content'>
-    <img [src]='photos[index].url' alt=''>
-    <span class='caption'>
-        @if (photos[index].photographer) {
-            @if (photos[index].photographer.indexOf('http') === 0) {
-                <a href='{{photos[index].photographer}}' target='_blank'>קישור למקור התמונה</a>
-            } @else {
-                <span>תמונה: {{photos[index].photographer}}</span>
-            }    
-        }
-        @if (photos[index].license) {
-            <span>, רשיון שימוש: {{photos[index].license}}</span>
-        }
-    </span>
-    
-</div>
-<div class='handle next' clickOnReturn (activated)='next()'>
-    
+<div class='lightbox'>
+    <div class='handle prev' clickOnReturn (activated)='prev()'>
+
+    </div>
+    <div class='content'>
+        <img [src]='photos[index].full_url' alt=''>
+        <span class='caption'>
+            @if (photos[index].photographer) {
+                @if (photos[index].photographer.indexOf('http') === 0) {
+                    <a href='{{photos[index].photographer}}' target='_blank'>קישור למקור התמונה</a>
+                } @else {
+                    <span>תמונה: {{photos[index].photographer}}</span>
+                }    
+            }
+            @if (photos[index].license) {
+                <span>, רשיון שימוש: {{photos[index].license}}</span>
+            }
+        </span>
+        
+    </div>
+    <div class='handle next' clickOnReturn (activated)='next()'>
+        
+    </div>
 </div>

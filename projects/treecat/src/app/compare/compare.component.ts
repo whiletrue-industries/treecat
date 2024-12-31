@@ -10,6 +10,13 @@ import domtoimage from 'dom-to-image';
 import { DataService, Tree } from '../data.service';
 import { canopyShapeImg, bloomColorImg, wateringScaleImg, DROP_ICON } from '../tree-info/tree-info.component';
 import { ModalComponent } from "../modal/modal.component";
+import { TooltipIconComponent } from '../tooltip-icon/tooltip-icon.component';
+import { TooltipIconDeciduousComponent } from "../tooltip-icon-deciduous/tooltip-icon-deciduous.component";
+import { TooltipIconBrittlenessComponent } from "../tooltip-icon-brittleness/tooltip-icon-brittleness.component";
+import { TooltipIconNectarComponent } from "../tooltip-icon-nectar/tooltip-icon-nectar.component";
+import { TooltipIconSpeciesValueComponent } from "../tooltip-icon-species-value/tooltip-icon-species-value.component";
+import { TooltipIconSoilTypeComponent } from "../tooltip-icon-soil-type/tooltip-icon-soil-type.component";
+import { TooltipIconNativeComponent } from "../tooltip-icon-native/tooltip-icon-native.component";
 
 @Component({
   selector: 'app-compare',
@@ -18,7 +25,13 @@ import { ModalComponent } from "../modal/modal.component";
     ClickOnReturnDirective,
     HeaderComponent,
     CartIconComponent,
-    ModalComponent
+    ModalComponent,
+    TooltipIconDeciduousComponent,
+    TooltipIconBrittlenessComponent,
+    TooltipIconNectarComponent,
+    TooltipIconSpeciesValueComponent,
+    TooltipIconSoilTypeComponent,
+    TooltipIconNativeComponent
 ],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.less'

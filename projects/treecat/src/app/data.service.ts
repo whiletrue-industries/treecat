@@ -68,6 +68,7 @@ export class Photo {
   }
 
   url: string;
+  full_url: string;
   kind: string;
   height: number;
   width: number;

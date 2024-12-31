@@ -1,0 +1,10 @@
+@if (tooltip.visible()) {
+    <div class='container'
+        [style.top.px]='tooltip.top()'
+        [style.left.px]='tooltip.left()'
+    >
+        <app-tooltip [align]='tooltip.align()'>
+            <div [innerHTML]='tooltip.content()'></div>
+        </app-tooltip>
+    </div>
+}

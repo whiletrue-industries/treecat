@@ -119,7 +119,11 @@ def process_photo(s3, record, tree_id, photo, new_width, suffix=''):
     height = thumbnail['height']
     width = thumbnail['width']
     photo_id = photo['id']
-    new_height = int(new_width * height / width)
+    if new_width:
+        new_height = int(new_width * height / width)
+    else:
+        new_height = height
+        new_width = width
     # Download image from url, resize it to be a constant width (600), update width and height and upload the file to S3 (compatible) bucket:
 
     # based on the photo_id and the correct extension            
@@ -136,7 +140,8 @@ def process_photo(s3, record, tree_id, photo, new_width, suffix=''):
         response.raise_for_status()
         image = PIL.Image.open(PIL.Image.io.BytesIO(response.content))
         # Resize image to be a constant width (600)
-        image = image.resize((new_width, new_height))
+        if new_width != width:
+            image = image.resize((new_width, new_height))
         # Convert to RGB if necessary
         if image.mode != 'RGB':
             image = image.convert('RGB')
@@ -182,7 +187,10 @@ def main():
         tree_part = r['tree_part']
         for photo in r['photo']:
             # Add the photo to the photos list with the new url (not necessarily on AWS)
-            photos.setdefault(tree_id, []).append(process_photo(s3, r, tree_id, photo, 600))
+            rec = process_photo(s3, r, tree_id, photo, 600)
+            full = process_photo(s3, r, tree_id, photo, None, '-full')
+            rec['full_url'] = full['url']
+            photos.setdefault(tree_id, []).append(rec)
 
             if tree_part == 'תמונה מייצגת' and not main_photos.get(tree_id):
                 main_photos[tree_id] = process_photo(s3, r, tree_id, photo, 350, '-thumbnail')

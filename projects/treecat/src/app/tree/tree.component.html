@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class='controls'>
+<div class='controls' [class.hidden]='openLightbox !== null'>
     <a class='contract' (activated)='close(true)' clickOnReturn>צמצם תעודת זהות</a>
     <a class='catalog' (activated)='close(false)' clickOnReturn>חזרה לקטלוג העצים המלא</a>
     <a class='share' clickOnReturn>שתף</a>

@@ -1,13 +1,17 @@
 @import '../../common.less';
 
+:host {
+    width: fit-content;
+}
 .tooltip {
     border-radius: 5px;
     background: @color-primary;
     padding: 5px 5px;
     position: relative;
-    transform: translateY(-8px)translateX(-40px);
     z-index: 10;
     white-space: inherit;
+    width: fit-content;
+    max-width: 300px;
 
     ::ng-deep {
         color: white;
@@ -19,8 +23,21 @@
 
     .tip {
         position: absolute;
-        left: 32px;
         bottom: 0;
         transform: translateY(100%);
     }
+ 
+    &.align-left {
+        transform: translateY(-8px)translateX(-40px)translateY(-100%);
+        .tip {
+            left: 32px;
+        }
+    }
+    &.align-right {
+        transform: translateY(-8px)translateX(-100%)translateX(40px)translateY(-100%);
+        .tip {
+            right: 32px;
+        }
+    }
+
 }

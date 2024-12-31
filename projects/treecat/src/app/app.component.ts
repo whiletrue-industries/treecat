@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { distinct, distinctUntilChanged, filter, map } from 'rxjs';
 import { PlatformService } from './platform.service';
+import { TooltipContainerComponent } from "./tooltip-container/tooltip-container.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TooltipContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less'
 })

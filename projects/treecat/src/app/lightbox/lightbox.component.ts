@@ -3,13 +3,17 @@ import { ClickOnReturnDirective } from '../click-on-return.directive';
 import { Photo } from '../data.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { fromEvent, take, filter } from 'rxjs';
+import { RouterModule } from '@angular/router';
+import { CartIconComponent } from "../cart-icon/cart-icon.component";
 
 @UntilDestroy()
 @Component({
   selector: 'app-lightbox',
   imports: [
-    ClickOnReturnDirective
-  ],
+    RouterModule,
+    ClickOnReturnDirective,
+    CartIconComponent
+],
   templateUrl: './lightbox.component.html',
   styleUrl: './lightbox.component.less'
 })
