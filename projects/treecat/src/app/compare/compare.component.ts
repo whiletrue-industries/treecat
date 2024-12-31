@@ -34,6 +34,7 @@ export class CompareComponent implements OnInit {
   wateringScaleImg = wateringScaleImg;
   DROP_ICON = DROP_ICON;
   deleteCandidate: Tree | null = null;
+  showTips = false;
 
   ngOnInit() {
     this.data.fetchTrees();
