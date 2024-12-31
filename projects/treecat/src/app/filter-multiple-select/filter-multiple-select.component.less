@@ -23,5 +23,67 @@
         flex-flow: row nowrap;
         gap: 5px;
         align-items: center;
+
+        position: relative;
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            top: 0;
+            left: 0;
+            height: 16px;
+            width: 16px;
+            .background-image;
+            background-image: url(../../../public/img/icon-checkbox-unchecked.svg);
+            background-size: 16px;
+        }
+
+        &:hover input ~ .checkmark {
+            background-image: url(../../../public/img/icon-checkbox-unchecked-hover.svg);
+            background-size: 16px;
+        }
+
+        input:focus ~ .checkmark {
+            background-image: url(../../../public/img/icon-checkbox-unchecked-hover.svg);
+            background-size: 16px;
+        }
+          
+          /* When the checkbox is checked, add a blue background */
+          input:checked ~ .checkmark {
+            background-image: url(../../../public/img/icon-checkbox-checked.svg);
+            background-size: 16px;
+          }
+          
+        //   /* Create the checkmark/indicator (hidden when not checked) */
+        //   .checkmark:after {
+        //     content: "";
+        //     position: absolute;
+        //     display: none;
+        //   }
+          
+        //   /* Show the checkmark when checked */
+        //   .container input:checked ~ .checkmark:after {
+        //     display: block;
+        //   }
+          
+        //   /* Style the checkmark/indicator */
+        //   .container .checkmark:after {
+        //     left: 9px;
+        //     top: 5px;
+        //     width: 5px;
+        //     height: 10px;
+        //     border: solid white;
+        //     border-width: 0 3px 3px 0;
+        //     -webkit-transform: rotate(45deg);
+        //     -ms-transform: rotate(45deg);
+        //     transform: rotate(45deg);
+        //   } 
+
     }
 }

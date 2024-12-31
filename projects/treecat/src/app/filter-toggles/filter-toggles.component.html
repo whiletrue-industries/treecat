@@ -1,5 +1,5 @@
-@if (toggles.length > 0) {
-    <div class='options'>
+<div class='options'>
+    @if (toggles.length > 0) {
         <a class='clear' clickOnReturn (activated)='state.clearAllFilters()'>נקה הכל</a>
         @for (toggle of toggles; track toggle.id) {
             @if (toggle.config.slug !== COLOR_SLUG) {
@@ -10,5 +10,5 @@
                 </a>
             }
         }
-    </div>
-}
+    }
+</div>

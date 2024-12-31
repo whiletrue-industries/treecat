@@ -5,7 +5,10 @@
             [name]='config.slug' 
             [value]='option.key' 
             (change)='onChange($event, option)'
-            [checked]='isChecked(option)' />
+            [checked]='isChecked(option)'
+            [attr.aria-label]='option.label + (isChecked(option) ? " הסרה" : " בחירה")'
+        />
+        <span class='checkmark'></span>
         <span>{{option.label}}</span>
     </label>
 }
