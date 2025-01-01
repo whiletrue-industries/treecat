@@ -34,7 +34,7 @@ export class FiltersComponent {
   FC_CLEANING_REQUIRED = FC_CLEANING_REQUIRED;
   FC_DECIDUOUS = FC_DECIDUOUS;
 
-  extraFilters = true;
+  extraFilters = false;
   
   constructor() {}
 }

@@ -17,19 +17,23 @@
         color: @color-black;
     }
 
+    h2 {
+        margin-bottom: 5px;
+    }
+
     .section {
         display: flex;
         flex-flow: column;
         align-items: stretch;
         width: 100%;
-        gap: 5px;
+        // gap: 5px;
         
         h3 {
             margin: 0;
             font-size: 14px;
             font-weight: 700;
             line-height: 30px;
-            color: @color-gray-0;
+            color: @color-primary;
         }
 
         .row {
@@ -37,7 +41,7 @@
             flex-flow: row;
             align-items: stretch;
             gap: 30px;
-            padding-top: 10px;
+            padding-bottom: 10px;
 
             & > div {
                 flex: 0 0 50%;

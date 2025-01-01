@@ -212,7 +212,6 @@
                     }
                     &.titles {
                         td {
-                            padding-top: 15px;
                             vertical-align: top;
                             h3, h4 {
                                 font-size: 20px;
@@ -220,11 +219,14 @@
                                 line-height: 29px;
                                 margin: 0;
                             }
+                            &:hover {
+                                text-decoration: underline;
+                            }
                         }
                     }
                     &.title {            
                         td {
-                            height: 40px;
+                            height: 30px;
                             line-height: 16px;
                             vertical-align: bottom;
                             font-size: 14px;
@@ -360,6 +362,7 @@
                     background-size: 36px;
                     width: 36px;
                     height: 36px;
+                    cursor: pointer;
                 }
     
                 .arrow {

@@ -61,8 +61,10 @@
                         <td></td>
                         @for (t of state.cart(); track t.id) {
                             <td>
-                                <h3>{{t.name}}</h3>
-                                <h4>{{t.botanicalName}}</h4>
+                                <a [routerLink]='["/tree", t.id]' clickOnReturn>
+                                    <h3>{{t.name}}</h3>
+                                    <h4>{{t.botanicalName}}</h4>
+                                </a>
                             </td>
                         }
                     </tr>
@@ -340,7 +342,7 @@
     @if (state.cart().length === 0) {
         <div class='empty'>
             <div class='graphic'>
-                <div class='star'></div>
+                <a class='star' routerLink='/catalog' queryParamsHandling='preserve'></a>
                 <div class='arrow'></div>
                 <div class='cart'></div>    
             </div>
