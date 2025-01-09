@@ -27,7 +27,7 @@ jobs:
       - name: npm requirements
         run: npm install
       - name: pip requirements
-        run: pip install -r requirements.txt
+        run: pip install -r tools/requirements.txt
       - name: git identity
         run: |
           git config user.email "adam.kariv@gmail.com"
