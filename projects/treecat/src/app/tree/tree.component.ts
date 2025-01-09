@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService, Tree } from '../data.service';
@@ -27,7 +27,7 @@ import { LightboxComponent } from '../lightbox/lightbox.component';
   templateUrl: './tree.component.html',
   styleUrl: './tree.component.less'
 })
-export class TreeComponent implements OnInit {
+export class TreeComponent implements OnChanges, OnInit {
 
   tree: Tree;
   openLightbox: number | null = null;
@@ -46,6 +46,9 @@ export class TreeComponent implements OnInit {
 
   ngOnInit() {
     this.data.fetchTrees();
+  }
+
+  ngOnChanges() {
     this.state.setPageTitle(this.tree ? `${this.tree.name} (${this.tree.botanicalName})` : null);
 
   }
