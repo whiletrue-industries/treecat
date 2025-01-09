@@ -55,6 +55,7 @@ jobs:
             export GIT_SSH_COMMAND="ssh -i `pwd`/hasadna_k8s_deploy_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" &&\
             git clone git@github.com:hasadna/hasadna-k8s.git &&\
             cd hasadna-k8s &&\
+            pip install yaml &&\
             python update_yaml.py '{"webImage":"'"${DOCKER_IMAGE_NAME}:${GITHUB_SHA}"'"}' apps/treecatalog/values-hasadna-auto-updated.yaml &&\
             git config --global user.name "Treecatalog CI" &&\
             git config --global user.email "treecatalog-ci@localhost" &&\
