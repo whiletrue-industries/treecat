@@ -72,6 +72,17 @@
                   "with": "projects/treecat/src/environments/environment.development.ts"
                 }
               ]
+            },
+            "staging": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/treecat/src/environments/environment.ts",
+                  "with": "projects/treecat/src/environments/environment.staging.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

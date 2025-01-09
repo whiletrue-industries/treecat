@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /treecat/",
+    "build": "ng build",
+    "build-staging": "ng build --base-href=/ --configuration staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:treecat": "node dist/treecat/server/server.mjs"

@@ -3,7 +3,8 @@ git checkout main && \
 (git branch -D dist || true) && \
 git checkout -b dist && \
 rm .gitignore && \
-npm run build && \
+python tools/process.py && \
+npm run build-staging && \
 cp dist/treecat/browser/index.html dist/treecat/browser/404.html && \
 cp CNAME dist/treecat/browser/ || true && \
 git add dist/treecat/browser && \
