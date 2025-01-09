@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-staging": "ng build --base-href=/ --configuration staging",
+    "build-staging": "ng build --base-href=/treecat/ --configuration staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:treecat": "node dist/treecat/server/server.mjs"
