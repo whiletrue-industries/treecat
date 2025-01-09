@@ -11,7 +11,7 @@ export class TooltipService {
   top = signal(1);
   // right = signal(1);
   left = signal(1);
-  align = signal('left');
+  align = signal<TooltipAlignments>('bottom-left');
   content = signal('');
 
   visible = signal(false);

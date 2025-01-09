@@ -83,7 +83,7 @@ export class CompareComponent implements OnInit {
         const contentX = pageWidth - width - padding;
         const contentY = padding + headerHeight;
 
-        pdf = new jsPDF(pageHeight > pageWidth ? 'p' : 'l', 'px', [pageWidth, pageHeight]);
+        pdf = new jsPDF(pageHeight > pageWidth ? 'p' : 'l', 'px', [pageWidth, pageHeight], true);
         pdf.addImage(headerUrl, 'PNG', headerX, headerY, headerWidth, headerHeight);
         pdf.addImage(dataUrl, 'PNG', contentX, contentY, width, height);
         pdf.save('comparison.pdf');
