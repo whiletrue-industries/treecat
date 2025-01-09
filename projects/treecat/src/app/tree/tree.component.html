@@ -1,13 +1,13 @@
 <app-header></app-header>
 <div class='controls' [class.hidden]='openLightbox !== null'>
-    <a class='contract' (activated)='close(true)' clickOnReturn>צמצם תעודת זהות</a>
+    <a class='contract' (activated)='close(true)' clickOnReturn>צמצום תעודת זהות</a>
     <a class='catalog' (activated)='close(false)' clickOnReturn>חזרה לקטלוג העצים המלא</a>
-    <a class='share' clickOnReturn>שתף</a>
-    <a class='img-download' (activated)='saveAsImg()' clickOnReturn>הורד כתמונה</a>
+    <a class='share' clickOnReturn>שיתוף</a>
+    <a class='img-download' (activated)='saveAsImg()' clickOnReturn>הורדה כתמונה</a>
     @if (state.isInCart(tree)) {
-        <a class='remove-from-cart' (activated)='state.removeFromCart(tree)' clickOnReturn>הסר</a>        
+        <a class='remove-from-cart' (activated)='state.removeFromCart(tree)' clickOnReturn>הסרה</a>
     } @else {
-        <a class='add-to-cart' (activated)='state.addToCart(tree)' clickOnReturn>הוסף</a>
+        <a class='add-to-cart' (activated)='state.addToCart(tree)' clickOnReturn>הוספה</a>
     }
     <app-cart-icon></app-cart-icon>
 </div>

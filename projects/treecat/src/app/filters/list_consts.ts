@@ -120,3 +120,65 @@ export const FIELD_CHOICES_growthRate = [
   `מהיר`
 ];
 
+export const ABOUT_RESOURCES = [
+  {
+    "name": "מדריך עצי רחוב בישראל",
+    "url": "https://www.gov.il/BlobFolder/reports/street-tree-guide/he/forestry_and_trees_street_trees_guide_2013.pdf",
+    "citation": "משרד החקלאות והמשרד להגנת הסביבה, ישראל גלאון, אביגיל הלר",
+    "year": "2013"
+  },
+  {
+    "name": "מאגר עצי רחוב",
+    "url": "https://www.gov.il/he/Departments/DynamicCollectors/magar-atzi-rechov?skip=0",
+    "citation": "משרד החקלאות",
+    "year": "2024"
+  },
+  {
+    "name": "ערך חליפי: תרומתם הכספית של עצים",
+    "url": "https://www.gov.il/he/pages/alternate_value",
+    "citation": "משרד החקלאות",
+    "year": "2014"
+  },
+  {
+    "name": "הערכת סיכונים בעצים",
+    "url": "https://www.gov.il/BlobFolder/reports/risk-assessment-in-trees/he/botanical_gardens_gardening_and_ornamental_gardens_Risk_assessment_in_trees.pdf",
+    "citation": "משרד החקלאות",
+    "year": "2011"
+  },
+  {
+    "name": "ניהול סיכונים במשאב העצים העירוני",
+    "url": "https://www.gov.il/BlobFolder/policy/tree-risk-management-new/he/forestry_and_trees_Tree_Risk_Management.pdf",
+    "citation": "משרד החקלאות",
+    "year": "2019"
+  },
+  {
+    "name": "מאגר צמחים חסכוניים במים לאנשי המקצוע ולגינה הביתית",
+    "url": "https://www.gov.il/he/departments/dynamiccollectors/water_saving_plants?skip=0",
+    "citation": "משרד החקלאות",
+    "year": "2024"
+  },
+  {
+    "name": "מדריך ארצי לצל עצים במרחב הבנוי",
+    "url": "https://www.gov.il/BlobFolder/policy/guide-for-trees-shadow-new/he/forestry_and_trees_choveret_Tzel_new.cleaned.pdf",
+    "citation": "מינהל התכנון ומשרד החקלאות",
+    "year": "2020"
+  },
+  {
+    "name": "רשימות עצים לנטיעה",
+    "url": "https://www.tel-aviv.gov.il/Residents/Environment/Documents/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA%20%D7%A2%D7%A6%D7%99%D7%9D%20%D7%9E%D7%95%D7%9E%D7%9C%D7%A6%D7%99%D7%9D%20%D7%9C%D7%A0%D7%98%D7%99%D7%A2%D7%94%202022.pdf",
+    "citation": "עיריית תל אביב-יפו",
+    "year": "2022"
+  },
+  {
+    "name": "עצים מומלצים לנטיעה בחצרות פרטיות",
+    "url": "https://www.gov.il/BlobFolder/reports/recommended-trees-for-the-yard/he/forestry_and_trees_Recommended_trees_for_the_yard.pdf",
+    "citation": "משרד החקלאות",
+    "year": "2018"
+  },
+  {
+    "name": "רשימת עצים שניטעו בשנת 2020",
+    "url": "https://www.kfar-saba.muni.il/%D7%A0%D7%98%D7%99%D7%A2%D7%95%D7%AA-%D7%95%D7%9B%D7%A8%D7%99%D7%AA%D7%95%D7%AA-%D7%A2%D7%A6%D7%99%D7%9D/",
+    "citation": "עיריית כפר סבא",
+    "year": "2020"
+  }
+];

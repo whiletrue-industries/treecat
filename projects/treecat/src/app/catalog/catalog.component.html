@@ -33,11 +33,11 @@
                 <a (activated)='state.selectedTree.set(null)' clickOnReturn></a>
             </div>
             <div class='controls'>
-                <a class='expand' (activated)='open(selectedTree)' clickOnReturn>הרחב תעודת זהות</a>
+                <a class='expand' (activated)='open(selectedTree)' clickOnReturn>הרחבת תעודת זהות</a>
                 @if (state.isInCart(selectedTree)) {
-                    <a class='remove-from-cart' (activated)='state.removeFromCart(selectedTree)' clickOnReturn>הסר</a>        
+                    <a class='remove-from-cart' (activated)='state.removeFromCart(selectedTree)' clickOnReturn>הסרה</a>        
                 } @else {
-                    <a class='add-to-cart' (activated)='state.addToCart(selectedTree)' clickOnReturn>הוסף</a>
+                    <a class='add-to-cart' (activated)='state.addToCart(selectedTree)' clickOnReturn>הוספה</a>
                 }
                 <app-cart-icon></app-cart-icon>
             </div>

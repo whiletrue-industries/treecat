@@ -20,8 +20,23 @@
         <div>
             <div class='param'>
                 <span>עץ מומלץ</span>
-                @for (catalogName of tree.catalogs; track catalogName) {
-                    <span>{{catalogName}}</span>
+                @if (tree.catalogs.length > 0) {
+                    <div class='recommended'>
+                        <span>{{tree.catalogs[0]}}</span>
+                        @if (tree.catalogs.length > 1) {
+                            <app-tooltip-wrapper align='right'>
+                                <span anchor>, <span class='more'>{{tree.catalogs.length - 1}}+</span></span>
+                                <div tooltip>
+                                    <strong>שייך לרשימת עצים</strong><br/><br/>
+                                    @for (catalogName of tree.catalogs; track catalogName) {
+                                        @if (!$first) {
+                                            <span>{{catalogName}}</span><br/>
+                                        }
+                                    }
+                                </div>                            
+                            </app-tooltip-wrapper>                        
+                        }    
+                    </div>
                 }
             </div>
         </div>

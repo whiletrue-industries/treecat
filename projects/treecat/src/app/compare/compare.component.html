@@ -4,8 +4,8 @@
         <h1>מריצת העצים שלי</h1>
         <div class='controls'>
             <a class='catalog' (activated)='close()' clickOnReturn>חזרה לקטלוג העצים המלא</a>
-            <a class='share' clickOnReturn>שתף</a>
-            <a class='pdf-download' (activated)='saveAsPdf()' clickOnReturn>הורד כ-PDF</a>
+            <a class='share' clickOnReturn>שיתוף</a>
+            <a class='pdf-download' (activated)='saveAsPdf()' clickOnReturn>הורדה כ-PDF</a>
             <app-cart-icon></app-cart-icon>
         </div>    
     </div>
@@ -29,9 +29,9 @@
 <div class='comparison-container'>
     <div class='comparison'>
         <div class='right-controls'>
-            <button class='download-pdf' (activated)='saveAsPdf()' clickOnReturn>הורד בפורמט PDF</button>
+            <button class='download-pdf' (activated)='saveAsPdf()' clickOnReturn>הורדה בפורמט PDF</button>
             <a routerLink='/catalog' class='add-tree' clickOnReturn queryParamsHandling='preserve'>
-                הוסף מועדף
+                הוספת מועדף
             </a>
         </div>
         @if (state.cart().length > 0) {
@@ -46,12 +46,24 @@
                                 <img [src]='t.mainPhoto?.url || data.DEFAULT_IMAGE_URL'>
                                 <div class='controls'>
                                     @if (!$first) {
-                                        <a class='move-right' (activated)='state.moveBeforeInCart(t)' clickOnReturn></a>
+                                        <app-tooltip-wrapper>
+                                            <a anchor class='move-right' (activated)='state.moveBeforeInCart(t)' clickOnReturn></a>
+                                            <div tooltip>הזזה ימינה</div>
+                                        </app-tooltip-wrapper>
                                     }
-                                    <a class='remove' (activated)='deleteCandidate = t' clickOnReturn></a>
-                                    <a class='expand' [routerLink]='["/tree", t.id]' clickOnReturn></a>
+                                    <app-tooltip-wrapper>
+                                        <a anchor class='remove' (activated)='deleteCandidate = t' clickOnReturn></a>
+                                        <div tooltip>הסרה מהמריצה</div>
+                                    </app-tooltip-wrapper>
+                                    <app-tooltip-wrapper>
+                                        <a anchor class='expand' [routerLink]='["/tree", t.id]' clickOnReturn></a>
+                                        <div tooltip>הרחבת תעודת זהות</div>
+                                    </app-tooltip-wrapper>
                                     @if (!$last) {
-                                        <a class='move-left' (activated)='state.moveAfterInCart(t)' clickOnReturn></a>
+                                        <app-tooltip-wrapper>
+                                            <a anchor class='move-left' (activated)='state.moveAfterInCart(t)' clickOnReturn></a>
+                                            <div tooltip>הזזה שמאלה</div>
+                                        </app-tooltip-wrapper>
                                     }
                                 </div>
                             </td>
@@ -179,7 +191,7 @@
                         @for (t of state.cart(); track t.id) {
                             <td>
                                 <span class='canopy-shape'>
-                                    <img [src]='canopyShapeImg(t.canopyShape)'/>
+                                    <div class='img' [style.background-image]='"url(" + canopyShapeImg(t.canopyShape) +")"'></div>
                                     <span>{{t.canopyShapeHe}}</span>    
                                 </span>
                             </td>
@@ -256,7 +268,7 @@
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td>
-                                <div class='line'>
+                                <div class='line extra-watering'>
                                     @if (t.isWaterEconomical) {
                                         <span class='economical'></span>
                                     }                

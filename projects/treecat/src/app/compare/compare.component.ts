@@ -17,6 +17,7 @@ import { TooltipIconNectarComponent } from "../tooltip-icon-nectar/tooltip-icon-
 import { TooltipIconSpeciesValueComponent } from "../tooltip-icon-species-value/tooltip-icon-species-value.component";
 import { TooltipIconSoilTypeComponent } from "../tooltip-icon-soil-type/tooltip-icon-soil-type.component";
 import { TooltipIconNativeComponent } from "../tooltip-icon-native/tooltip-icon-native.component";
+import { TooltipWrapperComponent } from '../tooltip-wrapper/tooltip-wrapper.component';
 
 @Component({
   selector: 'app-compare',
@@ -31,7 +32,8 @@ import { TooltipIconNativeComponent } from "../tooltip-icon-native/tooltip-icon-
     TooltipIconNectarComponent,
     TooltipIconSpeciesValueComponent,
     TooltipIconSoilTypeComponent,
-    TooltipIconNativeComponent
+    TooltipIconNativeComponent,
+    TooltipWrapperComponent
 ],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.less'

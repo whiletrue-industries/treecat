@@ -35,6 +35,17 @@
                 font-weight: 400;
                 line-height: 32px;
                 text-align: center;
+
+                .cart {
+                    display: inline-block;
+                    .background-image;
+                    height: 30px;
+                    width: 45px;
+                    position: relative;
+                    background-image: url(../../../public/img/icon-cart-black.svg);
+                    background-size: 45px 30px;
+                    vertical-align: text-top;
+                }
             }
         }
     
@@ -115,6 +126,19 @@
                 line-height: 32px;
                 color: @color-black;
             }
+        }
+        .bottom-terms {
+            align-self: flex-end;
+            display: flex;
+            flex-flow: row;
+            gap: 18px;
+            padding: 0 25px;
+            color: @color-gray-1;
+            .font-primary;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 32px;
+            text-decoration: underline;
         }
 
         .climate-modal {

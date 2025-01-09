@@ -4,13 +4,16 @@ import { environment } from '../../environments/environment';
 import { Router, RouterModule } from '@angular/router';
 import { StateService } from '../state.service';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
+import { TooltipComponent } from "../tooltip/tooltip.component";
+import { TooltipWrapperComponent } from "../tooltip-wrapper/tooltip-wrapper.component";
 
 @Component({
   selector: 'app-tree-card',
   imports: [
     RouterModule,
-    ClickOnReturnDirective
-  ],
+    ClickOnReturnDirective,
+    TooltipWrapperComponent
+],
   templateUrl: './tree-card.component.html',
   styleUrl: './tree-card.component.less'
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { StateService } from '../state.service';
 import { ClimateArea, SidewalkWidth } from '../data.service';
@@ -19,7 +19,7 @@ import { ClickOnReturnDirective } from '../click-on-return.directive';
   templateUrl: './home.component.html',
   styleUrl: './home.component.less'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   SidewalkWidth = SidewalkWidth;
   environment = environment;
@@ -35,8 +35,12 @@ export class HomeComponent {
     [ClimateArea.Valley]: {top: 235, right: 115, lineLength: 84},
   };
 
-  constructor(public state: StateService, private router: Router) {
-    this.showingInitialDialog = !state.firstDialogShown;
+  constructor(public state: StateService, private router: Router) {  
+  }
+
+  ngOnInit(): void {
+    this.showingInitialDialog = !this.state.firstDialogShown;
+    this.state.firstDialogShown = true;
   }
 
   sidewalkImage(width: SidewalkWidth): string {

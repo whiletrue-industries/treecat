@@ -199,6 +199,16 @@ def main():
         DFA.load_from_airtable(AIRTABLE_APP, 'Resources', view='Grid view', apikey=AIRTABLE_API_KEY),
         # DF.checkpoint('resources'),        
     ).results()[0][0]
+    about_resources = [
+        dict(
+            name=r['Resource_Name'],
+            url=r.get('resource_link'),
+            citation=r['citation_authors'],
+            year=r['year'],
+        )
+        for r in resources
+        if r['citation_authors'] and r['resource_link']
+    ]
     resources = dict(
         (r[DFA.AIRTABLE_ID_FIELD], dict(
             name=r['Resource_Name'],
@@ -257,7 +267,7 @@ def main():
         DF.add_field('climateArea', 'array', lambda r: get_warn_l(CLIMATE_AREA_MAP, r['climateAreaHe'], 'CLIMATE_AREA_MAP')),
         DF.add_field('canopyShape', 'string', lambda r: get_warn(CANOPY_SHAPE_MAP, r.get('canopyShapeHe'), 'CANOPY_SHAPE_MAP')),
         DF.add_field('bloomColor', 'array', lambda r: get_warn_l(BLOOM_COLOR_MAP, r.get('bloomColorHe'), 'BLOOM_COLOR_MAP')),
-        DF.set_type('sources', transform=lambda v: get_warn_l(resources, v, 'resources')),
+        DF.set_type('sources', transform=lambda v: sorted(get_warn_l(resources, v, 'resources'), key=lambda x: x['id'])),
         DF.add_field('photos', 'array', lambda r: photos.get(r[DFA.AIRTABLE_ID_FIELD], [])),
         DF.add_field('mainPhoto', 'object', lambda r: main_photos.get(r[DFA.AIRTABLE_ID_FIELD])),
         DF.add_field('id', 'string', lambda r: r['botanicalName'].replace(' ', '-').replace('/', '-').lower()),
@@ -311,7 +321,7 @@ def main():
         for k, v in field_choices.items():
             choices = ",\n  ".join([f'`{x}`' for x in v])
             f.write(f'export const FIELD_CHOICES_{k} = [\n  {choices}\n];\n\n')
-
+        f.write(f'export const ABOUT_RESOURCES = {json.dumps(about_resources, indent=2, ensure_ascii=False)};\n')
 
 if __name__ == '__main__':
     main()

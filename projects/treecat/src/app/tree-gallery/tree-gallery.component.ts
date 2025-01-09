@@ -28,6 +28,7 @@ export class TreeGalleryComponent implements AfterViewInit, OnChanges {
   width = 0;
   rowHeight = 640;
   rows: Row[] = [];
+  MAX_PHOTOS = 8;
 
   constructor(private platform: PlatformService) {
   }
@@ -67,7 +68,7 @@ export class TreeGalleryComponent implements AfterViewInit, OnChanges {
       let row: Row = {id: 0, photos: []};
       rows = [row];
       let currentSum = 0;
-      for (let photo of this.tree.photos) {
+      for (let photo of this.tree.photos.slice(0, this.MAX_PHOTOS)) {
         if (currentSum + photo.ratio + gapRatio >= rowRatio && row.photos.length) {
           row = {id: rows.length, photos: []};
           rows.push(row);

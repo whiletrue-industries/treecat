@@ -9,6 +9,7 @@ import { TooltipIconNectarComponent } from "../tooltip-icon-nectar/tooltip-icon-
 import { TooltipIconSpeciesValueComponent } from "../tooltip-icon-species-value/tooltip-icon-species-value.component";
 import { TooltipIconSoilTypeComponent } from "../tooltip-icon-soil-type/tooltip-icon-soil-type.component";
 import { TooltipIconNativeComponent } from "../tooltip-icon-native/tooltip-icon-native.component";
+import { TooltipWrapperComponent } from "../tooltip-wrapper/tooltip-wrapper.component";
 
 export function canopyShapeImg(canopyShape: CanopyShape) {
   return `${environment.base}img/canopy-shape-${canopyShape.toLowerCase()}-256.png`;
@@ -27,7 +28,7 @@ export const DROP_ICON = `${environment.base}img/icon-drop.svg`;
 
 @Component({
   selector: 'app-tree-info',
-  imports: [TooltipIconDeciduousComponent, TooltipIconBrittlenessComponent, TooltipIconNectarComponent, TooltipIconSpeciesValueComponent, TooltipIconSoilTypeComponent, TooltipIconNativeComponent],
+  imports: [TooltipIconDeciduousComponent, TooltipIconBrittlenessComponent, TooltipIconNectarComponent, TooltipIconSpeciesValueComponent, TooltipIconSoilTypeComponent, TooltipIconNativeComponent, TooltipWrapperComponent],
   templateUrl: './tree-info.component.html',
   styleUrl: './tree-info.component.less'
 })

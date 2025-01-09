@@ -33,6 +33,10 @@
         <button class='select-sidewalk' (activated)='selectingClimateArea=true' queryParamsHandling='preserve' [disabled]='!state.selectedSidewalkWidth' clickOnReturn>לבחירת עץ לפי רוחב מדרכה</button>
         <a class='skip' [routerLink]="'/catalog'" queryParamsHandling='preserve'>אולי פעם אחרת, קחו אותי לקטלוג המלא</a>
     </div>
+    <div class='bottom-terms'>
+        <a routerLink='/terms'>תנאי השימוש</a>
+        <a routerLink='/terms'>הצהרת נגישות</a>
+    </div>
 
     @if (selectingClimateArea) {
         <app-modal (close)='modalClosed()'>
@@ -60,7 +64,10 @@
             <div class='intro'>
                 <div class='title'>
                     <h1>קטלוג עצי רחוב וצל</h1>
-                    <h2>הקטלוג מרכז עבורכם מידע מקיף ממקורות ציבוריים פתוחים אודות עצי רחוב וצל בישראל. בעזרת "מריצת העצים" תוכלו להשוות בקלות בין מיני עצים, להבין שיקולי נוף ואחזקה, לראות מיקומי עצים אמיתיים, להשתמש בתמונות ועוד.</h2>    
+                    <h2>ריכזנו עבורכם בקטלוג מידע מקיף ממקורות ציבוריים פתוחים אודות עצי רחוב וצל בישראל.<br/>
+                        בעזרת 
+                        <span class='cart'></span>                    
+                        "מריצת העצים" תוכלו להשוות בקלות בין מיני עצים, להבין שיקולי נוף ואחזקה, לראות מיקומי עצים אמיתיים, להשתמש בתמונות ועוד.</h2>    
                 </div>
                 <div class='terms'>
                     <button (activated)='showingInitialDialog = false' clickOnReturn>קראתי את תנאי השימוש</button>

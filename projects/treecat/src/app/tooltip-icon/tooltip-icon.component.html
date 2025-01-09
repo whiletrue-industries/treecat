@@ -1,2 +1,4 @@
-<span class='anchor' #anchor (mouseover)='show()'></span>
-<span class='content' #content><ng-content></ng-content></span>
+<app-tooltip-wrapper [align]='align'>
+    <span anchor class='anchor'></span>
+    <span tooltip><ng-content></ng-content></span>    
+</app-tooltip-wrapper>
