@@ -1,23 +1,23 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { CartIconComponent } from '../cart-icon/cart-icon.component';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
 import { HeaderComponent } from '../header/header.component';
-import { CartIconComponent } from '../cart-icon/cart-icon.component';
 import { StateService } from '../state.service';
 
-import { jsPDF } from 'jspdf';
 import domtoimage from 'dom-to-image';
+import { jsPDF } from 'jspdf';
 import { DataService, Tree } from '../data.service';
-import { canopyShapeImg, bloomColorImg, wateringScaleImg, DROP_ICON } from '../tree-info/tree-info.component';
 import { ModalComponent } from "../modal/modal.component";
-import { TooltipIconComponent } from '../tooltip-icon/tooltip-icon.component';
-import { TooltipIconDeciduousComponent } from "../tooltip-icon-deciduous/tooltip-icon-deciduous.component";
 import { TooltipIconBrittlenessComponent } from "../tooltip-icon-brittleness/tooltip-icon-brittleness.component";
-import { TooltipIconNectarComponent } from "../tooltip-icon-nectar/tooltip-icon-nectar.component";
-import { TooltipIconSpeciesValueComponent } from "../tooltip-icon-species-value/tooltip-icon-species-value.component";
-import { TooltipIconSoilTypeComponent } from "../tooltip-icon-soil-type/tooltip-icon-soil-type.component";
+import { TooltipIconDeciduousComponent } from "../tooltip-icon-deciduous/tooltip-icon-deciduous.component";
 import { TooltipIconNativeComponent } from "../tooltip-icon-native/tooltip-icon-native.component";
+import { TooltipIconNectarComponent } from "../tooltip-icon-nectar/tooltip-icon-nectar.component";
+import { TooltipIconSoilTypeComponent } from "../tooltip-icon-soil-type/tooltip-icon-soil-type.component";
+import { TooltipIconSpeciesValueComponent } from "../tooltip-icon-species-value/tooltip-icon-species-value.component";
 import { TooltipWrapperComponent } from '../tooltip-wrapper/tooltip-wrapper.component';
+import { bloomColorImg, canopyShapeImg, wateringScaleImg } from '../tree-info/tree-info.component';
+import { TooltipIconWateringScaleComponent } from "../tooltip-icon-watering-scale/tooltip-icon-watering-scale.component";
 
 @Component({
   selector: 'app-compare',
@@ -33,7 +33,8 @@ import { TooltipWrapperComponent } from '../tooltip-wrapper/tooltip-wrapper.comp
     TooltipIconSpeciesValueComponent,
     TooltipIconSoilTypeComponent,
     TooltipIconNativeComponent,
-    TooltipWrapperComponent
+    TooltipWrapperComponent,
+    TooltipIconWateringScaleComponent
 ],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.less'
@@ -47,7 +48,6 @@ export class CompareComponent implements OnInit {
   canopyShapeImg = canopyShapeImg;
   bloomColorImg = bloomColorImg;
   wateringScaleImg = wateringScaleImg;
-  DROP_ICON = DROP_ICON;
   deleteCandidate: Tree | null = null;
   showTips = false;
 

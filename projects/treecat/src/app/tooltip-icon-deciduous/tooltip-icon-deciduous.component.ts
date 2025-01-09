@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TooltipComponent } from "../tooltip/tooltip.component";
 import { TooltipIconComponent } from '../tooltip-icon/tooltip-icon.component';
+import { TooltipAlignments } from '../tooltip.service';
 
 @Component({
   selector: 'app-tooltip-icon-deciduous',
@@ -9,5 +10,5 @@ import { TooltipIconComponent } from '../tooltip-icon/tooltip-icon.component';
   styleUrl: './tooltip-icon-deciduous.component.less'
 })
 export class TooltipIconDeciduousComponent {
-
+  @Input() align: TooltipAlignments = 'bottom-left';
 }

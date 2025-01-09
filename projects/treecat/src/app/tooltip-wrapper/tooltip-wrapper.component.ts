@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { TooltipService } from '../tooltip.service';
+import { TooltipAlignments, TooltipService } from '../tooltip.service';
 
 @Component({
   selector: 'app-tooltip-wrapper',
@@ -8,7 +8,7 @@ import { TooltipService } from '../tooltip.service';
   styleUrl: './tooltip-wrapper.component.less'
 })
 export class TooltipWrapperComponent {
-  @Input() align: 'left' | 'right' = 'left';
+  @Input() align: TooltipAlignments = 'bottom-left';
 
   content = '';
   @ViewChild('anchor') anchorEl: ElementRef;

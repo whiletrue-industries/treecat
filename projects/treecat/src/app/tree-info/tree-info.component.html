@@ -19,12 +19,12 @@
     <div class='row'>
         <div>
             <div class='param'>
-                <span>עץ מומלץ</span>
+                <span>מופיע ברשימת עצים</span>
                 @if (tree.catalogs.length > 0) {
                     <div class='recommended'>
                         <span>{{tree.catalogs[0]}}</span>
                         @if (tree.catalogs.length > 1) {
-                            <app-tooltip-wrapper align='right'>
+                            <app-tooltip-wrapper [align]='tp("top")'>
                                 <span anchor>, <span class='more'>{{tree.catalogs.length - 1}}+</span></span>
                                 <div tooltip>
                                     <strong>שייך לרשימת עצים</strong><br/><br/>
@@ -42,7 +42,7 @@
         </div>
         <div>
             <div class='param'>
-                <span>התאמה לקרקע <app-tooltip-icon-soil-type></app-tooltip-icon-soil-type></span>
+                <span>התאמה לקרקע <app-tooltip-icon-soil-type [align]='tp("bottom")'></app-tooltip-icon-soil-type></span>
                 <span>{{tree.soilType}}</span>
             </div>
         </div>
@@ -50,13 +50,13 @@
     <div class='row'>
         <div>
             <div class='param'>
-                <span>מקומי <app-tooltip-icon-native></app-tooltip-icon-native></span>
+                <span>מקומי <app-tooltip-icon-native [align]='tp("bottom")'></app-tooltip-icon-native></span>
                 <span>{{tree.isNative ? "כן" : "לא"}}</span>
             </div>
         </div>
         <div>
             <div class='param'>
-                <span>ערך המין <app-tooltip-icon-species-value></app-tooltip-icon-species-value></span>
+                <span>ערך המין <app-tooltip-icon-species-value [align]='tp("bottom")'></app-tooltip-icon-species-value></span>
                 <span>{{tree.speciesValue}}</span>
             </div>
         </div>
@@ -109,10 +109,10 @@
     <div class='row'>
         <div>
             <div class='param'>
-                <span>דירוג השקייה</span>
+                <span>דירוג השקייה <app-tooltip-icon-watering-scale [align]='tp("bottom")'></app-tooltip-icon-watering-scale></span>
                 <div class='watering-scale'>
-                    @for (_ of wateringScaleImg(); track _) {
-                        <img [src]='DROP_ICON'>
+                    @for (i of wateringScaleImg(); track $index) {
+                        <img [src]='i'>
                     }
                 </div>
             </div>
@@ -138,7 +138,7 @@
         </div>
         <div>
             <div class='param'>
-                <span>נשיר <app-tooltip-icon-deciduous></app-tooltip-icon-deciduous></span>
+                <span>נשיר <app-tooltip-icon-deciduous [align]='tp("bottom")'></app-tooltip-icon-deciduous></span>
                 <span>{{tree.deciduous}}</span>
             </div>
         </div>
@@ -146,13 +146,13 @@
     <div class='row'>
         <div>
             <div class='param'>
-                <span>מקדם שבירות <app-tooltip-icon-brittleness></app-tooltip-icon-brittleness></span>
+                <span>מקדם שבירות <app-tooltip-icon-brittleness [align]='tp("bottom")'></app-tooltip-icon-brittleness></span>
                 <span>{{tree.brittlenessCoefficient}}</span>
             </div>
         </div>
         <div>
             <div class='param'>
-                <span>צופני <app-tooltip-icon-nectar></app-tooltip-icon-nectar></span>
+                <span>צופני <app-tooltip-icon-nectar [align]='tp("bottom")'></app-tooltip-icon-nectar></span>
                 <span>{{tree.hasNectar ? "כן" : "לא"}}</span>
             </div>
         </div>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TooltipIconComponent } from "../tooltip-icon/tooltip-icon.component";
+import { TooltipAlignments } from '../tooltip.service';
 
 @Component({
   selector: 'app-tooltip-icon-nectar',
@@ -8,5 +9,5 @@ import { TooltipIconComponent } from "../tooltip-icon/tooltip-icon.component";
   styleUrl: './tooltip-icon-nectar.component.less'
 })
 export class TooltipIconNectarComponent {
-
+  @Input() align: TooltipAlignments = 'bottom-left';
 }

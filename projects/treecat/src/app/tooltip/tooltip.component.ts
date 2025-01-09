@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TooltipAlignments } from '../tooltip.service';
 
 @Component({
   selector: 'app-tooltip',
@@ -8,6 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class TooltipComponent {
 
-  @Input() align = 'left';
+  @Input() align: TooltipAlignments = 'bottom-left';
 
 }

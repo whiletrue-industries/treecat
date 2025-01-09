@@ -23,20 +23,40 @@
 
     .tip {
         position: absolute;
-        bottom: 0;
-        transform: translateY(100%);
     }
  
-    &.align-left {
+    &.align-bottom-left {
         transform: translateY(-8px)translateX(-40px)translateY(-100%);
         .tip {
+            bottom: 0;
+            transform: translateY(100%);
             left: 32px;
         }
     }
-    &.align-right {
+    &.align-bottom-right {
         transform: translateY(-8px)translateX(-100%)translateX(40px)translateY(-100%);
         .tip {
+            bottom: 0;
+            transform: translateY(100%);
             right: 32px;
+        }
+    }
+
+    &.align-top-left {
+        transform: translateY(8px)translateX(-40px);
+        .tip {
+            top: 0;
+            left: 32px;
+            transform: translateY(-100%)rotate(180deg);
+        }
+    }
+
+    &.align-top-right {
+        transform: translateY(8px)translateX(-100%)translateX(40px);
+        .tip {
+            top: 0;
+            right: 32px;
+            transform: translateY(-100%)rotate(180deg);
         }
     }
 

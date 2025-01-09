@@ -108,15 +108,15 @@ export const FC_GROWTH_RATE: FilterConfig<string> = {
     filter: (tree: Tree, options: FilterOption<string>[]) => options.length === 0 || options.some(option => tree.growthRate === option.value),
 };
 
-export const FC_CLEANING_REQUIRED: FilterConfig<boolean> = {
-    slug: 'cleaningRequired',
-    title: 'פרי מחייב ניקוי',
+export const FC_ECONOMICAL: FilterConfig<boolean> = {
+    slug: 'economical',
+    title: 'חסכוני במים',
     mandatory: false,
     options: [
         {key: 'true', value: true, label: 'כן'},
         {key: 'false', value: false, label: 'לא'},
     ],
-    filter: (tree: Tree, options: FilterOption<boolean>[]) => options.length === 0 || options.some(option => (!!tree.cleaningRequired) === option.value),
+    filter: (tree: Tree, options: FilterOption<boolean>[]) => options.length === 0 || options.some(option => (!!tree.isWaterEconomical) === option.value),
 };
 
 export const FC_DECIDUOUS: FilterConfig<string> = {

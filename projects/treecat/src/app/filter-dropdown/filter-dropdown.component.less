@@ -26,6 +26,7 @@
         appearance: none;
         background: none;
         border: none;
+        outline: none;
         color: @color-gray-7;
         .font-primary;
         font-size: 18px;
@@ -38,5 +39,10 @@
         background-size: 20px;
         background-position: right 5px top 5px;
         cursor: pointer;
+
+        &:focus, &:active {
+            outline: 1px solid @color-primary;
+            box-shadow: 0 0 4px @color-primary;
+        }
     }
 }

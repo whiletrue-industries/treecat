@@ -10,7 +10,7 @@ import { FilterConfig, FilterOption,
   FC_WATERING_SCALE,
   FC_GROWTH_RATE,
   FC_DECIDUOUS,
-  FC_CLEANING_REQUIRED,
+  FC_ECONOMICAL,
   FC_BLOOM_COLOR,
   FC_CANOPY_SHAPE
  } from './filters/config';
@@ -71,16 +71,16 @@ export class StateService {
       config: FC_BLOOM_COLOR,
       value: signal([])
     },
-    [FC_WATERING_SCALE.slug]: {
-      config: FC_WATERING_SCALE,
-      value: signal([])
-    },
+    // [FC_WATERING_SCALE.slug]: {
+    //   config: FC_WATERING_SCALE,
+    //   value: signal([])
+    // },
     [FC_GROWTH_RATE.slug]: {
       config: FC_GROWTH_RATE,
       value: signal([])
     },
-    [FC_CLEANING_REQUIRED.slug]: {
-      config: FC_CLEANING_REQUIRED,
+    [FC_ECONOMICAL.slug]: {
+      config: FC_ECONOMICAL,
       value: signal([])
     },
     [FC_DECIDUOUS.slug]: {

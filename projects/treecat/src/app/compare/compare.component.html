@@ -250,13 +250,13 @@
 
                     <tr class='param'>
                         <td>
-                            <span>דירוג השקיה</span>
+                            <span>דירוג השקיה <app-tooltip-icon-watering-scale></app-tooltip-icon-watering-scale></span>
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td>
                                 <div class='watering-scale'>
-                                    @for (_ of wateringScaleImg(t.wateringScale); track _) {
-                                        <img [src]='DROP_ICON'>
+                                    @for (i of wateringScaleImg(t.wateringScale); track $index) {
+                                        <img [src]='i'>
                                     }
                                 </div>
                             </td>

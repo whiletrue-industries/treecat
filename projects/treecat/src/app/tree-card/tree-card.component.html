@@ -8,7 +8,7 @@
                     <h3>{{tree.botanicalName}}</h3>        
                 </div>
                 @if (tree.recommended) {
-                    <app-tooltip-wrapper align='left' class='recommended-tooltip'>
+                    <app-tooltip-wrapper align='bottom-left' class='recommended-tooltip'>
                         <div anchor class='recommended'></div>
                         <div tooltip>מומלץ קטלוג עצי רחוב וצל</div>
                     </app-tooltip-wrapper>
@@ -31,12 +31,12 @@
         </div>
     </a>
     @if (state.isInCart(tree)) {
-        <app-tooltip-wrapper align='left' class='remove-from-cart'>
+        <app-tooltip-wrapper align='bottom-left' class='remove-from-cart'>
             <a anchor class='icon' (activated)='state.removeFromCart(tree)' clickOnReturn aria-label="הסרה מהמריצה"></a>
             <div tooltip>הסרה מהמריצה</div>
         </app-tooltip-wrapper>
     } @else {
-        <app-tooltip-wrapper align='left' class='add-to-cart'>
+        <app-tooltip-wrapper align='bottom-left' class='add-to-cart'>
             <a anchor class='icon' (activated)='state.addToCart(tree)' clickOnReturn aria-label="הוספה למריצה"></a>
             <div tooltip>הוספה למריצה</div>
         </app-tooltip-wrapper>
