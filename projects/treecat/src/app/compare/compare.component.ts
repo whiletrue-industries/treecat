@@ -53,6 +53,7 @@ export class CompareComponent implements OnInit {
 
   ngOnInit() {
     this.data.fetchTrees();
+    this.state.setPageTitle('מריצת העצים שלי');
   }
 
   close() {

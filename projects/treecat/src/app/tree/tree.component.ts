@@ -46,6 +46,8 @@ export class TreeComponent implements OnInit {
 
   ngOnInit() {
     this.data.fetchTrees();
+    this.state.setPageTitle(this.tree ? `${this.tree.name} (${this.tree.botanicalName})` : null);
+
   }
 
   saveAsImg() {

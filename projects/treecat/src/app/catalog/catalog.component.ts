@@ -33,6 +33,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     this.data.fetchTrees();
+    this.state.setPageTitle(null);
   }
 
   open(tree: Tree) {

@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.showingInitialDialog = !this.state.firstDialogShown;
     this.state.firstDialogShown = true;
+    this.state.setPageTitle(null);
   }
 
   sidewalkImage(width: SidewalkWidth): string {

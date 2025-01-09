@@ -2,6 +2,8 @@ import { computed, effect, Injectable, signal, WritableSignal } from '@angular/c
 import { ClimateArea, DataService, SidewalkWidth, Tree } from './data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
+import { SeoSocialShareService } from 'ngx-seo';
+
 
 import { FilterConfig, FilterOption,
   FC_SIDEWALK_WIDTHS, FC_CLIMATE_AREAS, FC_TREE_TYPES, FC_TREE_CATALOGS,
@@ -111,7 +113,9 @@ export class StateService {
     return filteredTrees;
   });
 
-  constructor(private data: DataService, private router: Router, private route: ActivatedRoute) {
+  SITE_TITLE = 'קטלוג עצי רחוב וצל'
+
+  constructor(private data: DataService, private router: Router, private route: ActivatedRoute, private seo: SeoSocialShareService) {
     data.trees.subscribe(trees => {
       this.trees.set(trees);
       route.queryParams.pipe(
@@ -207,5 +211,13 @@ export class StateService {
   set selectedClimateArea(value: ClimateArea | null) {
     const option = FC_CLIMATE_AREAS.options.find(o => o.value === value);
     this.filters[FC_CLIMATE_AREAS.slug].value.set(option ? [option] : []);
+  }
+
+  setPageTitle(title: string | null) {
+    if (!title) {
+      this.seo.setTitle(this.SITE_TITLE);
+    } else {
+      this.seo.setTitle(`${title} | ${this.SITE_TITLE}`);
+    }
   }
 }
