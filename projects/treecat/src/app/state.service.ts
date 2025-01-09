@@ -17,6 +17,7 @@ import { FilterConfig, FilterOption,
   FC_CANOPY_SHAPE
  } from './filters/config';
 import { text } from 'stream/consumers';
+import { SeoService } from './seo.service';
 
 
 type Filter<T> = {
@@ -115,7 +116,7 @@ export class StateService {
 
   SITE_TITLE = 'קטלוג עצי רחוב וצל'
 
-  constructor(private data: DataService, private router: Router, private route: ActivatedRoute, private seo: SeoSocialShareService) {
+  constructor(private data: DataService, private router: Router, private route: ActivatedRoute, private seo: SeoService) {
     data.trees.subscribe(trees => {
       this.trees.set(trees);
       route.queryParams.pipe(
