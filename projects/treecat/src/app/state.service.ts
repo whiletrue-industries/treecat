@@ -2,7 +2,6 @@ import { computed, effect, Injectable, signal, WritableSignal } from '@angular/c
 import { ClimateArea, DataService, SidewalkWidth, Tree } from './data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
-import { SeoSocialShareService } from 'ngx-seo';
 
 
 import { FilterConfig, FilterOption,
