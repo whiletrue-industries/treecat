@@ -27,7 +27,7 @@ import { LightboxComponent } from '../lightbox/lightbox.component';
   templateUrl: './tree.component.html',
   styleUrl: './tree.component.less'
 })
-export class TreeComponent implements OnChanges, OnInit {
+export class TreeComponent implements OnInit {
 
   tree: Tree;
   openLightbox: number | null = null;
@@ -39,6 +39,7 @@ export class TreeComponent implements OnChanges, OnInit {
       this.data.fetchTree(params['id']).subscribe(tree => {
         if (tree) {
           this.tree = tree;
+          this.state.setPageTitle(this.tree ? `${this.tree.name} (${this.tree.botanicalName})` : null);
         }
       });
     });
@@ -46,11 +47,6 @@ export class TreeComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.data.fetchTrees();
-  }
-
-  ngOnChanges() {
-    this.state.setPageTitle(this.tree ? `${this.tree.name} (${this.tree.botanicalName})` : null);
-
   }
 
   saveAsImg() {
