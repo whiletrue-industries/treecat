@@ -69,8 +69,23 @@ export class CompareComponent implements OnInit {
         const width = el.offsetWidth;
         const height = el.offsetHeight;
         const padding = 20;
-        var pdf = new jsPDF('l', 'pt', [width + 2*padding, height + 2*padding]);
-        pdf.addImage(dataUrl, 'PNG', padding, padding, width, height);
+        let pdf = new jsPDF('l', 'px', [100, 100]);
+        const headerUrl = '/img/pdf-header.png';
+        const header = pdf.getImageProperties(headerUrl);
+        const headerWidth = header.width;
+        const headerHeight = header.height;
+        
+        const pageWidth = Math.max(headerWidth, width) + 2*padding;
+        const pageHeight = height + headerHeight + 2*padding;
+        
+        const headerX = pageWidth - headerWidth - padding;
+        const headerY = 0;
+        const contentX = pageWidth - width - padding;
+        const contentY = padding + headerHeight;
+
+        pdf = new jsPDF(pageHeight > pageWidth ? 'p' : 'l', 'px', [pageWidth, pageHeight]);
+        pdf.addImage(headerUrl, 'PNG', headerX, headerY, headerWidth, headerHeight);
+        pdf.addImage(dataUrl, 'PNG', contentX, contentY, width, height);
         pdf.save('comparison.pdf');
       });
   }
