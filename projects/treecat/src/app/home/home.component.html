@@ -9,24 +9,28 @@
     
     <div class='sidewalks'>
         <span class='select'>בחרו רוחב מדרכה</span>
-        <img class='sidewalk narrow' 
-            [src]='sidewalkImage(SidewalkWidth.Narrow)'
-            (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Narrow ? null : SidewalkWidth.Narrow'
-            (mouseover)='hovering = SidewalkWidth.Narrow'
-            (mouseout)='hovering = null'
-        />
-        <img class='sidewalk medium'
-            [src]='sidewalkImage(SidewalkWidth.Medium)'
-            (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Medium ? null : SidewalkWidth.Medium'
-            (mouseover)='hovering = SidewalkWidth.Medium'
-            (mouseout)='hovering = null'
-        />
-        <img class='sidewalk wide'
-            [src]='sidewalkImage(SidewalkWidth.Wide)'
-            (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Wide ? null : SidewalkWidth.Wide'
-            (mouseover)='hovering = SidewalkWidth.Wide'
-            (mouseout)='hovering = null'
-        />
+        <div class='sidewalks-scrollable'>
+            <div class='sidewalks-inner'>
+                <img class='sidewalk narrow' 
+                    [src]='sidewalkImage(SidewalkWidth.Narrow)'
+                    (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Narrow ? null : SidewalkWidth.Narrow'
+                    (mouseover)='hovering = SidewalkWidth.Narrow'
+                    (mouseout)='hovering = null'
+                />
+                <img class='sidewalk medium'
+                    [src]='sidewalkImage(SidewalkWidth.Medium)'
+                    (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Medium ? null : SidewalkWidth.Medium'
+                    (mouseover)='hovering = SidewalkWidth.Medium'
+                    (mouseout)='hovering = null'
+                />
+                <img class='sidewalk wide'
+                    [src]='sidewalkImage(SidewalkWidth.Wide)'
+                    (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Wide ? null : SidewalkWidth.Wide'
+                    (mouseover)='hovering = SidewalkWidth.Wide'
+                    (mouseout)='hovering = null'
+                />
+            </div>
+        </div>
     </div>
 
     <div class='cta'>

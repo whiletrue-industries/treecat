@@ -1,13 +1,25 @@
+@import '../../common.less';
+
 :host {
     .two {
         display: flex;
         flex-flow: row wrap;
+        &.rev {
+            .mobile({
+                flex-flow: row wrap-reverse;
+            });
+        }
         gap: 20px 64px;
         width: 100%;
         & > * {
             flex: 0 1 auto;
-            width: calc(50% ~'-' 32px);
-            min-width: 400px;
+            .desktop({
+                width: calc(50% ~'-' 32px);
+                min-width: calc(@mobile-threshold / 2 - 92px);
+            });
+            .mobile({
+                width: 100%;
+            });
         }
 
         img {

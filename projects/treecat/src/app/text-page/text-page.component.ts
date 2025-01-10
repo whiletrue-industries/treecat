@@ -19,7 +19,6 @@ export class TextPageComponent implements OnInit{
 
   ngOnInit(): void {
       // Set page title to the title of the page, change the title element in the head of the document
-      document.title = this.title;
       this.state.setPageTitle(this.title);
   }
 }

@@ -10,12 +10,12 @@
 
     .controls {
         display: flex;
-        flex-flow: row;
+        flex-flow: row wrap;
         justify-content: flex-start;
         align-items: center;
         padding: 0 40px;
         padding-top: 30px;
-        height: 85px;
+        min-height: 85px;
         gap: 20px;
 
         &.hidden {
@@ -68,7 +68,7 @@
 
     .main-info, .related {
         display: flex;
-        flex-flow: row;
+        flex-flow: row wrap;
         gap: 0;
         justify-content: flex-start;
         align-items: stretch;
