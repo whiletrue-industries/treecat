@@ -5,19 +5,21 @@
                 <div class='photo' [style.width]='photo.base'>
                     <img [src]='photo.url' (activated)='openLightbox(photo)' clickOnReturn/>
                     @if (photo.photographer || photo.license) {
-                        <div class='copyright-logo'></div>
-                        <app-tooltip class='copyright'>
-                            @if (photo.photographer) {
-                                @if (photo.photographer.indexOf('http') === 0) {
-                                    <a href='{{photo.photographer}}' target='_blank'>קישור למקור התמונה</a><br/>
-                                } @else {
-                                    <span>תמונה: {{photo.photographer}}</span><br/>
-                                }    
-                            }
-                            @if (photo.license) {
-                                <span>רשיון שימוש: {{photo.license}}</span>
-                            }
-                        </app-tooltip>
+                        <app-tooltip-wrapper align='bottom-left'>
+                            <div anchor class='copyright-logo'></div>
+                            <div tooltip class='copyright'>
+                                @if (photo.photographer) {
+                                    @if (photo.photographer.indexOf('http') === 0) {
+                                        <a href='{{photo.photographer}}' target='_blank'>קישור למקור התמונה</a><br/>
+                                    } @else {
+                                        <span>תמונה: {{photo.photographer}}</span><br/>
+                                    }    
+                                }
+                                @if (photo.license) {
+                                    <span>רשיון שימוש: {{photo.license}}</span>
+                                }
+                            </div>
+                        </app-tooltip-wrapper>
                     }
                 </div>
             }

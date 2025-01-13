@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { fromEvent, filter, take } from 'rxjs';
+import { fromEvent, filter, take, concat, map, Subject, debounceTime } from 'rxjs';
 
 export type TooltipAlignments = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
 
@@ -13,13 +13,24 @@ export class TooltipService {
   left = signal(1);
   align = signal<TooltipAlignments>('bottom-left');
   content = signal('');
+  lastEl: Element | null = null;
+  keeping = false;
 
   visible = signal(false);
+
+  hider = new Subject<void>();
   
-  constructor() { }
+  constructor() {
+    this.hider.pipe(
+      debounceTime(1000),
+      filter(() => !this.keeping)
+    ).subscribe(() => {
+      this.hide();
+    });
+  }
 
   show(el: Element, content: string, align: TooltipAlignments = 'bottom-left') {
-    if (this.visible() && this.content() === content) {
+    if (this.visible() && this.lastEl === el) {
       console.log('already showing this tooltip');
       return;
     }
@@ -34,16 +45,27 @@ export class TooltipService {
     this.align.set(align);
     this.content.set(content);
     this.visible.set(true); 
+    this.lastEl = el;
     fromEvent(el, 'mouseout').pipe(
       take(1)
     ).subscribe(() => {
-      console.log('hiding tooltip');
-      this.hide();
+      this.hider.next();
     });
- 
+
+  }
+
+  keep() {
+    this.keeping = true;
+  }
+
+  unkeep() {
+    this.keeping = false;
+    this.hider.next();
   }
 
   hide() {
     this.visible.set(false);
+    this.lastEl = null;
+    this.keeping = false;
   }
 }

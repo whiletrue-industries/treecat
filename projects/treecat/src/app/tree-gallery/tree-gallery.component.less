@@ -34,33 +34,24 @@
                     object-fit: cover;
                     cursor: pointer;
                 }
-                .copyright-logo {
-                    .background-image;
-                    background-image: url(../../../public/img/icon-copyright.svg);
+                app-tooltip-wrapper {
                     position: absolute;
                     left: 8px;
                     bottom: 8px;
                     z-index: 1;
+                }
+                .copyright-logo {
+                    .background-image;
+                    background-image: url(../../../public/img/icon-copyright.svg);
                     width: 15px;
                     height: 15px;
                     filter: drop-shadow(0px 4px 4px #000);
                 }
 
                 .copyright {
-                    position: absolute;
-                    top: calc(100% ~'-' 23px);
-                    left: 16px;
-                    // white-space: nowrap;
-                    display: none;
-                    &:hover {
-                        display: block;
-                    }
                     a {
                         text-decoration: underline;
                     }
-                }
-                .copyright-logo:hover + .copyright {
-                    display: block;
                 }
             }
         }

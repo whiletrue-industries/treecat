@@ -5,6 +5,7 @@ import { PlatformService } from '../platform.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TooltipComponent } from '../tooltip/tooltip.component';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
+import { TooltipWrapperComponent } from '../tooltip-wrapper/tooltip-wrapper.component';
 
 type Row = {id: number, photos: Photo[]};
 
@@ -12,8 +13,8 @@ type Row = {id: number, photos: Photo[]};
 @Component({
   selector: 'app-tree-gallery',
   imports: [
-    TooltipComponent,
-    ClickOnReturnDirective
+    ClickOnReturnDirective,
+    TooltipWrapperComponent
   ],
   templateUrl: './tree-gallery.component.html',
   styleUrl: './tree-gallery.component.less'
