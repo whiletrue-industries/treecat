@@ -1,4 +1,11 @@
 <div class='logo' aria-label='לוגו של יעד' role='presentation'></div>
-
-עצים מוכרים ממין זה לפי רשות מקומית.<br/>
-מסד הנתונים כולל מאות אלפי עצים מעשרות רשויות מקומיות בישראל באמת מיקום וכתובת של העץ הבודד. יש ללחוץ על שם הרשות לפתיחה בתצוגת מפה.
+<div class='about'>
+    עצים מוכרים ממין זה לפי רשות מקומית.<br/>
+    מסד הנתונים כולל מאות אלפי עצים מעשרות רשויות מקומיות בישראל באמת מיקום וכתובת של העץ הבודד. יש ללחוץ על שם הרשות לפתיחה בתצוגת מפה.
+</div>
+<div class='total'>
+    <strong>{{tree.treebase.total.toLocaleString()}} עצים</strong> מוכרים ממין זה
+</div>
+<div class='explanation'>לחצו על שם הרשות המקומית להצגת העצים בתצוגת מפה</div>
+<app-treebase-table [tree]='tree'></app-treebase-table>
+<app-treebase-link></app-treebase-link>

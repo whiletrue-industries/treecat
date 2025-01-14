@@ -1,0 +1,10 @@
+<div class='munis'>
+    @for (muni of tree.treebase.munis; track muni.muni_name) {
+        <a class='muni' [href]='muni.link' target='_blank'>
+            <div class='name'>{{muni.muni_name}}</div>
+            <div class='count' [title]='muni.count + " עצים"'>
+                <div class='filled' [style.width.%]='muni.pct'></div>
+            </div>
+        </a>
+    }
+</div>

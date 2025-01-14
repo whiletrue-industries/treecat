@@ -203,6 +203,28 @@
                                 }
                             }
                         }
+
+                        &.treebase {
+                            position: relative;
+                            display: flex;
+                            flex-flow: column;
+                            align-items: stretch;
+                            gap: 10px;
+
+                            .total {
+                                color: @color-gray-7;
+                                .font-primary;
+                                font-size: 18px;
+                                font-weight: 400;
+                                line-height: 30px;
+                            }
+
+                            app-treebase-link {
+                                position: absolute;
+                                left: 16px;
+                                top: 8px;
+                            }
+                        }
                     }
                     &.images {
                         td {

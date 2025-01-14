@@ -1,0 +1,43 @@
+@import '../../common.less';
+
+.munis {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    
+    .muni {
+        height: 24px;
+        width: 100%;
+        padding: 0 10px;
+
+        display: flex;
+        flex-flow: row-reverse;
+        align-items: center;
+        gap: 14px;
+
+        &:hover {
+            background-color: @color-hover-1;
+        }
+
+        .name {
+            flex: 0 0 auto;
+            width: 100px;
+            color: @color-black;
+            .font-primary;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .count {
+            flex: 1 1 auto;
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: flex-end;
+            .filled {
+                background-color: @color-secondary;
+                height: 15px;
+            }
+        }
+    }
+}

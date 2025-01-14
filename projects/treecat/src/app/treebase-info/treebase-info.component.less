@@ -7,12 +7,34 @@
     flex-flow: column;
     align-items: stretch;
     width: 450px;
-    gap: 5px;
+    gap: 15px;
+    position: relative;
 
     .logo {
         .background-image;
         background-image: url(../../../public/img/logo-yaad.svg);
         width: 155px;
         height: 66px;
+    }
+
+    app-treebase-link {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+
+    .about {
+        color: @color-black;
+        .font-primary;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 29px;
+    }
+    .explanation {
+        color: @color-black;
+        .font-primary;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 30px;
     }
 }

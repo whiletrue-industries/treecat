@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, ReplaySubject, take } from 'rxjs';
 import { environment } from '../environments/environment';
+import { count } from 'console';
 
 export enum ClimateArea {
   Mountain = 'Mountain',
@@ -133,7 +134,15 @@ export class Tree {
   photos: Photo[] = [];
   mainPhoto: Photo | null;
 
-  
+  treebase: {
+    total: number;
+    munis: {
+      link: string;
+      count: number;
+      muni_name: string;
+      pct: number;
+    }[];
+  }
 }
 
 @Injectable({

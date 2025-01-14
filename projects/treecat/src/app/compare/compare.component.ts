@@ -18,6 +18,8 @@ import { TooltipIconSpeciesValueComponent } from "../tooltip-icon-species-value/
 import { TooltipWrapperComponent } from '../tooltip-wrapper/tooltip-wrapper.component';
 import { bloomColorImg, canopyShapeImg, wateringScaleImg } from '../tree-info/tree-info.component';
 import { TooltipIconWateringScaleComponent } from "../tooltip-icon-watering-scale/tooltip-icon-watering-scale.component";
+import { TreebaseTableComponent } from "../treebase-table/treebase-table.component";
+import { TreebaseLinkComponent } from "../treebase-link/treebase-link.component";
 
 @Component({
   selector: 'app-compare',
@@ -34,7 +36,9 @@ import { TooltipIconWateringScaleComponent } from "../tooltip-icon-watering-scal
     TooltipIconSoilTypeComponent,
     TooltipIconNativeComponent,
     TooltipWrapperComponent,
-    TooltipIconWateringScaleComponent
+    TooltipIconWateringScaleComponent,
+    TreebaseTableComponent,
+    TreebaseLinkComponent
 ],
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.less'
