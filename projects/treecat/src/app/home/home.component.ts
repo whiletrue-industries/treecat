@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from "../header/header.component";
 import { StateService } from '../state.service';
 import { ClimateArea, SidewalkWidth } from '../data.service';
@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { ModalComponent } from '../modal/modal.component';
 import { FC_CLIMATE_AREAS } from '../filters/config';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
+import { PlatformService } from '../platform.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ import { ClickOnReturnDirective } from '../click-on-return.directive';
   templateUrl: './home.component.html',
   styleUrl: './home.component.less'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   SidewalkWidth = SidewalkWidth;
   environment = environment;
@@ -35,13 +36,21 @@ export class HomeComponent implements OnInit {
     [ClimateArea.Valley]: {top: 235, right: 115, lineLength: 84},
   };
 
-  constructor(public state: StateService, private router: Router) {  
+  @ViewChild('mediumSidewalk') mediumSidewalk: ElementRef;
+
+  constructor(public state: StateService, private router: Router, private platform: PlatformService) {  
   }
 
   ngOnInit(): void {
     this.showingInitialDialog = !this.state.firstDialogShown;
     this.state.firstDialogShown = true;
     this.state.setPageTitle(null);
+  }
+
+  ngAfterViewInit(): void {
+    this.platform.browser(() => {
+      (this.mediumSidewalk?.nativeElement as HTMLElement)?.scrollIntoView({behavior: 'smooth', inline: 'center', block: 'end'});
+    });
   }
 
   sidewalkImage(width: SidewalkWidth): string {

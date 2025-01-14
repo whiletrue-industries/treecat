@@ -17,7 +17,7 @@
                     (mouseover)='hovering = SidewalkWidth.Narrow'
                     (mouseout)='hovering = null'
                 />
-                <img class='sidewalk medium'
+                <img class='sidewalk medium' #mediumSidewalk
                     [src]='sidewalkImage(SidewalkWidth.Medium)'
                     (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Medium ? null : SidewalkWidth.Medium'
                     (mouseover)='hovering = SidewalkWidth.Medium'
