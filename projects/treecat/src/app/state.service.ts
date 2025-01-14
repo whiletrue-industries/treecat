@@ -106,7 +106,7 @@ export class StateService {
       filteredTrees = filteredTrees.filter(t => {
         return (
           t.name.includes(textFilter) ||
-          t.botanicalName.toLowerCase().includes(textFilter.toLowerCase()) 
+          (t.botanicalName?.toLowerCase() || '').includes(textFilter.toLowerCase()) 
         );
       });
     }

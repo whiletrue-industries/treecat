@@ -14,6 +14,7 @@ import { TooltipAlignments } from '../tooltip.service';
 import { TooltipIconWateringScaleComponent } from "../tooltip-icon-watering-scale/tooltip-icon-watering-scale.component";
 
 export function canopyShapeImg(canopyShape: CanopyShape) {
+  if (!canopyShape) return '';
   return `${environment.base}img/canopy-shape-${canopyShape.toLowerCase()}-256.png`;
 }
 
