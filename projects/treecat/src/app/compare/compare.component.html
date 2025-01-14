@@ -343,9 +343,11 @@
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td class='treebase'>
-                                <app-treebase-link></app-treebase-link>
-                                <span class='total'>{{t.treebase.total.toLocaleString()}} עצים</span>
-                                <app-treebase-table [tree]='t'></app-treebase-table>
+                                @if (t.treebase) {
+                                    <app-treebase-link></app-treebase-link>
+                                    <span class='total'>{{t.treebase.total.toLocaleString()}} עצים</span>
+                                    <app-treebase-table [tree]='t'></app-treebase-table>
+                                }
                             </td>
                         }
                     </tr>

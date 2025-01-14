@@ -8,6 +8,9 @@ import requests
 import boto3
 import PIL
 from io import BytesIO
+import urllib.parse
+import codecs
+import math
 
 ROOT = Path(__file__).parent.parent
 
@@ -92,6 +95,8 @@ FIELD_RENAME_MAP = {
 }
 
 def get_warn(obj, field, context):
+    if not field:
+        return None
     if not obj.get(field):
         print(f'Warning: unknown value "{field}" in {context}')
     return obj.get(field)
@@ -164,6 +169,67 @@ def process_photo(s3, record, tree_id, photo, new_width, suffix=''):
         ratio=int(new_width / new_height * 100),
     )
     return photo
+
+def get_treebase_info(record):
+    botanical_name = record['botanicalName']
+    qbotanical_name = botanical_name.replace("'", "''")
+
+    total_query = f'''
+        select count(1) as count from trees_processed
+        where "attributes-species-clean-en" ilike '{qbotanical_name}' and "muni_code" is not null
+    '''
+    total_query = codecs.encode(total_query.encode('ascii'), 'base64').replace(b'\n', b'')
+    total_query_url = 'https://api.digital-forest.org.il/api/query'
+    total_response = requests.get(total_query_url, params=dict(query=total_query)).json()
+    ret = dict(
+        total=0,
+        munis=[],
+    )
+    if 'rows' not in total_response or not total_response['rows']:
+        rows = total_response.get('rows')
+        error = total_response.get('error')
+        print(f'Warning: NO TREEBASE DATA FOR {botanical_name}: {rows} / {error}'),
+    else:
+        ret['total'] = total_response['rows'][0]['count']
+
+    query = f'''
+        select "attributes-species-clean-en", "muni_name", "muni_code", count(1) as count from trees_processed 
+        where "attributes-species-clean-en" ilike '{qbotanical_name}' and "muni_code" is not null
+        group by 1,2, 3
+        order by 4 desc
+        limit 10
+    '''
+    query = codecs.encode(query.encode('ascii'), 'base64').replace(b'\n', b'')
+    query_url = 'https://api.digital-forest.org.il/api/query'
+    response = requests.get(query_url, params=dict(query=query)).json()
+    munis = ret['munis']
+    if 'rows' not in response or not response['rows']:
+        rows = response.get('rows')
+        error = response.get('error')
+        print(f'Warning: NO TREEBASE DATA FOR {botanical_name}: {rows} / {error}'), 
+        return ret
+    first_count = None
+    for r in response['rows']:
+        mcode = r['muni_code']
+        mname = r['muni_name']
+        count = r['count']
+        species = r['attributes-species-clean-en']
+        if not mname or not mcode or not count:
+            print('Warning: MISSING TREEBASE DATA FOR ROW', botanical_name, mname, mcode, count)
+            continue
+        qmname = urllib.parse.quote(mname)
+        qbotanical_name = urllib.parse.quote(species)
+        url = f'https://app.digital-forest.org.il/trees?focus=muni:{mcode}:{qmname}&ts=certain&canopies=0&species={qbotanical_name}'
+        if first_count is None:
+            first_count = count
+        munis.append(dict(
+            link=url,
+            count=count,
+            muni_name=mname,
+            pct=math.ceil(count / first_count * 100),
+        ))
+        # print(species, mname, count)
+    return ret
 
 def main():
 
@@ -271,6 +337,7 @@ def main():
         DF.add_field('photos', 'array', lambda r: photos.get(r[DFA.AIRTABLE_ID_FIELD], [])),
         DF.add_field('mainPhoto', 'object', lambda r: main_photos.get(r[DFA.AIRTABLE_ID_FIELD])),
         DF.add_field('id', 'string', lambda r: r['botanicalName'].replace(' ', '-').replace('/', '-').lower()),
+        DF.add_field('treebase', 'object', get_treebase_info),
         DF.delete_fields([DFA.AIRTABLE_ID_FIELD]),
         # DF.printer(),
         DF.update_resource(-1, name='trees', path='trees.csv'),
