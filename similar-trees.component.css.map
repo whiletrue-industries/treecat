@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/treecat/src/app/similar-trees/home/runner/work/treecat/treecat/projects/treecat/src/app/similar-trees/similar-trees.component.less"],
+  "sourcesContent": [":host {\n    padding: 30px;\n}"],
+  "mappings": ";AAAA;AACI,WAAA;;",
+  "names": []
+}
