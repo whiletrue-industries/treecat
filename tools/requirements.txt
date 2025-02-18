@@ -2,6 +2,6 @@ dataflows
 dataflows-airtable
 python-dotenv
 requests
-boto3
+boto3<1.36.0
 Pillow
 PyYAML
