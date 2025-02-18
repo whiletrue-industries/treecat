@@ -15,13 +15,13 @@ import math
 ROOT = Path(__file__).parent.parent
 
 dotenv.load_dotenv()
-AWS_ACCESS_KEY_ID=os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_ENDPOINT_URL=os.environ['AWS_ENDPOINT_URL']
-AWS_BUCKET_NAME=os.environ['AWS_BUCKET_NAME']
-AWS_REGION=os.environ['AWS_REGION']
-AIRTABLE_APP=os.environ['AIRTABLE_APP']
-AIRTABLE_API_KEY=os.environ['AIRTABLE_API_KEY']
+AWS_ACCESS_KEY_ID=os.environ['AWS_ACCESS_KEY_ID'].strip()
+AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY'].strip()
+AWS_ENDPOINT_URL=os.environ['AWS_ENDPOINT_URL'].strip()
+AWS_BUCKET_NAME=os.environ['AWS_BUCKET_NAME'].strip()
+AWS_REGION=os.environ['AWS_REGION'].strip()
+AIRTABLE_APP=os.environ['AIRTABLE_APP'].strip()
+AIRTABLE_API_KEY=os.environ['AIRTABLE_API_KEY'].strip()
 FORCE_PHOTOS=False
 
 CANOPY_SHAPE_MAP = {
