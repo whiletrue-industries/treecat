@@ -331,7 +331,7 @@ def main():
         DF.set_type('botanicalName', transform=lambda v: v.strip()),
         DF.set_type('notesGeneral', transform=lambda v: v.strip() if v else None),
         DF.set_type('notesMaintenance', transform=lambda v: v.strip() if v else None),
-        DF.add_field('recommended', 'boolean', lambda r: catalogs[0] in (r['catalogs'] or [])),
+        DF.add_field('recommended', 'boolean', lambda r: catalogs[0] in (r.get('catalogs') or [])),
         DF.add_field('sidewalkWidth', 'string', lambda r: get_warn(SIDEWALK_WIDTH_MAP, r['sidewalkWidthHe'], 'SIDEWALK_WIDTH_MAP')),
         DF.add_field('climateArea', 'array', lambda r: get_warn_l(CLIMATE_AREA_MAP, r['climateAreaHe'], 'CLIMATE_AREA_MAP')),
         DF.add_field('canopyShape', 'string', lambda r: get_warn(CANOPY_SHAPE_MAP, r.get('canopyShapeHe'), 'CANOPY_SHAPE_MAP')),
