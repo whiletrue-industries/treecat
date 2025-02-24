@@ -8,6 +8,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { FC_CLIMATE_AREAS } from '../filters/config';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
 import { PlatformService } from '../platform.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('mediumSidewalk') mediumSidewalk: ElementRef;
 
-  constructor(public state: StateService, private router: Router, private platform: PlatformService) {  
+  constructor(public state: StateService, private router: Router, private platform: PlatformService, public layout: LayoutService) {  
   }
 
   ngOnInit(): void {
