@@ -382,10 +382,10 @@ def main():
                     field_name = field['name']
                     field_name = FIELD_RENAME_MAP.get(field_name, field_name)
                     field_type = field['type']
-                    if field_type in ('multipleSelect', 'singleSelect'):
+                    if field_type in ('multipleSelects', 'singleSelect'):
                         choices = field.get('options', {}).get('choices', [])
                         choices = [c['name'] for c in choices]
-                        if len(choices) < 15:
+                        if len(choices) < 20:
                             field_choices[field_name] = choices
     with (ROOT / 'projects' / 'treecat' / 'src' / 'app' / 'filters' / 'list_consts.ts').open('w') as f:
         for k, v in field_choices.items():

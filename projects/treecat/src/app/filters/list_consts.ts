@@ -9,10 +9,34 @@ export const FIELD_CHOICES_catalogs = [
   `הנחיות מרחביות עיריית נתניה (2016)`
 ];
 
+export const FIELD_CHOICES_treeType = [
+  `עצי רחוב (שדרה)`,
+  `עצי פארק`,
+  `עצים המתאימים לכיכרות ובודדים`,
+  `עצים המתאימים לחצר פרטית`
+];
+
 export const FIELD_CHOICES_sidewalkWidthHe = [
   `בינונית`,
   `רחבה`,
   `צרה`
+];
+
+export const FIELD_CHOICES_climateAreaHe = [
+  `שפלה וחוף`,
+  `הר`,
+  `בקעה וערבה`,
+  `נגב`
+];
+
+export const FIELD_CHOICES_soilType = [
+  `מתאים לכל הקרקעות`,
+  `לא מתאים לקרקע מלוחה`,
+  `רגיש לקרקע גירנית`,
+  `רגיש לקרקע מלוחה`,
+  `מוגבל לקרקע בינונית עד כבדה`,
+  `מוגבל לקרקע מנוקזת`,
+  `מתאים לקרקע מלוחה`
 ];
 
 export const FIELD_CHOICES_canopyWidth = [
@@ -52,6 +76,31 @@ export const FIELD_CHOICES_canopyShapeHe = [
   `מנוצה`,
   `מניפה`,
   `כנפי`
+];
+
+export const FIELD_CHOICES_bloomColorHe = [
+  `לילך`,
+  `סגול`,
+  `ורוד`,
+  `ורוד בהיר`,
+  `ורוד כהה`,
+  `צהבהב`,
+  `צהוב`,
+  `לבן`,
+  `אדום`,
+  `כתום`,
+  `לבן-קרם`,
+  `צהבהב-ירקרק`,
+  `ירוק`,
+  `לא משמעותית`,
+  `צהוב בהיר`
+];
+
+export const FIELD_CHOICES_bloomSeason = [
+  `קיץ`,
+  `סתיו`,
+  `חורף`,
+  `אביב`
 ];
 
 export const FIELD_CHOICES_wateringScale = [
