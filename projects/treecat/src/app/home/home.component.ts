@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   FC_CLIMATE_AREAS = FC_CLIMATE_AREAS;
   CLIMATE_LABELS: {[key: string]: {top: number, right: number, lineLength: number}} = {
-    [ClimateArea.Mountain]: {top: 170, right: 120, lineLength: 78},
+    [ClimateArea.Coastal]: {top: 170, right: 160, lineLength: 38},
     [ClimateArea.Desert]: {top: 300, right: 150, lineLength: 37},
-    [ClimateArea.Coastal]: {top: 105, right: 130, lineLength: 28},
+    [ClimateArea.Mountain]: {top: 105, right: 105, lineLength: 53},
     [ClimateArea.Valley]: {top: 235, right: 115, lineLength: 84},
   };
 
