@@ -240,7 +240,7 @@ def main():
 
     photos_ = DF.Flow(
         DFA.load_from_airtable(AIRTABLE_APP, 'Photos', view='Grid view', apikey=AIRTABLE_API_KEY),
-        DF.filter_rows(lambda r: r['photo']),
+        DF.filter_rows(lambda r: r.get('photo')),
         # DF.checkpoint('photos'),        
         # DF.printer(),
     ).results()[0][0]
