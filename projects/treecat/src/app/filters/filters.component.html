@@ -7,11 +7,11 @@
 </div>
 <div class='extra'>
     <app-filter-toggles></app-filter-toggles>
-    <div class='extra-filters-toggle' (click)='extraFilters = !extraFilters' [class.open]='extraFilters'>
+    <div class='extra-filters-toggle' (click)='state.showExtraFilters = !state.showExtraFilters' [class.open]='state.showExtraFilters'>
         <div class='toggle'></div>
         <span>פילטרים נוספים</span>
     </div>
-    @if (extraFilters) {
+    @if (state.showExtraFilters) {
         <div class='parts'>
             <div class='part'>
                 <h3>נוף</h3>

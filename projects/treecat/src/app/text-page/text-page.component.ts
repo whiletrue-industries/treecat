@@ -14,6 +14,7 @@ import { StateService } from '../state.service';
 })
 export class TextPageComponent implements OnInit{
   @Input() title: string;
+  @Input() share = true;
 
   constructor(private state: StateService) {}
 

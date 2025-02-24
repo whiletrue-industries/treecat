@@ -40,6 +40,8 @@ export class StateService {
 
   firstDialogShown = false;
 
+  showExtraFilters = false;
+
   filters: {[key: string]: Filter<any>} = {
     [FC_SIDEWALK_WIDTHS.slug]: {
       config: FC_SIDEWALK_WIDTHS,

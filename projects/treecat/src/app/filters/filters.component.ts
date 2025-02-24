@@ -6,6 +6,7 @@ import { FilterMultipleSelectComponent } from '../filter-multiple-select/filter-
 import { FilterMultipleSelectColorsComponent } from '../filter-multiple-select-colors/filter-multiple-select-colors.component';
 import { FilterMultipleSelectCanopyComponent } from '../filter-multiple-select-canopy/filter-multiple-select-canopy.component';
 import { FilterTogglesComponent } from '../filter-toggles/filter-toggles.component';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-filters',
@@ -34,7 +35,5 @@ export class FiltersComponent {
   FC_ECONOMICAL = FC_ECONOMICAL;
   FC_DECIDUOUS = FC_DECIDUOUS;
 
-  extraFilters = false;
-  
-  constructor() {}
+  constructor(public state: StateService) {}
 }

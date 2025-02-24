@@ -4,7 +4,9 @@
         <h1>{{title}}</h1>
         <div class='controls'>
             <a class='catalog' routerLink='/catalog'>חזרה לקטלוג העצים המלא</a>
-            <a class='share' clickOnReturn>שיתוף</a>
+            @if (share) {
+                <a class='share' clickOnReturn>שיתוף</a>
+            }
         </div>
     </div>
     <div class='text'>
