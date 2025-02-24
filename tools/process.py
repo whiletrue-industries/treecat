@@ -382,7 +382,7 @@ def main():
                     field_name = field['name']
                     field_name = FIELD_RENAME_MAP.get(field_name, field_name)
                     field_type = field['type']
-                    if field_type in ('multipleSelects', 'singleSelect'):
+                    if field_type in ('multipleSelect', 'singleSelect'):
                         choices = field.get('options', {}).get('choices', [])
                         choices = [c['name'] for c in choices]
                         if len(choices) < 15:

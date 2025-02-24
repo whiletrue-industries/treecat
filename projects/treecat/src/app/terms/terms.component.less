@@ -5,6 +5,12 @@
         .desktop({
             columns: 2;
             column-gap: 64px;
+
+            ::ng-deep {
+                h3 {
+                    break-after: avoid-column;
+                }
+            }
         })
     }
 }
