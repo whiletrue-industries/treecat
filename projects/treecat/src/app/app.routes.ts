@@ -5,6 +5,7 @@ import { TreeComponent } from './tree/tree.component';
 import { CompareComponent } from './compare/compare.component';
 import { AboutComponent } from './about/about.component';
 import { TermsComponent } from './terms/terms.component';
+import { A11yPolicyComponent } from './a11ypolicy/a11ypolicy.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path: 'tree/:id', component: TreeComponent},
     {path: 'compare', component: CompareComponent},
     {path: 'about', component: AboutComponent},
-    {path: 'terms', component: TermsComponent}
+    {path: 'terms', component: TermsComponent},
+    {path: 'a11y', component: A11yPolicyComponent},
 ];
