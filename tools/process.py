@@ -234,7 +234,9 @@ def get_treebase_info(record):
 def main():
 
     # prepare S3 client
-    s3 = boto3.client('s3', region_name=AWS_REGION, endpoint_url=AWS_ENDPOINT_URL, aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    s3 = boto3.client('s3',
+            region_name=AWS_REGION, endpoint_url=AWS_ENDPOINT_URL, aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY,)
+            # config=boto3.Config(request_checksum_calculation='when_required', response_checksum_validation='when_required')
 
     photos_ = DF.Flow(
         DFA.load_from_airtable(AIRTABLE_APP, 'Photos', view='Grid view', apikey=AIRTABLE_API_KEY),
