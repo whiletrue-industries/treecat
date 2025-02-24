@@ -239,7 +239,7 @@ def main():
             # config=boto3.Config(request_checksum_calculation='when_required', response_checksum_validation='when_required')
 
     photos_ = DF.Flow(
-        DFA.load_from_airtable(AIRTABLE_APP, 'Photos', view='Grid view', apikey=AIRTABLE_API_KEY),
+        DFA.load_from_airtable(AIRTABLE_APP, 'Photos', view='PUBLISH', apikey=AIRTABLE_API_KEY),
         DF.filter_rows(lambda r: r.get('photo')),
         # DF.checkpoint('photos'),        
         # DF.printer(),
