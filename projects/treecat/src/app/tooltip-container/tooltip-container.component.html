@@ -4,10 +4,11 @@
         [style.left.px]='tooltip.left()'
     >
         <app-tooltip [align]='tooltip.align()'
-            (mouseenter)='tooltip.keep()'
-            (mouseleave)='tooltip.unkeep()'
         >
-            <div [innerHTML]='tooltip.content()'></div>
+            <div [class.inert]='tooltip.inert()'
+                (mouseenter)='tooltip.keep()'
+                (mouseleave)='tooltip.unkeep()'
+                [innerHTML]='tooltip.content()'></div>
         </app-tooltip>
     </div>
 }

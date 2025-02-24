@@ -5,10 +5,15 @@ import { TooltipAlignments } from '../tooltip.service';
   selector: 'app-tooltip',
   imports: [],
   templateUrl: './tooltip.component.html',
-  styleUrl: './tooltip.component.less'
+  styleUrl: './tooltip.component.less',
+  host: {
+    '[class.align-bottom-left]': 'align === "bottom-left"',
+    '[class.align-bottom-right]': 'align === "bottom-right"',
+    '[class.align-top-left]': 'align === "top-left"',
+    '[class.align-top-right]': 'align === "top-right"',
+  },
 })
 export class TooltipComponent {
 
   @Input() align: TooltipAlignments = 'bottom-left';
-
 }

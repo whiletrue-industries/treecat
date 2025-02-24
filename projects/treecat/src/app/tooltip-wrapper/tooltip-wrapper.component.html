@@ -1,4 +1,4 @@
-<span class='anchor' #anchor (mouseover)='show()'>
+<span class='anchor' #anchor (mouseover)='show($event)' (mousemove)='show($event)'>
     <ng-content select='[anchor]'></ng-content>
 </span>
 <span class='content' #content>

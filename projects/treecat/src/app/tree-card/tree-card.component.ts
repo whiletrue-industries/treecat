@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, effect, EventEmitter, Input, Output, signal } from '@angular/core';
 import { DataService, Tree } from '../data.service';
 import { environment } from '../../environments/environment';
 import { Router, RouterModule } from '@angular/router';
@@ -22,7 +22,14 @@ export class TreeCardComponent {
   @Input() catalog = false;
   @Output() loaded = new EventEmitter<void>();
 
-  constructor(public state: StateService, public data: DataService, private router: Router) {}
+  isInCart = signal(false);
+  showOverlay = signal(false);
+
+  constructor(public state: StateService, public data: DataService, private router: Router) {
+    effect(() => {
+      this.isInCart.set(this.state.isInCart(this.tree));
+    });
+  }
 
   markAsLoaded() {
     this.loaded.emit();

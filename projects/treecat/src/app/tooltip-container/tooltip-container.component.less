@@ -7,4 +7,14 @@
     display: flex;
     flex-flow: column;
     align-items: flex-end;
+
+    app-tooltip {
+        pointer-events: none;
+        div {
+            pointer-events: all;
+            &.inert {
+                pointer-events: none;
+            }
+        }
+    }
 }

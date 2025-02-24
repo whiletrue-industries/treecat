@@ -17,21 +17,22 @@ export class TooltipService {
   keeping = false;
 
   visible = signal(false);
+  inert = signal(false);
 
   hider = new Subject<void>();
   
   constructor() {
     this.hider.pipe(
-      debounceTime(1000),
+      debounceTime(100),
       filter(() => !this.keeping)
     ).subscribe(() => {
       this.hide();
     });
   }
 
-  show(el: Element, content: string, align: TooltipAlignments = 'bottom-left') {
+  show(el: Element, content: string, align: TooltipAlignments = 'bottom-left', inert=false) {
     if (this.visible() && this.lastEl === el) {
-      console.log('already showing this tooltip');
+      // console.log('already showing this tooltip');
       return;
     }
     const rect = el.getBoundingClientRect();
@@ -44,26 +45,32 @@ export class TooltipService {
     this.left.set(rect.left + rect.width / 2);
     this.align.set(align);
     this.content.set(content);
-    this.visible.set(true); 
+    this.visible.set(true);
+    this.inert.set(inert);
     this.lastEl = el;
     fromEvent(el, 'mouseout').pipe(
       take(1)
     ).subscribe(() => {
+      // console.log('mouse out', el);
       this.hider.next();
     });
 
   }
 
   keep() {
+    // console.log('keeping');
     this.keeping = true;
   }
 
   unkeep() {
+    // console.log('unkeeping');
     this.keeping = false;
+    this.lastEl = null;
     this.hider.next();
   }
 
   hide() {
+    // console.log('hiding');
     this.visible.set(false);
     this.lastEl = null;
     this.keeping = false;

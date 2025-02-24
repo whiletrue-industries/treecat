@@ -9,6 +9,7 @@ import { TooltipAlignments, TooltipService } from '../tooltip.service';
 })
 export class TooltipWrapperComponent {
   @Input() align: TooltipAlignments = 'bottom-left';
+  @Input() inert = false;
 
   content = '';
   @ViewChild('anchor') anchorEl: ElementRef;
@@ -20,8 +21,9 @@ export class TooltipWrapperComponent {
     this.content = this.contentEl.nativeElement.innerHTML;
   }
 
-  show() {
-    console.log('showing tooltip');
-    this.tooltip.show(this.anchorEl.nativeElement, this.content, this.align);
+  show(event: MouseEvent) {
+    // console.log('showing tooltip', event, this.anchorEl.nativeElement);
+    this.tooltip.show(this.anchorEl.nativeElement, this.content, this.align, this.inert);
+    return true;
   }
 }

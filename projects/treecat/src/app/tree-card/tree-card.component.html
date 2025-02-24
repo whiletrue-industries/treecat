@@ -1,6 +1,8 @@
 <div class='card'>
     <img [src]='tree.mainPhoto?.url || data.DEFAULT_IMAGE_URL' (load)='markAsLoaded()'>
     <a class='overlay' (activated)='open()' clickOnReturn>
+        <!-- [class.visible]='showOverlay()'>
+    (mouseover)='showOverlay.set(true)' (mouseout)='showOverlay.set(false)'> -->
         <div class='content'>
             <div class='header'>
                 <div class='name'>
@@ -30,13 +32,13 @@
             </div>
         </div>
     </a>
-    @if (state.isInCart(tree)) {
-        <app-tooltip-wrapper align='bottom-left' class='remove-from-cart'>
+    @if (isInCart()) {
+        <app-tooltip-wrapper align='bottom-left' class='remove-from-cart' [inert]='true'>
             <a anchor class='icon' (activated)='state.removeFromCart(tree)' clickOnReturn aria-label="הסרה מהמריצה"></a>
             <div tooltip>הסרה מהמריצה</div>
         </app-tooltip-wrapper>
     } @else {
-        <app-tooltip-wrapper align='bottom-left' class='add-to-cart'>
+        <app-tooltip-wrapper align='bottom-left' class='add-to-cart' [inert]='true'>
             <a anchor class='icon' (activated)='state.addToCart(tree)' clickOnReturn aria-label="הוספה למריצה"></a>
             <div tooltip>הוספה למריצה</div>
         </app-tooltip-wrapper>

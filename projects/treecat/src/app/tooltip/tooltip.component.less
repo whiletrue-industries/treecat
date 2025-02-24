@@ -2,6 +2,27 @@
 
 :host {
     width: fit-content;
+    height: 0;
+    overflow: visible;
+    position: relative;
+    &.align-bottom-left {
+        top: -8px;
+        left: -40px;
+    }
+    &.align-bottom-right {
+        top: -8px;
+        left: 40px;
+    }
+
+    &.align-top-left {
+        top: 8px;
+        left: -40px;
+    }
+
+    &.align-top-right {
+        top: 8px;
+        left: 40px;
+    }
 }
 .tooltip {
     border-radius: 5px;
@@ -26,7 +47,7 @@
     }
  
     &.align-bottom-left {
-        transform: translateY(-8px)translateX(-40px)translateY(-100%);
+        transform: translateY(-100%);
         .tip {
             bottom: 0;
             transform: translateY(100%);
@@ -34,7 +55,7 @@
         }
     }
     &.align-bottom-right {
-        transform: translateY(-8px)translateX(-100%)translateX(40px)translateY(-100%);
+        transform: translateX(-100%)translateY(-100%);
         .tip {
             bottom: 0;
             transform: translateY(100%);
@@ -43,7 +64,7 @@
     }
 
     &.align-top-left {
-        transform: translateY(8px)translateX(-40px);
+        // transform: translateY(8px)translateX(-40px);
         .tip {
             top: 0;
             left: 32px;
@@ -52,7 +73,7 @@
     }
 
     &.align-top-right {
-        transform: translateY(8px)translateX(-100%)translateX(40px);
+        transform: translateX(-100%);
         .tip {
             top: 0;
             right: 32px;
