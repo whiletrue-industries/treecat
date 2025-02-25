@@ -79,7 +79,7 @@
             <div class='param'>
                 <span>מבנה צמרת</span>
                 <span class='canopy-shape'>
-                    <img [src]='canopyShapeImg()'/>
+                    <img [src]='canopyShapeImg()' [attr.alt]='tree.canopyShapeHe'/>
                     <span>{{tree.canopyShapeHe}}</span>    
                 </span>
             </div>
@@ -91,7 +91,7 @@
                 <span>צבע פריחה</span>
                 <div class='bloom-colors'>
                     @for (color of tree.bloomColor; track color) {
-                        <img [src]='bloomColorImg(color)'/>
+                        <img [src]='bloomColorImg(color)' [attr.alt]='"הצבע " + bloomColorName(color)'/>
                     }
                 </div>
             </div>
@@ -110,9 +110,9 @@
         <div>
             <div class='param'>
                 <span>דירוג השקייה <app-tooltip-icon-watering-scale [align]='tp("bottom")'></app-tooltip-icon-watering-scale></span>
-                <div class='watering-scale'>
+                <div class='watering-scale' [attr.aria-label]='"דירוג השקייה " + this.tree.wateringScale'>
                     @for (i of wateringScaleImg(); track $index) {
-                        <img [src]='i'>
+                        <img [src]='i' alt='ציור של טיפה'/>
                     }
                 </div>
             </div>

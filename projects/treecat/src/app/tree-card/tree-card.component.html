@@ -1,5 +1,5 @@
 <div class='card'>
-    <img [src]='tree.mainPhoto?.url || data.DEFAULT_IMAGE_URL' (load)='markAsLoaded()' [attr.aria-label]='tree.name + " תמונה מייצגת"' role='presentation'> 
+    <img [src]='tree.mainPhoto?.url || data.DEFAULT_IMAGE_URL' (load)='markAsLoaded()' [attr.aria-label]='tree.name + " תמונה מייצגת"' role="img"> 
     <a class='overlay' (activated)='open()' clickOnReturn>
         <!-- [class.visible]='showOverlay()'>
     (mouseover)='showOverlay.set(true)' (mouseout)='showOverlay.set(false)'> -->

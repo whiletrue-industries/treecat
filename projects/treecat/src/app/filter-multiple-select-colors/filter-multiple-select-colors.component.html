@@ -7,7 +7,7 @@
             [attr.aria-label]='option.label + (isChecked(option) ? " הסרה" : " בחירה")'
             clickOnReturn
         >
-            <img [src]='bloomColorImg(option.value)'>
+            <img [src]='bloomColorImg(option.value)' [attr.alt]='"הצבע " + option.label'/>
         </div>
     }
 </div>

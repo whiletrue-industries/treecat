@@ -6,7 +6,7 @@
                 <a class='option' clickOnReturn (activated)='state.clearOneFilter(toggle.config, toggle.option)' [attr.aria-label]='"ניקוי המסנן " + toggle.option.label'>{{toggle.config.title}} {{toggle.option.label}}</a>
             } @else {
                 <a class='option' clickOnReturn (activated)='state.clearOneFilter(toggle.config, toggle.option)' [attr.aria-label]='"ניקוי המסנן " + toggle.option.label'>
-                    <img [src]='bloomColorImg(toggle.option.value)'>
+                    <img [src]='bloomColorImg(toggle.option.value)'  [attr.alt]='"הצבע " + toggle.option.label'/>
                 </a>
             }
         }

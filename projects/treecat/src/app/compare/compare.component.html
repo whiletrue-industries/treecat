@@ -43,25 +43,25 @@
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td class='photo'>
-                                <img [src]='t.mainPhoto?.url || data.DEFAULT_IMAGE_URL'>
+                                <img [src]='t.mainPhoto?.url || data.DEFAULT_IMAGE_URL' [attr.alt]='"תמונה מייצגת של " + t.name'>                        
                                 <div class='controls'>
                                     @if (!$first) {
                                         <app-tooltip-wrapper>
-                                            <a anchor class='move-right' (activated)='state.moveBeforeInCart(t)' clickOnReturn></a>
+                                            <a anchor class='move-right' (activated)='state.moveBeforeInCart(t)' clickOnReturn aria-label="הזזה ימינה"></a>
                                             <div tooltip>הזזה ימינה</div>
                                         </app-tooltip-wrapper>
                                     }
                                     <app-tooltip-wrapper>
-                                        <a anchor class='remove' (activated)='deleteCandidate = t' clickOnReturn></a>
+                                        <a anchor class='remove' (activated)='deleteCandidate = t' clickOnReturn aria-label="הסרה מהמריצה"></a>
                                         <div tooltip>הסרה מהמריצה</div>
                                     </app-tooltip-wrapper>
                                     <app-tooltip-wrapper>
-                                        <a anchor class='expand' [routerLink]='["/tree", t.id]' clickOnReturn></a>
+                                        <a anchor class='expand' [routerLink]='["/tree", t.id]' clickOnReturn aria-label="הרחבת תעודת זהות"></a>
                                         <div tooltip>הרחבת תעודת זהות</div>
                                     </app-tooltip-wrapper>
                                     @if (!$last) {
                                         <app-tooltip-wrapper>
-                                            <a anchor class='move-left' (activated)='state.moveAfterInCart(t)' clickOnReturn></a>
+                                            <a anchor class='move-left' (activated)='state.moveAfterInCart(t)' clickOnReturn aria-label="הזזה שמאלה"></a>
                                             <div tooltip>הזזה שמאלה</div>
                                         </app-tooltip-wrapper>
                                     }
@@ -191,7 +191,9 @@
                         @for (t of state.cart(); track t.id) {
                             <td>
                                 <span class='canopy-shape'>
-                                    <div class='img' [style.background-image]='"url(" + canopyShapeImg(t.canopyShape) +")"'></div>
+                                    <div class='img' [style.background-image]='"url(" + canopyShapeImg(t.canopyShape) +")"'
+                                        role='presentation' [attr.alt]='t.canopyShapeHe'
+                                    ></div>
                                     <span>{{t.canopyShapeHe}}</span>    
                                 </span>
                             </td>
@@ -216,7 +218,7 @@
                             <td>
                                 <div class='bloom-colors'>
                                     @for (color of t.bloomColor; track color) {
-                                        <img [src]='bloomColorImg(color)'/>
+                                        <img [src]='bloomColorImg(color)' [attr.alt]='"הצבע " + t.bloomColorHe'/>
                                     }
                                 </div>
                             </td>
@@ -254,9 +256,9 @@
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td>
-                                <div class='watering-scale'>
+                                <div class='watering-scale' role='figure' [attr.aria-label]='"דירוג השקייה " + t.wateringScale'>
                                     @for (i of wateringScaleImg(t.wateringScale); track $index) {
-                                        <img [src]='i'>
+                                        <img [src]='i' alt='ציור של טיפה'>
                                     }
                                 </div>
                             </td>

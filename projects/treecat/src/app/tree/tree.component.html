@@ -12,7 +12,8 @@
     <app-cart-icon></app-cart-icon>
 </div>
 @if (openLightbox !== null) {
-    <app-lightbox [photos]='tree.photos' [index]='openLightbox' (close)='openLightbox = null' role="dialog" aria-modal="true"></app-lightbox>
+    <app-lightbox [photos]='tree.photos' [index]='openLightbox' (close)='openLightbox = null' 
+        aria-modal="true" role='dialog' aria-label='גלריית תמונות'></app-lightbox>
 }
 @if (!!tree) {
     <div class='main-info' #mainInfo  [attr.aria-hidden]='openLightbox !== null'>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Tree, BloomColor, CanopyShape } from '../data.service';
+import { Tree, BloomColor, CanopyShape, BLOOM_COLOR_NAME_MAP } from '../data.service';
 import { environment } from '../../environments/environment';
 import { TooltipComponent } from "../tooltip/tooltip.component";
 import { TooltipIconComponent } from "../tooltip-icon/tooltip-icon.component";
@@ -46,6 +46,10 @@ export class TreeInfoComponent {
 
   bloomColorImg(color: BloomColor) {
     return bloomColorImg(color);
+  }
+
+  bloomColorName(color: BloomColor) {
+    return BLOOM_COLOR_NAME_MAP[color];
   }
 
   wateringScaleImg() {

@@ -7,7 +7,7 @@
             [attr.aria-label]='option.label + (isChecked(option) ? " הסרה" : " בחירה")'
             clickOnReturn
         >
-            <img [src]='canopyShapeImg(option.value)' role="presentation" [attr.alt]='option.label'/>
+            <img [src]='canopyShapeImg(option.value)' [attr.alt]='option.label'/>
             <span>{{option.label}}</span>
         </div>
     }
