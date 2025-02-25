@@ -7,7 +7,7 @@
 </div>
 <div class='extra'>
     <app-filter-toggles></app-filter-toggles>
-    <div class='extra-filters-toggle' (click)='state.showExtraFilters = !state.showExtraFilters' [class.open]='state.showExtraFilters'>
+    <div class='extra-filters-toggle' (activated)='state.showExtraFilters = !state.showExtraFilters' [class.open]='state.showExtraFilters' clickOnReturn>
         <div class='toggle'></div>
         <span>פילטרים נוספים</span>
     </div>

@@ -1,6 +1,8 @@
-<div class='modal'>
-    <div class='modal-bg' (click)='closeModal()'></div>
+<div class='modal' role="dialog" aria-modal="true"  aria-describedby="modalContent">
+    <div class='modal-bg' (activated)='closeModal()' clickOnReturn aria-label="סגירה"></div>
     <div [class]='"modal-content style-" + kind'>
-        <ng-content></ng-content>
+        <div id="modalContent">
+            <ng-content></ng-content>
+        </div>
     </div>
 </div>

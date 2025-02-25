@@ -1,4 +1,4 @@
-<a routerLink='/compare' clickOnReturn queryParamsHandling='preserve'>
+<a clickOnReturn (activated)='navigate()'>
     <div class='my-cart' aria-label='מריצת העצים שלי' role='presentation'>
         @if (state.cart().length > 0) {
             <span class='cart-items'>{{state.cartSize()}}</span>

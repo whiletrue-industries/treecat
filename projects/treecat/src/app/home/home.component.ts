@@ -69,4 +69,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   modalClosed() {
     this.selectingClimateArea = false;
   }
+
+  get modalOpen() {
+    return this.selectingClimateArea || this.showingInitialDialog;
+  }
 }

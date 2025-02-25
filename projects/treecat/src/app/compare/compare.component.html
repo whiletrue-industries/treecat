@@ -11,7 +11,7 @@
     </div>
     <div class='tips'>
         <h2>בחירת עצים היא תהליך מתמשך הקשור בבעלי עניין רבים. מומלץ להעזר בתוצרי הקטלוג לצורך קידום דיון מקצועי אודות יתרונות וחסרונות מיני העצים. ניתן לשתף בקלות את המידע שהפקתם או להוריד אותו ל-PDF.</h2>
-        <div class='extra-tips-toggle' (click)='showTips = !showTips' [class.open]='showTips'>
+        <div class='extra-tips-toggle' (activated)='showTips = !showTips' [class.open]='showTips' clickOnReturn>
             <div class='toggle'></div>
             <span>טיפים נוספים</span>
         </div>
@@ -30,7 +30,7 @@
     <div class='comparison'>
         <div class='right-controls'>
             <button class='download-pdf' (activated)='saveAsPdf()' clickOnReturn>הורדה בפורמט PDF</button>
-            <a routerLink='/catalog' class='add-tree' clickOnReturn queryParamsHandling='preserve'>
+            <a routerLink='/catalog' class='add-tree' queryParamsHandling='preserve'>
                 הוספת מועדף
             </a>
         </div>

@@ -62,6 +62,20 @@ export const CANOPY_SHAPE_NAME_MAP = {
   [CanopyShape.Elaborate]: 'מבודר',
 };
 
+export const BLOOM_COLOR_NAME_MAP = {
+  [BloomColor.Lilac]: 'לילך',
+  [BloomColor.Purple]: 'סגול',
+  [BloomColor.LightPink]: 'ורוד בהיר',
+  [BloomColor.Pink]: 'ורוד',
+  [BloomColor.LightYellow]: 'צהבהב',
+  [BloomColor.Yellow]: 'צהוב',
+  [BloomColor.White]: 'לבן',
+  [BloomColor.Red]: 'אדום',
+  [BloomColor.Orange]: 'כתום',
+  [BloomColor.Cream]: 'לבן-קרם',
+  [BloomColor.Chartreuse]: 'צהבהב-ירקרק',
+  [BloomColor.Green]: 'ירוק',
+};
 
 export class Photo {
   constructor(others: Partial<Photo> = {}) {

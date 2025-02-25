@@ -2,12 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { StateService } from '../state.service';
+import { ClickOnReturnDirective } from '../click-on-return.directive';
 
 @Component({
   selector: 'app-text-page',
   imports: [
     RouterModule,
-    HeaderComponent
+    HeaderComponent,
+    ClickOnReturnDirective
   ],
   templateUrl: './text-page.component.html',
   styleUrl: './text-page.component.less'

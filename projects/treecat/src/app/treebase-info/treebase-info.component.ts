@@ -13,6 +13,6 @@ export class TreebaseInfoComponent implements OnInit {
   @Input() tree: Tree;
 
   ngOnInit() {
-    console.log('TreebaseInfoComponent initialized', this.tree);
+    // console.log('TreebaseInfoComponent initialized', this.tree);
   }
 }

@@ -1,12 +1,15 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, fromEvent, take } from 'rxjs';
 import { PlatformService } from '../platform.service';
+import { ClickOnReturnDirective } from '../click-on-return.directive';
 
 @UntilDestroy()
 @Component({
   selector: 'app-modal',
-  imports: [],
+  imports: [
+    ClickOnReturnDirective
+  ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.less'
 })

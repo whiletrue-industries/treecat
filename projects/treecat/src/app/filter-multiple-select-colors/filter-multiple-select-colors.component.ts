@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { FilterConfig, FilterOption } from '../filters/config';
 import { StateService } from '../state.service';
-import { BloomColor } from '../data.service';
 import { bloomColorImg } from '../tree-info/tree-info.component';
+import { ClickOnReturnDirective } from '../click-on-return.directive';
 
 @Component({
   selector: 'app-filter-multiple-select-colors',
-  imports: [],
+  imports: [
+    ClickOnReturnDirective
+  ],
   templateUrl: './filter-multiple-select-colors.component.html',
   styleUrl: './filter-multiple-select-colors.component.less'
 })

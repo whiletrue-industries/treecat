@@ -13,7 +13,9 @@
 
     </div>
     <div class='content'>
-        <img [src]='photos[index].full_url' alt=''>
+        <img [src]='photos[index].full_url'
+            [attr.aria-label]='photos[index].kind'
+        >
         <span class='caption'>
             @if (photos[index].photographer) {
                 @if (photos[index].photographer.indexOf('http') === 0) {

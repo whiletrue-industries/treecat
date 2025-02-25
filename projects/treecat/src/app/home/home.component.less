@@ -14,42 +14,6 @@
         flex-flow: column;
         align-items: center;
         padding: 0 16px;
-
-        .title {
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            margin-top: 36px;     
-            gap: 30px;
-            max-width: 800px;
-            text-align: center;
-            
-            h1 {
-                margin: 0;
-                font-size: 40px;
-                line-height: 50px;
-                font-weight: 700;
-            }
-
-            h2 {
-                margin: 0;
-                font-size: 20px;
-                font-weight: 400;
-                line-height: 32px;
-                text-align: center;
-
-                .cart {
-                    display: inline-block;
-                    .background-image;
-                    height: 30px;
-                    width: 45px;
-                    position: relative;
-                    background-image: url(../../../public/img/icon-cart-black.svg);
-                    background-size: 45px 30px;
-                    vertical-align: text-top;
-                }
-            }
-        }
     
         .sidewalks {
             position: relative;
@@ -167,97 +131,133 @@
             line-height: 32px;
             text-decoration: underline;
         }
+    }
 
-        .climate-modal {
-            h2, h3 {
-                margin: 0;
+    .title {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin-top: 36px;     
+        gap: 30px;
+        max-width: 800px;
+        text-align: center;
+        
+        h1 {
+            margin: 0;
+            font-size: 40px;
+            line-height: 50px;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 32px;
+            text-align: center;
+
+            .cart {
+                display: inline-block;
+                .background-image;
+                height: 30px;
+                width: 45px;
+                position: relative;
+                background-image: url(../../../public/img/icon-cart-black.svg);
+                background-size: 45px 30px;
+                vertical-align: text-top;
+            }
+        }
+    }
+
+    .climate-modal {
+        h2, h3 {
+            margin: 0;
+            color: @color-black;
+            .font-primary;
+            text-align: center;
+            line-height: 32px;
+            margin: 20px 0;
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+        h3 {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .map {
+            max-width: 390px;
+            height: 440px;
+            .background-image;
+            background-image: url(../../../public/img/illus-climate-map.png);
+            background-size: 180px 440px;
+            background-position: right 40px center;
+            position: relative;
+
+            a.area {
+                position: absolute;
+                cursor: pointer;
                 color: @color-black;
                 .font-primary;
-                text-align: center;
+                font-size: 22px;
+                font-weight: 500;
                 line-height: 32px;
-                margin: 20px 0;
-            }
-            h2 {
-                font-size: 26px;
-                font-weight: 700;
-            }
-            h3 {
-                font-size: 18px;
-                font-weight: 400;
-            }
-            .map {
-                max-width: 390px;
-                height: 440px;
                 .background-image;
-                background-image: url(../../../public/img/illus-climate-map.png);
-                background-size: 180px 440px;
-                background-position: right 40px center;
-                position: relative;
+                background-image: url(../../../public/img/hline.svg);
+                background-position: right center;
 
-                a.area {
-                    position: absolute;
-                    cursor: pointer;
-                    color: @color-black;
-                    .font-primary;
-                    font-size: 22px;
-                    font-weight: 500;
-                    line-height: 32px;
-                    .background-image;
-                    background-image: url(../../../public/img/hline.svg);
-                    background-position: right center;
-
-                    &:hover {
-                        color: @color-primary;
-                        font-weight: 700;
-                    }
+                &:hover {
+                    color: @color-primary;
+                    font-weight: 700;
                 }
             }
         }
+    }
 
-        .intro {
+    .intro {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 46px;
+        text-align: center;
+
+        .title {
+            h1, h2 {
+                margin: 0;
+                .font-primary;
+                color: @color-black;                    
+            }
+            h1 {
+                font-size: 40px;
+                font-weight: 700;
+                line-height: 50px;
+           }
+           h2 {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 32px;
+           }
+        }
+
+        .terms {
             display: flex;
             flex-flow: column;
             align-items: center;
-            gap: 46px;
-            text-align: center;
+            gap: 17px;
 
-            .title {
-                h1, h2 {
-                    margin: 0;
-                    .font-primary;
-                    color: @color-black;                    
-                }
-                h1 {
-                    font-size: 40px;
-                    font-weight: 700;
-                    line-height: 50px;
-               }
-               h2 {
-                font-size: 20px;
-                font-weight: 400;
-                line-height: 32px;
-               }
+            button {
+                .regular-button;
             }
 
-            .terms {
-                display: flex;
-                flex-flow: column;
-                align-items: center;
-                gap: 17px;
-    
-                button {
-                    .regular-button;
-                }
-
-                .terms-link {
-                    color: @color-black;
-                    text-align: center;
-                    .font-primary;
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 32px;
-                    text-decoration-line: underline;
-                }
+            .terms-link {
+                color: @color-black;
+                text-align: center;
+                .font-primary;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 32px;
+                text-decoration-line: underline;
             }
         }
     }

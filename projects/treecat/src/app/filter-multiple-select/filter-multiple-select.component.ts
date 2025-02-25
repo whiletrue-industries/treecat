@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FilterConfig, FilterOption } from '../filters/config';
 import { StateService } from '../state.service';
-import { ClickOnReturnDirective } from '../click-on-return.directive';
 
 @Component({
   selector: 'app-filter-multiple-select',

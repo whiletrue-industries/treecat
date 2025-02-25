@@ -1,5 +1,5 @@
-<app-header></app-header>
-<div class='hero'>
+<app-header [attr.aria-hidden]='modalOpen'></app-header>
+<div class='hero' [attr.aria-hidden]='modalOpen'>
     <div class='title'>
         <h1>קטלוג עצי רחוב וצל</h1>
         <h2>
@@ -12,22 +12,28 @@
         <div class='sidewalks-scrollable'>
             <div class='sidewalks-inner'>
                 <img class='sidewalk narrow' 
+                    aria-label="רחב מדרכה צר"
                     [src]='sidewalkImage(SidewalkWidth.Narrow)'
-                    (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Narrow ? null : SidewalkWidth.Narrow'
+                    (activated)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Narrow ? null : SidewalkWidth.Narrow'
                     (mouseover)='hovering = SidewalkWidth.Narrow'
                     (mouseout)='hovering = null'
+                    clickOnReturn
                 />
                 <img class='sidewalk medium' #mediumSidewalk
+                    aria-label="רחב מדרכה בינוני"
                     [src]='sidewalkImage(SidewalkWidth.Medium)'
-                    (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Medium ? null : SidewalkWidth.Medium'
+                    (activated)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Medium ? null : SidewalkWidth.Medium'
                     (mouseover)='hovering = SidewalkWidth.Medium'
                     (mouseout)='hovering = null'
+                    clickOnReturn
                 />
                 <img class='sidewalk wide'
+                    aria-label="רחב מדרכה רחב"
                     [src]='sidewalkImage(SidewalkWidth.Wide)'
-                    (click)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Wide ? null : SidewalkWidth.Wide'
+                    (activated)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Wide ? null : SidewalkWidth.Wide'
                     (mouseover)='hovering = SidewalkWidth.Wide'
                     (mouseout)='hovering = null'
+                    clickOnReturn
                 />
             </div>
         </div>
@@ -41,49 +47,49 @@
         <a routerLink='/terms'>תנאי השימוש</a>
         <a routerLink='/a11y'>הצהרת נגישות</a>
     </div>
-
-    @if (selectingClimateArea) {
-        <app-modal (close)='modalClosed()'>
-            <div class='climate-modal'>
-                <h2>בחרו אזור אקלים</h2>
-                <h3>לא פחות חשובה היא ההתאמה לאזור האקלימי שמסייעת לעץ<br/>למצות את מלוא הפוטנציאל שלו ולשגשג לאורך זמן.
-                </h3>
-                <div class='map'>
-                    @for (option of FC_CLIMATE_AREAS.options; track option.key) {
-                        @if (option.key !== 'all') {
-                            <a class='area' (activated)='selectClimateArea(option.value)' clickOnReturn
-                                [style.top.px]='CLIMATE_LABELS[option.value].top'
-                                [style.right.px]='CLIMATE_LABELS[option.value].right'
-                                [style.padding-right.px]='CLIMATE_LABELS[option.value].lineLength + 12'
-                                [style.background-size]='(CLIMATE_LABELS[option.value].lineLength + 12) + "px 2px"'
-                            >{{option.label}}</a>    
-                        }
-                    }
-                </div>
-            </div>
-        </app-modal>
-    }
-    @if (showingInitialDialog) {
-        <app-modal kind='intro'>
-            <div class='intro'>
-                <div class='title'>
-                    <h1>קטלוג עצי רחוב וצל</h1>
-                    <h2>ריכזנו עבורכם בקטלוג מידע מקיף ממקורות ציבוריים פתוחים אודות עצי רחוב וצל בישראל.<br/>
-                    @if (layout.desktop()) {
-                        בעזרת 
-                        <span class='cart'></span>                    
-                        "מריצת העצים" תוכלו להשוות בקלות בין מיני עצים, להבין שיקולי נוף ואחזקה, לראות מיקומי עצים אמיתיים, להשתמש בתמונות ועוד.
-                    } @else {
-                        <br/>
-                        <strong>האתר בגרסת בטא, לחווית שימוש מיטבית יש להשתמש במחשב שולחני</strong>
-                    }
-                    </h2>
-                </div>
-                <div class='terms'>
-                    <button (activated)='showingInitialDialog = false' clickOnReturn>קראתי את תנאי השימוש</button>
-                    <a class='terms-link' [routerLink]="'/terms'">תנאי השימוש</a>    
-                </div>
-            </div>
-        </app-modal>
-    }
 </div>
+
+@if (selectingClimateArea) {
+    <app-modal (close)='modalClosed()'>
+        <div class='climate-modal'>
+            <h2>בחרו אזור אקלים</h2>
+            <h3>לא פחות חשובה היא ההתאמה לאזור האקלימי שמסייעת לעץ<br/>למצות את מלוא הפוטנציאל שלו ולשגשג לאורך זמן.
+            </h3>
+            <div class='map'>
+                @for (option of FC_CLIMATE_AREAS.options; track option.key) {
+                    @if (option.key !== 'all') {
+                        <a class='area' (activated)='selectClimateArea(option.value)' clickOnReturn
+                            [style.top.px]='CLIMATE_LABELS[option.value].top'
+                            [style.right.px]='CLIMATE_LABELS[option.value].right'
+                            [style.padding-right.px]='CLIMATE_LABELS[option.value].lineLength + 12'
+                            [style.background-size]='(CLIMATE_LABELS[option.value].lineLength + 12) + "px 2px"'
+                        >{{option.label}}</a>    
+                    }
+                }
+            </div>
+        </div>
+    </app-modal>
+}
+@if (showingInitialDialog) {
+    <app-modal kind='intro'>
+        <div class='intro'>
+            <div class='title'>
+                <h1>קטלוג עצי רחוב וצל</h1>
+                <h2>ריכזנו עבורכם בקטלוג מידע מקיף ממקורות ציבוריים פתוחים אודות עצי רחוב וצל בישראל.<br/>
+                @if (layout.desktop()) {
+                    בעזרת 
+                    <span class='cart'></span>                    
+                    "מריצת העצים" תוכלו להשוות בקלות בין מיני עצים, להבין שיקולי נוף ואחזקה, לראות מיקומי עצים אמיתיים, להשתמש בתמונות ועוד.
+                } @else {
+                    <br/>
+                    <strong>האתר בגרסת בטא, לחווית שימוש מיטבית יש להשתמש במחשב שולחני</strong>
+                }
+                </h2>
+            </div>
+            <div class='terms'>
+                <button (activated)='showingInitialDialog = false' clickOnReturn>קראתי את תנאי השימוש</button>
+                <a class='terms-link' [routerLink]="'/terms'">תנאי השימוש</a>    
+            </div>
+        </div>
+    </app-modal>
+}

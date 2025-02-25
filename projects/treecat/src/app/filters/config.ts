@@ -1,4 +1,4 @@
-import { BloomColor, CANOPY_SHAPE_NAME_MAP, CanopyShape, ClimateArea, SidewalkWidth, Tree } from "../data.service";
+import { BLOOM_COLOR_NAME_MAP, BloomColor, CANOPY_SHAPE_NAME_MAP, CanopyShape, ClimateArea, SidewalkWidth, Tree } from "../data.service";
 import { FIELD_CHOICES_bloomColorHe, FIELD_CHOICES_canopyHeight, FIELD_CHOICES_canopyWidth, FIELD_CHOICES_catalogs, FIELD_CHOICES_deciduous, FIELD_CHOICES_growthRate, FIELD_CHOICES_treeType } from "./list_consts";
 
 export type FilterOption<T> = {key: string, value: T, label: string, extra?: any};
@@ -88,7 +88,7 @@ export const FC_BLOOM_COLOR: FilterConfig<BloomColor> = {
     slug: 'bloomColor',
     title: 'צבע פריחה',
     mandatory: false,
-    options: (Object.values(BloomColor) as BloomColor[]).map(value => ({key: value.toString(), value, label: value.toString()})),
+    options: (Object.values(BloomColor) as BloomColor[]).map(value => ({key: value.toString(), value, label: BLOOM_COLOR_NAME_MAP[value]})),
     filter: (tree: Tree, options: FilterOption<BloomColor>[]) => options.length === 0 || options.some(option => tree.bloomColor?.includes(option.value)),
 };
 

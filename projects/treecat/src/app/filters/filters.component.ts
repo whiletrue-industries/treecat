@@ -7,6 +7,7 @@ import { FilterMultipleSelectColorsComponent } from '../filter-multiple-select-c
 import { FilterMultipleSelectCanopyComponent } from '../filter-multiple-select-canopy/filter-multiple-select-canopy.component';
 import { FilterTogglesComponent } from '../filter-toggles/filter-toggles.component';
 import { StateService } from '../state.service';
+import { ClickOnReturnDirective } from '../click-on-return.directive';
 
 @Component({
   selector: 'app-filters',
@@ -15,7 +16,8 @@ import { StateService } from '../state.service';
     FilterMultipleSelectComponent,
     FilterMultipleSelectColorsComponent,
     FilterMultipleSelectCanopyComponent,
-    FilterTogglesComponent
+    FilterTogglesComponent,
+    ClickOnReturnDirective
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.less'
