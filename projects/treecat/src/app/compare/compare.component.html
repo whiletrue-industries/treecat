@@ -110,20 +110,18 @@
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td>
-                                <span>{{t.climateAreaHe}}</span>
+                                <span>{{t.climateAreaHe.join(', ')}}</span>
                             </td>
                         }
                     </tr>
                     <tr class='param'>
                         <td>
-                            <span>רשימת עצים</span>
+                            <span>מומלץ משרד החקלאות</span>
                         </td>
                         @for (t of state.cart(); track t.id) {
                             <td>
                                 <div class='col'>
-                                    @for (catalogName of t.catalogs; track catalogName) {
-                                        <span>{{catalogName}}</span>
-                                    }    
+                                    <span>{{isMoaRecommended(t)}}</span>    
                                 </div>
                             </td>
                         }
@@ -219,6 +217,8 @@
                                 <div class='bloom-colors'>
                                     @for (color of t.bloomColor; track color) {
                                         <img [src]='bloomColorImg(color)' [attr.alt]='"הצבע " + t.bloomColorHe'/>
+                                    } @empty {
+                                        <span>לא משמעותי</span>
                                     }
                                 </div>
                             </td>

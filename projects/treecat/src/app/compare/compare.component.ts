@@ -64,6 +64,10 @@ export class CompareComponent implements OnInit {
     this.router.navigate(['/catalog'], { queryParamsHandling: 'preserve'});
   }
 
+  isMoaRecommended(tree: Tree) {
+    return tree.catalogs?.includes('עצי רחוב מומלצים, משרד החקלאות (2024)') ? 'כן' : 'לא';
+  }
+
   saveAsPdf() {
     const el = this.comparisonEl.nativeElement;
     if (!el) {
@@ -92,7 +96,7 @@ export class CompareComponent implements OnInit {
         pdf.addImage(headerUrl, 'PNG', headerX, headerY, headerWidth, headerHeight);
         pdf.link(headerX, headerY, headerWidth, headerHeight, {url: window.location.href});
         pdf.addImage(dataUrl, 'PNG', contentX, contentY, width, height);
-        pdf.save('comparison.pdf');
+        pdf.save('קטלוג עצי רחוב וצל.pdf');
       });
   }
 

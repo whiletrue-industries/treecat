@@ -56,7 +56,7 @@ export class TreeComponent implements OnInit {
     domtoimage.toPng(this.mainInfoEl.nativeElement)
       .then((dataUrl) => {
           var link = document.createElement('a');
-          link.download = this.tree.id + '.png';
+          link.download = `קטלוג עצי רחוב וצל - ${this.tree.id}.png`;
           link.href = dataUrl;
           link.click();
     });

@@ -20,7 +20,7 @@
         <div>
             <div class='param'>
                 <span>מופיע ברשימת עצים</span>
-                @if (tree.catalogs.length > 0) {
+                @if ((tree.catalogs || []).length > 0) {
                     <div class='recommended'>
                         <span>{{tree.catalogs[0]}}</span>
                         @if (tree.catalogs.length > 1) {
@@ -37,6 +37,8 @@
                             </app-tooltip-wrapper>                        
                         }    
                     </div>
+                } @else {
+                    <span>לא</span>
                 }
             </div>
         </div>
@@ -92,6 +94,8 @@
                 <div class='bloom-colors'>
                     @for (color of tree.bloomColor; track color) {
                         <img [src]='bloomColorImg(color)' [attr.alt]='"הצבע " + bloomColorName(color)'/>
+                    } @empty {
+                        <span>לא משמעותי</span>
                     }
                 </div>
             </div>

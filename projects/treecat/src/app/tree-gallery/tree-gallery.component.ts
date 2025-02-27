@@ -88,7 +88,7 @@ export class TreeGalleryComponent implements AfterViewInit, OnChanges {
       done = rows.length <= numRows;
       numRows += 1;
     }
-    console.log('RRR', this.width, this.rowHeight, rows.length, this.tree.photos.length);
+    // console.log('RRR', this.width, this.rowHeight, rows.length, this.tree.photos.length);
     // console.log('RRR', rows);
     this.rows = rows;
   }
