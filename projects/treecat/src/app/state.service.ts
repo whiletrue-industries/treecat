@@ -39,6 +39,7 @@ export class StateService {
   routeProcessed = false;
 
   firstDialogShown = false;
+  showCartIconGuide = 5;
 
   showExtraFilters = false;
 

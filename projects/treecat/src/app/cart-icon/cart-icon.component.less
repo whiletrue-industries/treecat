@@ -1,51 +1,99 @@
 @import '../../common.less';
 
-a {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 8px;
-    align-items: center;
-    cursor: pointer;
-
-    .my-cart {
-        .background-image;
-        background-size: 24px;
-        width: 24px;
-        height: 24px;
-        position: relative;
-        background-image: url(../../../public/img/icon-cart-black.svg);
-        background-size: 24px;
-        flex: 0 0 auto;
-
-        .cart-items {
-            display: flex;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: @color-primary;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: @color-white;
+:host {
+    position: relative;
+    a {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 8px;
+        align-items: center;
+        cursor: pointer;
+    
+        .my-cart {
+            .background-image;
+            background-size: 24px;
+            width: 24px;
+            height: 24px;
+            position: relative;
+            background-image: url(../../../public/img/icon-cart-black.svg);
+            background-size: 24px;
+            flex: 0 0 auto;
+    
+            .cart-items {
+                display: flex;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: @color-primary;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: @color-white;
+                .font-primary;
+                font-size: 9px;
+                font-weight: 700;
+                position: absolute;
+                top: -5px;
+                left: -7px;
+            }
+        }
+    
+        span {
             .font-primary;
-            font-size: 9px;
-            font-weight: 700;
-            position: absolute;
-            top: -5px;
-            left: -7px;
+            font-size: 18px;
+            font-weight: 400;    
+        }
+    
+        &:hover {
+            .my-cart {
+                background-image: url(../../../public/img/icon-cart-purple.svg);
+                background-size: 24px;
+            }
         }
     }
 
-    span {
-        .font-primary;
-        font-size: 18px;
-        font-weight: 400;    
-    }
+    .guide {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%)translateY(-50%)translateY(12px)translateX(12px);
+        width: 270px;
+        height: fit-content;
+        border-radius: 5px;
+        background-color: @color-primary;
+        padding: 15px 10px;
+        padding-left: 30px;
 
-    &:hover {
-        .my-cart {
-            background-image: url(../../../public/img/icon-cart-purple.svg);
-            background-size: 24px;
+        .text {
+            color: @color-white;
+            .font-primary;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+    
+            strong {
+                font-weight: 700;
+            }    
+        }
+        .tip {
+            background-color: @color-primary;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateX(-50%)translateY(-50%)rotate(45deg);
+        }
+        .close {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 20px;
+            height: 20px;
+            background-image: url(../../../public/img/icon-close-white.svg);
+            background-size: 20px;
+            cursor: pointer;
         }
     }
 }

@@ -6,3 +6,14 @@
     </div>
     <span>מריצת העצים שלי</span>
 </a>
+@if (state.showCartIconGuide > 0) {
+    <div class='guide'>
+        <div class='text'>
+            <strong>כדאי לדעת!</strong><br/>
+            בעזרת "מריצת העצים" תוכלו להשוות בקלות בין מיני עצים, להבין שיקולי נוף ואחזקה, לראות מיקומי עצים אמיתיים ועוד. להוספת עץ לחצו על הכוכב
+            &nbsp;&nbsp;<img [src]='environment.base + "img/icon-star-white-small.png"' alt='כוכב'>
+        </div>
+        <div class='tip'></div>
+        <div class='close' (click)='state.showCartIconGuide = 0'></div>
+    </div>
+}
