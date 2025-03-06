@@ -1,0 +1,54 @@
+@import '../../common.less';
+
+:host {
+    position: relative;
+
+    a {
+        .background-image;
+        padding-right: 28px;
+        background-size: 20px;
+        background-position: right center;
+        cursor: pointer;
+        .font-primary;
+        font-size: 14px;
+        font-weight: 400;
+        background-image: url(../../../public/img/icon-share.svg);
+    }
+    
+    
+    .guide {
+        position: absolute;
+        z-index: 100;
+        top: 100%;
+        right: 50%;
+        transform: translateX(50%)translateY(6px);
+        width: max-content;
+        height: fit-content;
+        border-radius: 5px;
+        background-color: @color-primary;
+        padding: 8px 10px;
+    
+        .text {
+            color: @color-white;
+            .font-primary;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+    
+            strong {
+                font-weight: 700;
+            }    
+        }
+        .tip {
+            background-color: @color-primary;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%)translateY(-5px)rotate(45deg);
+        }
+    }
+    
+}

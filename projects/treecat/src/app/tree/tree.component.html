@@ -2,7 +2,7 @@
 <div class='controls' [class.hidden]='openLightbox !== null' [attr.aria-hidden]='openLightbox !== null'>
     <a class='contract' (click)='close(true)' aria-hidden="true">צמצום תעודת זהות</a>
     <a class='catalog' (activated)='close(false)' clickOnReturn>חזרה לקטלוג העצים המלא</a>
-    <a class='share' clickOnReturn>שיתוף</a>
+    <app-share-icon></app-share-icon>
     <a class='img-download' (activated)='saveAsImg()' clickOnReturn>הורדה כתמונה</a>
     @if (state.isInCart(tree)) {
         <a class='remove-from-cart' (activated)='state.removeFromCart(tree)' clickOnReturn>הסרה</a>

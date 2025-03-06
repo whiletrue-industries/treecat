@@ -11,6 +11,7 @@ import domtoimage from 'dom-to-image';
 import { StateService } from '../state.service';
 import { CartIconComponent } from "../cart-icon/cart-icon.component";
 import { LightboxComponent } from '../lightbox/lightbox.component';
+import { ShareIconComponent } from "../share-icon/share-icon.component";
 
 @Component({
   selector: 'app-tree',
@@ -22,7 +23,8 @@ import { LightboxComponent } from '../lightbox/lightbox.component';
     SimilarTreesComponent,
     ClickOnReturnDirective,
     CartIconComponent,
-    LightboxComponent
+    LightboxComponent,
+    ShareIconComponent
 ],
   templateUrl: './tree.component.html',
   styleUrl: './tree.component.less'
