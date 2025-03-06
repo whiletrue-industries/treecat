@@ -12,7 +12,7 @@
         <div class='sidewalks-scrollable'>
             <div class='sidewalks-inner'>
                 <img class='sidewalk narrow' 
-                    aria-label="רחב מדרכה צר"
+                    aria-label="רוחב מדרכה צר"
                     [src]='sidewalkImage(SidewalkWidth.Narrow)'
                     (activated)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Narrow ? null : SidewalkWidth.Narrow'
                     (mouseover)='hovering = SidewalkWidth.Narrow'
@@ -20,7 +20,7 @@
                     clickOnReturn
                 />
                 <img class='sidewalk medium' #mediumSidewalk
-                    aria-label="רחב מדרכה בינוני"
+                    aria-label="רוחב מדרכה בינוני"
                     [src]='sidewalkImage(SidewalkWidth.Medium)'
                     (activated)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Medium ? null : SidewalkWidth.Medium'
                     (mouseover)='hovering = SidewalkWidth.Medium'
@@ -28,7 +28,7 @@
                     clickOnReturn
                 />
                 <img class='sidewalk wide'
-                    aria-label="רחב מדרכה רחב"
+                    aria-label="רוחב מדרכה רחב"
                     [src]='sidewalkImage(SidewalkWidth.Wide)'
                     (activated)='state.selectedSidewalkWidth = state.selectedSidewalkWidth === SidewalkWidth.Wide ? null : SidewalkWidth.Wide'
                     (mouseover)='hovering = SidewalkWidth.Wide'
