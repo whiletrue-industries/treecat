@@ -13,4 +13,5 @@ export class AboutComponent {
   environment = environment;
 
   ABOUT_RESOURCES = ABOUT_RESOURCES;
+  FORM = environment.form;
 }

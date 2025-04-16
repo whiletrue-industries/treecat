@@ -5,7 +5,7 @@ import { ClimateArea, SidewalkWidth } from '../data.service';
 import { Router, RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { ModalComponent } from '../modal/modal.component';
-import { FC_CLIMATE_AREAS } from '../filters/config';
+import { FC_CLIMATE_AREAS, FC_TREE_TYPES } from '../filters/config';
 import { ClickOnReturnDirective } from '../click-on-return.directive';
 import { PlatformService } from '../platform.service';
 import { LayoutService } from '../layout.service';
@@ -62,6 +62,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   selectClimateArea(area: ClimateArea) {
     this.state.selectedClimateArea = area;
+    const option = FC_TREE_TYPES.options.find(o => o.label.indexOf('רחוב') >= 0);
+    if (option) {
+      this.state.filters[FC_TREE_TYPES.slug].value.set([option]);
+    }
     this.selectingClimateArea = false;
     this.router.navigate(['/catalog'], { queryParamsHandling: 'preserve' });
   }

@@ -13,5 +13,6 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
 
   environment = environment;
+  FORM = environment.form;
 
 }
