@@ -4,6 +4,7 @@ git checkout main && \
 git checkout -b dist && \
 rm .gitignore && \
 python tools/process.py && \
+git add projects/treecat/src/app/filters/list_consts.ts || true && \
 npm run build-staging && \
 cp dist/treecat/browser/index.html dist/treecat/browser/404.html && \
 cp CNAME dist/treecat/browser/ || true && \
