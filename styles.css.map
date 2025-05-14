@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/treecat/src/home/runner/work/treecat/treecat/projects/treecat/src/styles.less"],
+  "sourcesContent": ["@import (css) url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');\n\n  \nhtml {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;    \n}\nbody {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n    direction: rtl;\n}\n\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nem {\n    font-style: normal;\n}\n\na, a:visited, a:hover {\n    color: inherit;\n    text-decoration: none;\n}\n\ninput[type=\"search\"]::-webkit-search-decoration,\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-results-button,\ninput[type=\"search\"]::-webkit-search-results-decoration {\n  -webkit-appearance:none;\n}\n"],
+  "mappings": ";;;AAGA;AACI,UAAA;AACA,WAAA;AACA,SAAA;AACA,UAAA;;AAEJ;AACI,UAAA;AACA,WAAA;AACA,SAAA;AACA,UAAA;AACA,cAAA;AACA,aAAA;;AAGJ;AAAG,CAAC;AAAS,CAAC;AACV,cAAA;;AAGJ;AACI,cAAA;;AAGJ;AAAG,CAAC;AAAU,CAAC;AACX,SAAA;AACA,mBAAA;;AAGJ,KAAK,CAAA,YAAe;AACpB,KAAK,CAAA,YAAe;AACpB,KAAK,CAAA,YAAe;AACpB,KAAK,CAAA,YAAe;AAClB,sBAAA;;",
+  "names": []
+}
